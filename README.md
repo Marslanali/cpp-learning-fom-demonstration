@@ -43,4 +43,8 @@ cmake ..
 
 make
 
+**Data for example codes**
+The data folder contains test data which constitutes of 4 demonstrations. Demonstrations consists of cartesian trajectories of 3 DOF robot.
+
+
 
