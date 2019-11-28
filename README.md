@@ -29,7 +29,9 @@ To run, first clone the repository.
 git clone https://github.com/Marslanali/CPP_learning_from_demonstration.git
 
 cd CPP_learning_from_demonstration-master
+
 mkdir build
+
 cd build
 cmake ..
 make
