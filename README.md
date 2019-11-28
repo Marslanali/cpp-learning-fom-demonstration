@@ -22,6 +22,11 @@ On Debian and Ubuntu:
 
 sudo apt-get install liblapack-dev
 
+
+**Matplotlib-CPP Library installation**
+
+see https://github.com/lava/matplotlib-cpp for instructions.
+
 **Runing the Code**
 
 To run, first clone the repository.
