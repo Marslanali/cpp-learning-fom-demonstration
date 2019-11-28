@@ -52,6 +52,7 @@ void GMR::Compute_GMR(vec _priors, std::vector<vec> _Mu, std::vector<mat> _Sigma
 
     }
 
+
     mat beta = pxi / repmat(sum(pxi,1)+ DBL_MIN,1,nbStates);
 
     //std::cout<<"beta :" <<beta<<std::endl;
