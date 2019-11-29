@@ -6,18 +6,19 @@ C++ Implementation of learning from demonstration/Imitation Learning.
 This project was buit using CLion with Cmake. You also need lastest version of Armadillo C++ and LAPACK.
 
 **Prerequisite**
+
 The program requires:
-
 LAPACK (Linear Algebra PACKage)
-
 Armadillo (C++ library for linear algebra & scientific computing)
 
 **Armadillo installation**
+
 Make sure latest version of Armadillo C++ install on your system. This repository is tested and working on Ubuntu 16.04. For Armadillo installation, following the below link.
 
 See http://arma.sourceforge.net/download.html for instructions.
 
 **LAPACK installation**
+
 On Debian and Ubuntu:
 
 sudo apt-get install liblapack-dev
@@ -43,5 +44,7 @@ cmake ..
 make
 
 **Data for example codes**
+
 The data folder contains the test data which constitutes of 4 demonstrations. The collected demonstratiosn consists of cartesian trajectories of 3 DOF robot.
 
+If you face any difficulty, feel free to drop an email at arslanali800@hotmail.com
