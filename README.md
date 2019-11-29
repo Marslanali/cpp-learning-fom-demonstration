@@ -25,7 +25,7 @@ sudo apt-get install liblapack-dev
 
 **Matplotlib-CPP Library installation**
 
-see https://github.com/lava/matplotlib-cpp for instructions.
+see https://github.com/lava/matplotlib-cpp for instructions. 
 
 **Runing the Code**
 
