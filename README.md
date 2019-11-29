@@ -1,4 +1,4 @@
-# CPP_learning_from_demonstration
+# cpp_learning_from_demonstration
 In Progress!!!!
 
 C++ Implementation of learning from demonstration/Imitation Learning.
