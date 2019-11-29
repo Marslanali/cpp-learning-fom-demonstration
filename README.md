@@ -34,17 +34,11 @@ To run, first clone the repository.
 git clone https://github.com/Marslanali/CPP_learning_from_demonstration.git
 
 cd CPP_learning_from_demonstration-master
-
 mkdir build
-
 cd build
-
 cmake ..   
-
 make
 
 **Data for example codes**
-The data folder contains test data which constitutes of 4 demonstrations. Demonstrations consists of cartesian trajectories of 3 DOF robot.
-
-
+The data folder contains the test data which constitutes of 4 demonstrations. The collected demonstratiosn consists of cartesian trajectories of 3 DOF robot.
 
