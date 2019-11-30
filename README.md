@@ -48,4 +48,11 @@ make
 
 The data folder contains the test data which constitutes of 4 demonstrations. The collected demonstratiosn consists of cartesian trajectories of 3 DOF robot.
 
+**References**
+
+For reference please check the following papers.
+
+https://ieeexplore.ieee.org/document/4126276/
+
+
 If you face any difficulty, feel free to drop an email at arslanali800@hotmail.com
