@@ -1,7 +1,7 @@
 # cpp_learning_from_demonstration
 In Progress!!!!
 
-C++ Implementation of learning from demonstration/Imitation Learning.
+c++ implementation of learning from demonstration/Imitation Learning.
 
 This project was buit using CLion with Cmake. You also need lastest version of Armadillo C++ and LAPACK.
 
@@ -10,6 +10,7 @@ This project was buit using CLion with Cmake. You also need lastest version of A
 The program requires:
 LAPACK (Linear Algebra PACKage)
 Armadillo (C++ library for linear algebra & scientific computing)
+Matplotlib-CPP (for plotting directly in c++) 
 
 **Armadillo installation**
 
