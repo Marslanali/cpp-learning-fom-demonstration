@@ -1,34 +1,34 @@
 # cpp_learning_from_demonstration
 In Progress!!!!
 
-c++ implementation of learning from demonstration/Imitation Learning.
+This repositroy is C++ implementation of learning from demonstration/Imitation Learning which is part of my research project. For more details please check the reference section of this Readme.md
 
-This project was buit using CLion with Cmake. You also need lastest version of Armadillo C++ and LAPACK.
+This project was buit using CLion with Cmake and tested on Ubuntu 16.04. You also need lastest version of Armadillo C++ and LAPACK.
 
-**Prerequisite**
+# **Prerequisite**
 
 The program requires:
 LAPACK (Linear Algebra PACKage)
 Armadillo (C++ library for linear algebra & scientific computing)
 Matplotlib-CPP (for plotting directly in c++) 
 
-**Armadillo installation**
+# **Armadillo installation**
 
 Make sure latest version of Armadillo C++ install on your system. This repository is tested and working on Ubuntu 16.04. For Armadillo installation, following the below link.
 
 See http://arma.sourceforge.net/download.html for instructions.
 
-**LAPACK installation**
+# **LAPACK installation**
 
 On Debian and Ubuntu:
 
 sudo apt-get install liblapack-dev
 
-**Matplotlib-CPP Library installation**
+# **Matplotlib-CPP Library installation**
 
 see https://github.com/lava/matplotlib-cpp for instructions. 
 
-**Runing the Code**
+# **Runing the Code**
 
 To run, first clone the repository.
 
@@ -44,11 +44,11 @@ cmake ..
 
 make
 
-**Data for example codes**
+# **Data for example code**
 
 The data folder contains the test data which constitutes of 4 demonstrations. The collected demonstratiosn consists of cartesian trajectories of 3 DOF robot.
 
-**References**
+# **References**
 
 For reference please check the following papers.
 
