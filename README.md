@@ -33,7 +33,7 @@ see https://github.com/lava/matplotlib-cpp for instructions.
 
 To run, first clone the repository.
 
-git clone https://github.com/Marslanali/CPP_learning_from_demonstration.git
+```git clone``` https://github.com/Marslanali/CPP_learning_from_demonstration.git
 
 ```
 cd cpp_learning_from_demonstration-master
