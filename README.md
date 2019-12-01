@@ -8,9 +8,10 @@ This project was buit using CLion with Cmake and tested on Ubuntu 16.04. You als
 ## Prerequisite
 
 The program requires:
-LAPACK (Linear Algebra PACKage)
-Armadillo (C++ library for linear algebra & scientific computing)
-Matplotlib-CPP (for plotting directly in c++) 
+
+  - LAPACK (Linear Algebra PACKage)
+  - Armadillo (C++ library for linear algebra & scientific computing)
+  - Matplotlib-CPP (for plotting directly in c++) 
 
 ## Armadillo installation
 
@@ -18,13 +19,16 @@ Make sure latest version of Armadillo C++ install on your system. This repositor
 
 See http://arma.sourceforge.net/download.html for instructions.
 
-## LAPACK installation
 
-On Debian and Ubuntu:
+#### LAPACK installation
 
+**On Debian and Ubuntu:**
+
+```
 sudo apt-get install liblapack-dev
+```
 
-## matplotlib-cpp library installation
+### matplotlib-cpp library installation
 
 see https://github.com/lava/matplotlib-cpp for instructions. 
 
@@ -34,21 +38,21 @@ To run, first clone the repository.
 
 git clone https://github.com/Marslanali/CPP_learning_from_demonstration.git
 
+```
 cd cpp_learning_from_demonstration-master
-
-'''
-
+```
+```
 mkdir build
 cd build
 cmake ..   
 make
-'''
+```
 
-## Data for example code
+### Data for example code
 
 The data folder contains the test data which constitutes of 4 demonstrations. The collected demonstratiosn consists of cartesian trajectories of 3 DOF robot.
 
-## References
+### References
 
 For reference please check the following papers.
 
