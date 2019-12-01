@@ -3,7 +3,6 @@ In Progress!!!!
 
 This repositroy is C++ implementation of learning from demonstration/Imitation Learning which is part of my research project. For more details please check the reference section of this Readme.md
 
-
 ### Prerequisite
 
 This project was buit using CLion with Cmake build system and tested on Ubuntu 16.04.
@@ -16,8 +15,7 @@ The program requires:
 
 ### Armadillo installation
 
-Make sure latest version of Armadillo C++ install on your system. For Armadillo installation, see [http://arma.sourceforge.net/download.html](http://arma.sourceforge.net/download.html)
-for instructions.
+Make sure latest version of Armadillo C++ install on your system. For Armadillo installation, see http://arma.sourceforge.net/download.html for instructions.
 
 #### LAPACK installation
 
@@ -29,7 +27,7 @@ sudo apt-get install liblapack-dev
 
 ### matplotlib-cpp library installation
 
-see [https://github.com/lava/matplotlib-cpp] (https://github.com/lava/matplotlib-cpp) for instructions. 
+see https://github.com/lava/matplotlib-cpp for instructions. 
 
 ### Runing the Code
 
@@ -39,8 +37,6 @@ git clone https://github.com/Marslanali/CPP_learning_from_demonstration.git
 
 ```
 cd cpp_learning_from_demonstration-master
-```
-```
 mkdir build
 cd build
 cmake ..   
