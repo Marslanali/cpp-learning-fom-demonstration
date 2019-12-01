@@ -24,7 +24,7 @@ On Debian and Ubuntu:
 
 sudo apt-get install liblapack-dev
 
-## Matplotlib-CPP Library installation
+## matplotlib-cpp library installation
 
 see https://github.com/lava/matplotlib-cpp for instructions. 
 
@@ -36,13 +36,12 @@ git clone https://github.com/Marslanali/CPP_learning_from_demonstration.git
 
 cd cpp_learning_from_demonstration-master
 
-mkdir build
-
-cd build
-
-cmake ..   
-
-make
+'''
+###mkdir build
+###cd build
+###cmake ..   
+###make
+'''
 
 ## Data for example code
 
