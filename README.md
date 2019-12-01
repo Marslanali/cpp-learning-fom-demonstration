@@ -5,7 +5,7 @@ This repositroy is C++ implementation of learning from demonstration/Imitation L
 
 This project was buit using CLion with Cmake and tested on Ubuntu 16.04. You also need lastest version of Armadillo C++ and LAPACK.
 
-# **Prerequisite**
+# Prerequisite
 
 The program requires:
 LAPACK (Linear Algebra PACKage)
