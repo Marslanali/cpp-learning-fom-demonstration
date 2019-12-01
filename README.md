@@ -5,7 +5,7 @@ This repositroy is C++ implementation of learning from demonstration/Imitation L
 
 This project was buit using CLion with Cmake and tested on Ubuntu 16.04. You also need lastest version of Armadillo C++ and LAPACK.
 
-## Prerequisite
+### Prerequisite
 
 The program requires:
 
@@ -13,7 +13,7 @@ The program requires:
   - Armadillo (C++ library for linear algebra & scientific computing)
   - Matplotlib-CPP (for plotting directly in c++) 
 
-## Armadillo installation
+### Armadillo installation
 
 Make sure latest version of Armadillo C++ install on your system. This repository is tested and working on Ubuntu 16.04. For Armadillo installation, following the below link.
 
@@ -32,7 +32,7 @@ sudo apt-get install liblapack-dev
 
 see https://github.com/lava/matplotlib-cpp for instructions. 
 
-## Runing the Code
+### Runing the Code
 
 To run, first clone the repository.
 
