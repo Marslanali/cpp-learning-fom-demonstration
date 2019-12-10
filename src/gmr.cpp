@@ -52,7 +52,6 @@ void GMR::Compute_GMR(vec _priors, std::vector<vec> _Mu, std::vector<mat> _Sigma
 
     }
 
-
     mat beta = pxi / repmat(sum(pxi,1)+ DBL_MIN,1,nbStates);
 
     //std::cout<<"beta :" <<beta<<std::endl;
@@ -61,30 +60,30 @@ void GMR::Compute_GMR(vec _priors, std::vector<vec> _Mu, std::vector<mat> _Sigma
     // Compute expected means y, given input x
     //-----------------------------------------------------------------------------
 
-    //std::cout<<"This is test: "<<Mu[0](span(1,2),0)<<std::endl;
-
-   // mat out (1,3);
-
     for (int i = 0; i < nbStates; ++i)
     {
 
         vec mu1 (1);
         mu1(0)=Mu[i](in);
 
-       //y_tmp.slices(i) =repmat(Mu[i](span(1,3),i),1,nbDataPoints) + Sigma[i](span(1,3),0) * inv((Sigma[i](0,0)) * (x - repmat(mu1,1,nbDataPoints));
+        mat sigma(1, 1);
+        sigma(0, 0) = Sigma[i](in, in);  // for inverse sigma
 
+        cube y_tmp(3,nbDataPoints,i);
+        //y_tmp.slice(i) =repmat(Mu[i](out),1,nbDataPoints) + Sigma[i](out,in) * inv(sigma) *  (x - repmat(mu1,1,nbDataPoints));
 
-        //std::cout<<"Means are :"<<Mu[i](0)<<std::endl;
+       std::cout<<"dfd"<<std::endl;
+
 
     }
+
+
 
 
 
 }
 
 /*
-%% Compute expected means y, given input x
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 for j=1:nbStates
         y_tmp(:,:,j) = repmat(Mu(out,j),1,nbData) + Sigma(out,in,j)*inv(Sigma(in,in,j)) * (x-repmat(Mu(in,j),1,nbData));
 end
@@ -92,4 +91,4 @@ end
 y_tmp2 = repmat(beta_tmp,[length(out) 1 1]) .* y_tmp;
 y = sum(y_tmp2,3);
 
-*/
+ */

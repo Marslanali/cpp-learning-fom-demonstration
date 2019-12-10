@@ -96,7 +96,7 @@ int main(int argc, char **argv)
 
     plt::figure();
     plt::plot(plotClock);
-    //plt::show();
+    plt::show();
 
     */
     GMR gmr;

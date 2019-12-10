@@ -8,12 +8,12 @@
 
 
  Inputs -----------------------------------------------------------------
-   o Data:    D x N array representing N datapoints of D dimensions.
-   o Priors0: 1 x K array representing the initial prior probabilities
+   o _data:    D x N array representing N datapoints of D dimensions.
+   o _priors: 1 x K array representing the initial prior probabilities
               of the K GMM components.
-   o Mu0:     D x K array representing the initial centers of the K GMM
+   o _Mu:     D x K array representing the initial centers of the K GMM
               components.
-   o Sigma0:  D x D x K array representing the initial covariance matrices
+   o _Sigma:  D x D x K array representing the initial covariance matrices
               of the K GMM components.
  Outputs ----------------------------------------------------------------
    o Priors:  1 x K array representing the prior probabilities of the K GMM

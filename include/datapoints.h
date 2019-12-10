@@ -1,36 +1,9 @@
 //
 // Created by arslan on 16/11/19.
 //
+//The class Datapoints allows to access samples of n-points and n-variables
+//stored in a Armadillo matrix.
 
-
-
-/**
-Copyright (C) 2014, Davide De Tommaso
-
-This file is part of PbDLib.
-
-    PbDLib is free software: you can redistribute it and/or modify
-    it under the terms of the GNU Lesser General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    PbDLib is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU Lesser General Public License for more details.
-
-    You should have received a copy of the GNU Lesser General Public License
-    along with PbDLib.  If not, see <http://www.gnu.org/licenses/>.
-*/
-
-/*! \file datapoints.h
-\brief Datapoints class
-The class Datapoints allows to access samples of n-points and n-variables
-stored in a Armadillo matrix.
-
-\author Davide De Tommaso
-\bug No known bugs.
-*/
 
 #ifndef PROGRAMMING_BY_DEMONSTRATION_DATAPOINTS_H
 #define PROGRAMMING_BY_DEMONSTRATION_DATAPOINTS_H
