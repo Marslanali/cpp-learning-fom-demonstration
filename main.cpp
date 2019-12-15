@@ -102,6 +102,6 @@ int main(int argc, char **argv)
     GMR gmr;
     gmr.Compute_GMR(gmm.returnPriors(), gmm.returnMu(), gmm.returnSigma(), clockSignal, 0, gmm.returnPriors());
 
-
+    //
     return 0;
 }
