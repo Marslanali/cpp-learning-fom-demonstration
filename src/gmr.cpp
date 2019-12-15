@@ -82,7 +82,7 @@ void GMR::Compute_GMR(vec _priors, std::vector<vec> _Mu, std::vector<mat> _Sigma
    // mat A = randu<mat>(4,5);
 
     //A.reshape(5,4);
-
+  //  beta.reshape(1,size(beta,0),size(beta,1));
 
 
 
