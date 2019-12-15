@@ -75,7 +75,7 @@ void GMR::Compute_GMR(vec _priors, std::vector<vec> _Mu, std::vector<mat> _Sigma
 
         y_tmp.slice(i) = repmat(Mu[i](out),1,nbDataPoints) + Sigma[i](out,in) * inv(sigma) *  (x - repmat(mu1,1,nbDataPoints));
 
-       // std::cout<<y_tmp.slice(i)<<std::endl;
+        std::cout<<y_tmp.slice(i)<<std::endl;
 
     }
 
