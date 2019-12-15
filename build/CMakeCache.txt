@@ -232,6 +232,12 @@ ProcessorCount_cmd_nproc:FILEPATH=/usr/bin/nproc
 //Path to a program.
 ProcessorCount_cmd_sysctl:FILEPATH=/sbin/sysctl
 
+//The directory containing a CMake configuration file for ZeroMQ.
+ZeroMQ_DIR:PATH=ZeroMQ_DIR-NOTFOUND
+
+//Path to a library.
+ZeroMQ_LIBRARIES:FILEPATH=/usr/lib/x86_64-linux-gnu/libarmadillo.so
+
 //Value Computed by CMake
 programming_by_demonstration_BINARY_DIR:STATIC=/home/arslan/CLionProjects/cpp_learning_from_demonstration/build
 
@@ -393,7 +399,7 @@ CMAKE_UNAME:INTERNAL=/bin/uname
 //ADVANCED property for variable: CMAKE_VERBOSE_MAKEFILE
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
 //Details about finding Armadillo
-FIND_PACKAGE_MESSAGE_DETAILS_Armadillo:INTERNAL=[/usr/lib/x86_64-linux-gnu/libarmadillo.so][/usr/include][v9.800.1(5.4)]
+FIND_PACKAGE_MESSAGE_DETAILS_Armadillo:INTERNAL=[/usr/lib/x86_64-linux-gnu/libarmadillo.so][/usr/include][v9.800.1(4.4)]
 //Details about finding PythonLibs
 FIND_PACKAGE_MESSAGE_DETAILS_PythonLibs:INTERNAL=[/usr/lib/x86_64-linux-gnu/libpython2.7.so][/usr/include/python2.7][v2.7.12(2.7)]
 //ADVANCED property for variable: PYTHON_INCLUDE_DIR

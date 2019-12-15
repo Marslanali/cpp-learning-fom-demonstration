@@ -8,12 +8,17 @@ set(HEADER_FILES include/datapoints.h include/demonstrations.h include/gmm.h inc
 
 add_executable(programming_by_demonstration ${SOURCE_FILES}  ${HEADER_FILES})
 
-find_package(Armadillo 5.4 REQUIRED)
-include_directories(include ${ARMADILLO_INCLUDE_DIRS} )
-
-find_library(ARMADILLO_LIBRARIES armadillo)
-target_link_libraries(programming_by_demonstration ${ARMADILLO_LIBRARIES})
-
 find_package(PythonLibs 2.7)
 target_include_directories(programming_by_demonstration PRIVATE ${PYTHON_INCLUDE_DIRS})
 target_link_libraries(programming_by_demonstration ${PYTHON_LIBRARIES})
+
+## Armadillo Libraries
+find_package(Armadillo 4.4 REQUIRED)
+include_directories(include ${ARMADILLO_INCLUDE_DIRS})
+
+find_library(ARMADILLO_LIBRARIES armadillo)
+target_link_libraries(programming_by_demonstration  ${ARMADILLO_LIBRARIES})
+
+
+
+

@@ -169,8 +169,8 @@ programming_by_demonstration: CMakeFiles/programming_by_demonstration.dir/src/gm
 programming_by_demonstration: CMakeFiles/programming_by_demonstration.dir/src/mvn.cpp.o
 programming_by_demonstration: CMakeFiles/programming_by_demonstration.dir/src/EM_initilization.cpp.o
 programming_by_demonstration: CMakeFiles/programming_by_demonstration.dir/build.make
-programming_by_demonstration: /usr/lib/x86_64-linux-gnu/libarmadillo.so
 programming_by_demonstration: /usr/lib/x86_64-linux-gnu/libpython2.7.so
+programming_by_demonstration: /usr/lib/x86_64-linux-gnu/libarmadillo.so
 programming_by_demonstration: CMakeFiles/programming_by_demonstration.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/arslan/CLionProjects/cpp_learning_from_demonstration/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX executable programming_by_demonstration"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/programming_by_demonstration.dir/link.txt --verbose=$(VERBOSE)

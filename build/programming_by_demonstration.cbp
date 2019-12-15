@@ -34,8 +34,8 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/arslan/CLionProjects/cpp_learning_from_demonstration/include"/>
 					<Add directory="/usr/include/python2.7"/>
+					<Add directory="/home/arslan/CLionProjects/cpp_learning_from_demonstration/include"/>
 					<Add directory="/usr/include/c++/5"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
 					<Add directory="/usr/include/c++/5/backward"/>
@@ -59,8 +59,8 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/arslan/CLionProjects/cpp_learning_from_demonstration/include"/>
 					<Add directory="/usr/include/python2.7"/>
+					<Add directory="/home/arslan/CLionProjects/cpp_learning_from_demonstration/include"/>
 					<Add directory="/usr/include/c++/5"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
 					<Add directory="/usr/include/c++/5/backward"/>

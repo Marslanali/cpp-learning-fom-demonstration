@@ -56,7 +56,7 @@ void GMR::Compute_GMR(vec _priors, std::vector<vec> _Mu, std::vector<mat> _Sigma
 
     mat beta = pxi / repmat(sum(pxi,1)+ DBL_MIN,1,nbStates);
 
-    //std::cout<<"beta :" <<beta<<std::endl;
+    std::cout<<"beta :" <<beta<<std::endl;
 
     //-----------------------------------------------------------------------------
     // Compute expected means y, given input x
@@ -75,16 +75,26 @@ void GMR::Compute_GMR(vec _priors, std::vector<vec> _Mu, std::vector<mat> _Sigma
 
         y_tmp.slice(i) = repmat(Mu[i](out),1,nbDataPoints) + Sigma[i](out,in) * inv(sigma) *  (x - repmat(mu1,1,nbDataPoints));
 
-        std::cout<<y_tmp.slice(i)<<std::endl;
+      //  std::cout<<y_tmp.slice(i)<<std::endl;
 
     }
 
-   // mat A = randu<mat>(4,5);
 
-    //A.reshape(5,4);
-  //  beta.reshape(1,size(beta,0),size(beta,1));
+    const uword N = 1;
+    const uword num_rows = nbDataPoints;
+    const uword num_cols = nbStates;
 
 
+    arma::cube beta_tmp(num_rows, num_cols, 1);
+    beta_tmp.slice(0) = beta;
+    beta_tmp.reshape(num_rows/N, num_cols, N);
+    std::cout << "Beta_TMP: "<< beta_tmp<<std::endl;
+/*
+    cube y_tmp2 (3,nbDataPoints,nbStates);
+    mat C (400,num_cols);
+    C= repmat(beta_tmp.slice(0),2,1);
+    std::cout<<C<<std::endl;
+*/
 
 
 }

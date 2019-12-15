@@ -6,5 +6,5 @@ CXX_FLAGS = -g   -std=gnu++11
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/arslan/CLionProjects/cpp_learning_from_demonstration/include -I/usr/include/python2.7 
+CXX_INCLUDES = -I/usr/include/python2.7 -I/home/arslan/CLionProjects/cpp_learning_from_demonstration/include 
 
