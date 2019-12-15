@@ -62,6 +62,8 @@ void GMR::Compute_GMR(vec _priors, std::vector<vec> _Mu, std::vector<mat> _Sigma
     // Compute expected means y, given input x
     //-----------------------------------------------------------------------------
 
+    cube y_tmp = cube(3,nbDataPoints,nbStates);  // output, dataPoints, nbStates
+
     for (int i = 0; i < nbStates; ++i)
     {
 
@@ -71,13 +73,15 @@ void GMR::Compute_GMR(vec _priors, std::vector<vec> _Mu, std::vector<mat> _Sigma
         mat sigma(1, 1);
         sigma(0, 0) = Sigma[i](in, in);  // for inverse sigma
 
-        cube y_tmp(3,nbDataPoints,i);
-        //y_tmp.slice(i) =repmat(Mu[i](out),1,nbDataPoints) + Sigma[i](out,in) * inv(sigma) *  (x - repmat(mu1,1,nbDataPoints));
+        y_tmp.slice(i) = repmat(Mu[i](out),1,nbDataPoints) + Sigma[i](out,in) * inv(sigma) *  (x - repmat(mu1,1,nbDataPoints));
 
-       std::cout<<"dfd"<<std::endl;
-
+       // std::cout<<y_tmp.slice(i)<<std::endl;
 
     }
+
+   // mat A = randu<mat>(4,5);
+
+    //A.reshape(5,4);
 
 
 
@@ -86,11 +90,20 @@ void GMR::Compute_GMR(vec _priors, std::vector<vec> _Mu, std::vector<mat> _Sigma
 }
 
 /*
+%% Compute expected means y, given input x
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 for j=1:nbStates
-        y_tmp(:,:,j) = repmat(Mu(out,j),1,nbData) + Sigma(out,in,j)*inv(Sigma(in,in,j)) * (x-repmat(Mu(in,j),1,nbData));
+  y_tmp(:,:,j) = repmat(Mu(out,j),1,nbData) + Sigma(out,in,j)*inv(Sigma(in,in,j)) * (x-repmat(Mu(in,j),1,nbData));
 end
-        beta_tmp = reshape(beta,[1 size(beta)]);
+beta_tmp = reshape(beta,[1 size(beta)]);
 y_tmp2 = repmat(beta_tmp,[length(out) 1 1]) .* y_tmp;
 y = sum(y_tmp2,3);
-
+%% Compute expected covariance matrices Sigma_y, given input x
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+for j=1:nbStates
+  Sigma_y_tmp(:,:,1,j) = Sigma(out,out,j) - (Sigma(out,in,j)*inv(Sigma(in,in,j))*Sigma(in,out,j));
+end
+beta_tmp = reshape(beta,[1 1 size(beta)]);
+Sigma_y_tmp2 = repmat(beta_tmp.*beta_tmp, [length(out) length(out) 1 1]) .* repmat(Sigma_y_tmp,[1 1 nbData 1]);
+Sigma_y = sum(Sigma_y_tmp2,4);
  */

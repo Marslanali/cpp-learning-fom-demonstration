@@ -23,14 +23,14 @@ int main(int argc, char **argv)
 
     positionData.loadFromFile("/home/arslan/CLionProjects/cpp_learning_from_demonstration/data/data_txyz.txt");
 
-    std::cout<<"\n Data : \n "<< positionData.getDataPoints()<<std::endl;
-    std::cout<<"\n nbVars : "<< positionData.getNumVars()<<std::endl;
-    std::cout<<"\n nbDataPoints : "<< positionData.getNumPoints()<<std::endl;
+   // std::cout<<"\n Data : \n "<< positionData.getDataPoints()<<std::endl;
+   // std::cout<<"\n nbVars : "<< positionData.getNumVars()<<std::endl;
+  //  std::cout<<"\n nbDataPoints : "<< positionData.getNumPoints()<<std::endl;
 
-    std::cout<<"\n Time is:\n "<<positionData.getDataPoints()(0,span::all)<<std::endl;
-    std::cout<<"\n Position X "<<positionData.getDataPoints()(1,span::all)<<std::endl;
-    std::cout<<"\n Position Y "<<positionData.getDataPoints()(2,span::all)<<std::endl;
-    std::cout<<"\n Position Z "<<positionData.getDataPoints()(3,span::all)<<std::endl;
+  //  std::cout<<"\n Time is:\n "<<positionData.getDataPoints()(0,span::all)<<std::endl;
+   // std::cout<<"\n Position X "<<positionData.getDataPoints()(1,span::all)<<std::endl;
+   // std::cout<<"\n Position Y "<<positionData.getDataPoints()(2,span::all)<<std::endl;
+  //  std::cout<<"\n Position Z "<<positionData.getDataPoints()(3,span::all)<<std::endl;
 
     /*
 
@@ -71,12 +71,12 @@ int main(int argc, char **argv)
     GMM gmm;
     gmm.EM(positionData.getDataPoints(), em_init_kmeans.getPriors(), em_init_kmeans.getMu(), em_init_kmeans.getSigma());
 
-    std::cout<<"Final Priors are: "<<gmm.returnPriors()<<std::endl;
+   // std::cout<<"Final Priors are: "<<gmm.returnPriors()<<std::endl;
     for (int i =0; i<gmm.returnMu().size(); ++i)
-        std::cout<<"Final Mu are :"<<gmm.returnMu()[i]<<std::endl;
+       // std::cout<<"Final Mu are :"<<gmm.returnMu()[i]<<std::endl;
     for (int i = 0; i < gmm.returnSigma().size() ; ++i)
     {
-        std::cout<<"Final Sigma are: "<<gmm.returnSigma()[i]<<std::endl;
+      //  std::cout<<"Final Sigma are: "<<gmm.returnSigma()[i]<<std::endl;
 
     }
 

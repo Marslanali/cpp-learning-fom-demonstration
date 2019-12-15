@@ -4,13 +4,13 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/arslan/CLionProjects/programming_by_demonstration/main.cpp" "/home/arslan/CLionProjects/programming_by_demonstration/build/CMakeFiles/programming_by_demonstration.dir/main.cpp.o"
-  "/home/arslan/CLionProjects/programming_by_demonstration/src/EM_initilization.cpp" "/home/arslan/CLionProjects/programming_by_demonstration/build/CMakeFiles/programming_by_demonstration.dir/src/EM_initilization.cpp.o"
-  "/home/arslan/CLionProjects/programming_by_demonstration/src/datapoints.cpp" "/home/arslan/CLionProjects/programming_by_demonstration/build/CMakeFiles/programming_by_demonstration.dir/src/datapoints.cpp.o"
-  "/home/arslan/CLionProjects/programming_by_demonstration/src/demonstrations.cpp" "/home/arslan/CLionProjects/programming_by_demonstration/build/CMakeFiles/programming_by_demonstration.dir/src/demonstrations.cpp.o"
-  "/home/arslan/CLionProjects/programming_by_demonstration/src/gmm.cpp" "/home/arslan/CLionProjects/programming_by_demonstration/build/CMakeFiles/programming_by_demonstration.dir/src/gmm.cpp.o"
-  "/home/arslan/CLionProjects/programming_by_demonstration/src/gmr.cpp" "/home/arslan/CLionProjects/programming_by_demonstration/build/CMakeFiles/programming_by_demonstration.dir/src/gmr.cpp.o"
-  "/home/arslan/CLionProjects/programming_by_demonstration/src/mvn.cpp" "/home/arslan/CLionProjects/programming_by_demonstration/build/CMakeFiles/programming_by_demonstration.dir/src/mvn.cpp.o"
+  "/home/arslan/CLionProjects/cpp_learning_from_demonstration/main.cpp" "/home/arslan/CLionProjects/cpp_learning_from_demonstration/build/CMakeFiles/programming_by_demonstration.dir/main.cpp.o"
+  "/home/arslan/CLionProjects/cpp_learning_from_demonstration/src/EM_initilization.cpp" "/home/arslan/CLionProjects/cpp_learning_from_demonstration/build/CMakeFiles/programming_by_demonstration.dir/src/EM_initilization.cpp.o"
+  "/home/arslan/CLionProjects/cpp_learning_from_demonstration/src/datapoints.cpp" "/home/arslan/CLionProjects/cpp_learning_from_demonstration/build/CMakeFiles/programming_by_demonstration.dir/src/datapoints.cpp.o"
+  "/home/arslan/CLionProjects/cpp_learning_from_demonstration/src/demonstrations.cpp" "/home/arslan/CLionProjects/cpp_learning_from_demonstration/build/CMakeFiles/programming_by_demonstration.dir/src/demonstrations.cpp.o"
+  "/home/arslan/CLionProjects/cpp_learning_from_demonstration/src/gmm.cpp" "/home/arslan/CLionProjects/cpp_learning_from_demonstration/build/CMakeFiles/programming_by_demonstration.dir/src/gmm.cpp.o"
+  "/home/arslan/CLionProjects/cpp_learning_from_demonstration/src/gmr.cpp" "/home/arslan/CLionProjects/cpp_learning_from_demonstration/build/CMakeFiles/programming_by_demonstration.dir/src/gmr.cpp.o"
+  "/home/arslan/CLionProjects/cpp_learning_from_demonstration/src/mvn.cpp" "/home/arslan/CLionProjects/cpp_learning_from_demonstration/build/CMakeFiles/programming_by_demonstration.dir/src/mvn.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

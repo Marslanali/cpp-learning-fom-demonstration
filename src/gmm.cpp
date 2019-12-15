@@ -107,7 +107,7 @@ void GMM::EM(mat _data, vec _priors, std::vector<vec> _Mu, std::vector<mat> _Sig
 
     }
 
-    std::cout<<"Total EM Steps are: "<<stepsCount<<std::endl;
+   // std::cout<<"Total EM Steps are: "<<stepsCount<<std::endl;
 
 }
 

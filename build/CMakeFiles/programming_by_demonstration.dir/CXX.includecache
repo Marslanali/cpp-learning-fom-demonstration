@@ -6,26 +6,26 @@
 
 #IncludeRegexTransform: 
 
-/home/arslan/CLionProjects/programming_by_demonstration/include/gmr.h
-armadillo
-/home/arslan/CLionProjects/programming_by_demonstration/include/armadillo
-/home/arslan/CLionProjects/programming_by_demonstration/include/mvn.h
+/home/arslan/CLionProjects/cpp_learning_from_demonstration/include/gmr.h
+/home/arslan/CLionProjects/cpp_learning_from_demonstration/include/mvn.h
 -
+armadillo
+/home/arslan/CLionProjects/cpp_learning_from_demonstration/include/armadillo
 vector
 -
 
-/home/arslan/CLionProjects/programming_by_demonstration/include/mvn.h
+/home/arslan/CLionProjects/cpp_learning_from_demonstration/include/mvn.h
 stdio.h
 -
 armadillo
-/home/arslan/CLionProjects/programming_by_demonstration/include/armadillo
+/home/arslan/CLionProjects/cpp_learning_from_demonstration/include/armadillo
 vector
 -
 cfloat
 -
 
-/home/arslan/CLionProjects/programming_by_demonstration/src/gmr.cpp
-/home/arslan/CLionProjects/programming_by_demonstration/include/gmr.h
+/home/arslan/CLionProjects/cpp_learning_from_demonstration/src/gmr.cpp
+/home/arslan/CLionProjects/cpp_learning_from_demonstration/include/gmr.h
 -
 iostream
 -
