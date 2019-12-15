@@ -21,7 +21,7 @@ int main(int argc, char **argv)
 {
     Datapoints positionData;
 
-    positionData.loadFromFile("/home/arslan/CLionProjects/programming_by_demonstration/data/data_txyz.txt");
+    positionData.loadFromFile("/home/arslan/CLionProjects/cpp_learning_from_demonstration/data/data_txyz.txt");
 
     std::cout<<"\n Data : \n "<< positionData.getDataPoints()<<std::endl;
     std::cout<<"\n nbVars : "<< positionData.getNumVars()<<std::endl;

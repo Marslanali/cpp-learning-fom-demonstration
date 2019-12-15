@@ -4,7 +4,7 @@
 
 // GMR Source File
 
-#include "/home/arslan/CLionProjects/programming_by_demonstration/include/gmr.h"
+#include "/home/arslan/CLionProjects/cpp_learning_from_demonstration/include/gmr.h"
 #include <iostream>
 
 void GMR::Compute_GMR(vec _priors, std::vector<vec> _Mu, std::vector<mat> _Sigma, mat _x, uint _in, vec _out)

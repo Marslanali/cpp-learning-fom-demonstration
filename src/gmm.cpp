@@ -24,7 +24,7 @@
 
 */
 
-#include "/home/arslan/CLionProjects/programming_by_demonstration/include/gmm.h"
+#include "/home/arslan/CLionProjects/cpp_learning_from_demonstration/include/gmm.h"
 #include <iostream>
 
 void GMM::EM(mat _data, vec _priors, std::vector<vec> _Mu, std::vector<mat> _Sigma)

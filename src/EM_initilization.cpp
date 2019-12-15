@@ -2,8 +2,7 @@
 // Created by arslan on 16/11/19.
 //
 
-#include "/home/arslan/CLionProjects/programming_by_demonstration/include/EM_initilization.h"
-
+#include "/home/arslan/CLionProjects/cpp_learning_from_demonstration/include/EM_initilization.h"
 void EM_Initilization::learnKmeans(mat _data, uint _nbStates)
 {
     data = _data;

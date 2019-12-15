@@ -6,8 +6,8 @@
 #ifndef PROGRAMMING_BY_DEMONSTRATION_GMR_H
 #define PROGRAMMING_BY_DEMONSTRATION_GMR_H
 
+#include "/home/arslan/CLionProjects/cpp_learning_from_demonstration/include/mvn.h"
 #include "armadillo"
-#include "/home/arslan/CLionProjects/programming_by_demonstration/include/mvn.h"
 #include <vector>
 
 using namespace arma;
