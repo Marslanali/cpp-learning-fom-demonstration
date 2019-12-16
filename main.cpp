@@ -35,6 +35,8 @@ int main(int argc, char **argv)
 
     std::vector<double> time, positionX, positionY, positionZ;
 
+    /*
+
     for (int i = 0; i <positionData.getNumPoints() ; ++i)
     {
 
@@ -57,6 +59,7 @@ int main(int argc, char **argv)
     plt::plot(positionZ);
     plt::show();
 
+     */
 
     EM_Initilization em_init_kmeans;
     em_init_kmeans.learnKmeans(positionData.getDataPoints(), nbStates);
@@ -86,6 +89,8 @@ int main(int argc, char **argv)
 
     std::cout<<"Clock Signal  "<<clockSignal<<std::endl;
 
+    /*
+
     std::vector<double> plotClock;
 
     for (int i = 0; i <positionData.getNumPoints() ; ++i)
@@ -96,6 +101,7 @@ int main(int argc, char **argv)
     plt::plot(plotClock);
     plt::show();
 
+*/
 
     GMR gmr;
     gmr.Compute_GMR(gmm.returnPriors(), gmm.returnMu(), gmm.returnSigma(), clockSignal, 0, gmm.returnPriors());

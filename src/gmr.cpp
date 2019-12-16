@@ -84,8 +84,8 @@ void GMR::Compute_GMR(vec _priors, std::vector<vec> _Mu, std::vector<mat> _Sigma
     const uword num_rows = nbDataPoints;
     const uword num_cols = nbStates;
 
+    Cube<double> beta_tmp(num_rows, num_cols, 1);
 
-    arma::cube beta_tmp(num_rows, num_cols, 1);
     beta_tmp.slice(0) = beta;
     beta_tmp.reshape(num_rows/N, num_cols, N);
     std::cout << "Beta_TMP: "<< beta_tmp<<std::endl;
@@ -95,6 +95,27 @@ void GMR::Compute_GMR(vec _priors, std::vector<vec> _Mu, std::vector<mat> _Sigma
     C= repmat(beta_tmp.slice(0),2,1);
     std::cout<<C<<std::endl;
 */
+    std::cout<<"Size beta_tmp"<<size(beta_tmp)<<"size y_Tmp: "<<size(y_tmp)<<std::endl;
+
+    //cube beta_tmp3 = cube(nbDataPoints,nbStates,3);  // dataPoints, nbStates,output
+    Cube<double> beta_tmp3(nbDataPoints,nbStates,3);  // dataPoints, nbStates,output;
+    for (int i = 0; i < 3; ++i) {
+
+        beta_tmp3.slice(i)=repmat(beta_tmp.slice(0),3,1);
+
+    }
+    //beta_tmp3.slice(i)= repmat(beta_tmp.slice(1),3,1) % y_tmp;
+    std::cout<<"beta_tmp3: size : "<<size(beta_tmp3)<<std::endl;
+
+    Cube<double> A(3, 5, 1, fill::randu);
+    Cube<double> B(3, 5, 1, fill::randu);
+
+   // Mat<double> x = A.slice(0);
+  //  Mat<double> y = B.slice(0);
+
+    //std::cout << "x:\n" << x << "\ny:\n" << y << std::endl;
+    //std::cout << "x*y:\n" << x%y << std::endl;
+
 
 
 }
