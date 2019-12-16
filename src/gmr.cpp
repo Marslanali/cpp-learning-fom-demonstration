@@ -6,6 +6,8 @@
 
 #include "/home/arslan/CLionProjects/cpp_learning_from_demonstration/include/gmr.h"
 #include <iostream>
+#include <fstream>
+
 
 void GMR::Compute_GMR(vec _priors, std::vector<vec> _Mu, std::vector<mat> _Sigma, mat _x, uint _in, vec _out)
 {
@@ -21,6 +23,7 @@ void GMR::Compute_GMR(vec _priors, std::vector<vec> _Mu, std::vector<mat> _Sigma
     in = _in;
     out = _out;
 
+    std::ofstream filePosition("/home/arslan/CLionProjects/cpp_learning_from_demonstration/data/Position.txt");
 
     const int in = 0;
     const span out(1, nbVars - 1);
@@ -62,7 +65,7 @@ void GMR::Compute_GMR(vec _priors, std::vector<vec> _Mu, std::vector<mat> _Sigma
     // Compute expected means y, given input x
     //-----------------------------------------------------------------------------
 
-    cube y_tmp = cube(3,nbDataPoints,nbStates);  // output, dataPoints, nbStates
+    Cube <double> y_tmp(3,nbDataPoints,nbStates);  // output, dataPoints, nbStates
 
     for (int i = 0; i < nbStates; ++i)
     {
@@ -75,47 +78,55 @@ void GMR::Compute_GMR(vec _priors, std::vector<vec> _Mu, std::vector<mat> _Sigma
 
         y_tmp.slice(i) = repmat(Mu[i](out),1,nbDataPoints) + Sigma[i](out,in) * inv(sigma) *  (x - repmat(mu1,1,nbDataPoints));
 
-      //  std::cout<<y_tmp.slice(i)<<std::endl;
+        //  std::cout<<y_tmp.slice(i)<<std::endl;
 
     }
-
 
     const uword N = 1;
     const uword num_rows = nbDataPoints;
     const uword num_cols = nbStates;
 
-    Cube<double> beta_tmp(num_rows, num_cols, 1);
+    Cube<double> beta_tmp(num_rows,num_cols, 1);
 
     beta_tmp.slice(0) = beta;
-    beta_tmp.reshape(num_rows/N, num_cols, N);
+    beta_tmp.reshape(1, nbDataPoints, nbStates);
+
     std::cout << "Beta_TMP: "<< beta_tmp<<std::endl;
-/*
-    cube y_tmp2 (3,nbDataPoints,nbStates);
-    mat C (400,num_cols);
-    C= repmat(beta_tmp.slice(0),2,1);
-    std::cout<<C<<std::endl;
-*/
     std::cout<<"Size beta_tmp"<<size(beta_tmp)<<"size y_Tmp: "<<size(y_tmp)<<std::endl;
 
-    //cube beta_tmp3 = cube(nbDataPoints,nbStates,3);  // dataPoints, nbStates,output
-    Cube<double> beta_tmp3(nbDataPoints,nbStates,3);  // dataPoints, nbStates,output;
+    Cube<double> beta_tmp3(3,nbDataPoints,4);  //out,datapionts, states
     for (int i = 0; i < 3; ++i) {
 
         beta_tmp3.slice(i)=repmat(beta_tmp.slice(0),3,1);
 
     }
-    //beta_tmp3.slice(i)= repmat(beta_tmp.slice(1),3,1) % y_tmp;
-    std::cout<<"beta_tmp3: size : "<<size(beta_tmp3)<<std::endl;
 
+    std::cout<<"beta_tmp3 size: "<<size(beta_tmp3)<<std::endl;
+    Cube <double> y_tmp2 = beta_tmp3 % y_tmp;
+    //beta_tmp3.slice(i)= repmat(beta_tmp.slice(1),3,1) % y_tmp;
+    Mat <double> y (3,nbDataPoints);
+    y = sum(y_tmp2,2);  // choose 2 as dim for sum
+
+    std::cout<< "expected mean: "<< y <<std::endl;
+    std::cout<< "expected mean size: "<<size(y)<<std::endl;
+
+    for (int i = 0; i < 200; ++i) {
+
+        filePosition<<y(0,i)<<" "<<y(1,i)<<" "<<y(2,i)<<endl;
+
+    }
+
+
+    /*
     Cube<double> A(3, 5, 1, fill::randu);
     Cube<double> B(3, 5, 1, fill::randu);
 
-   // Mat<double> x = A.slice(0);
-  //  Mat<double> y = B.slice(0);
+    Mat<double> x = A.slice(0);
+    Mat<double> y = B.slice(0);
 
-    //std::cout << "x:\n" << x << "\ny:\n" << y << std::endl;
-    //std::cout << "x*y:\n" << x%y << std::endl;
-
+    std::cout << "x:\n" << x << "\ny:\n" << y << std::endl;
+    std::cout << "x*y:\n" << x%y << std::endl;
+*/
 
 
 }

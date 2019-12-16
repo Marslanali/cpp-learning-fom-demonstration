@@ -9,7 +9,6 @@
 #include "/home/arslan/CLionProjects/cpp_learning_from_demonstration/include/mvn.h"
 #include "armadillo"
 #include <vector>
-
 using namespace arma;
 
 class GMR
