@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include <sstream>
+#include <fstream>
 #include "include/datapoints.h"
 #include "include/EM_initilization.h"
 #include "include/matplotlibcpp.h"
@@ -33,22 +34,23 @@ int main(int argc, char **argv)
     std::cout<<"\n Position Y "<<positionData.getDataPoints()(2,span::all)<<std::endl;
     std::cout<<"\n Position Z "<<positionData.getDataPoints()(3,span::all)<<std::endl;
 
+    std::ofstream filekmeans("/home/arslan/CLionProjects/cpp_learning_from_demonstration/data/kmeans.txt");
 
     EM_Initilization em_init_kmeans;
     em_init_kmeans.learnKmeans(positionData.getDataPoints(), nbStates);
-/*
+
     std::cout<<"Priors : "<<em_init_kmeans.getPriors().t()<<std::endl;
 
     for (int j = 0; j < em_init_kmeans.getMu().size(); ++j)
-        std::cout<<"\n Mu : \n"<<em_init_kmeans.getMu()[j]<<std::endl;
+        std::cout << "\n Mu : \n" << em_init_kmeans.getMu()[j] << std::endl;
 
     for (int k = 0; k < em_init_kmeans.getSigma().size(); ++k)
         std::cout<<"\n Sigma :\n "<<em_init_kmeans.getSigma()[k]<<std::endl;
-*/
+
     GMM gmm;
     gmm.EM(positionData.getDataPoints(), em_init_kmeans.getPriors(), em_init_kmeans.getMu(), em_init_kmeans.getSigma());
 
-    std::cout<<"Final Priors are: "<<gmm.returnPriors()<<std::endl;
+       std::cout<<"Final Priors are: "<<gmm.returnPriors()<<std::endl;
     for (int i =0; i<gmm.returnMu().size(); ++i)
        std::cout<<"Final Mu are :"<<gmm.returnMu()[i]<<std::endl;
     for (int i = 0; i < gmm.returnSigma().size() ; ++i)
@@ -56,18 +58,18 @@ int main(int argc, char **argv)
 
 
     // GMR for expected mean and covariances
-    mat clockSignal = linspace<vec>(0,2*datum::pi, positionData.getNumPoints());
+    mat clockSignal = linspace<vec>(min(positionData.getDataPoints()(0,span::all)),max(positionData.getDataPoints()(0,span::all)), positionData.getNumPoints());
     clockSignal = clockSignal.t();
 
 
-    //std::cout<<"Clock Signal  "<<clockSignal<<std::endl;
+    std::cout<<"Clock Signal  "<<clockSignal<<std::endl;
 
 
     GMR gmr;
     gmr.Compute_GMR(gmm.returnPriors(), gmm.returnMu(), gmm.returnSigma(), clockSignal, 0, gmm.returnPriors());
 
-    //std::cout<<"Expected Mean: "<<gmr.returnExpectedMu()<<std::endl;
-    //std::cout<<"Expected Mean Size: "<<size(gmr.returnExpectedMu())<<std::endl;
+    std::cout<<"Expected Mean: "<<gmr.returnExpectedMu()<<std::endl;
+    std::cout<<"Expected Mean Size: "<<size(gmr.returnExpectedMu())<<std::endl;
 
 
     std::vector<double> plotClock;
