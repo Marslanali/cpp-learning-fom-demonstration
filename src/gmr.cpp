@@ -32,7 +32,8 @@ void GMR::Compute_GMR(vec _priors, std::vector<vec> _Mu, std::vector<mat> _Sigma
 
     const float diag_reg_fact = 1e-8f;
 
-    mat mu_tmp = zeros(nb_var_out, nbStates);
+    //mat mu_tmp = zeros(nb_var_out, nbStates);
+    Mat <double> mu_tmp = zeros(nb_var_out, nbStates);
 
 
 //    mat mat_priors;
@@ -42,14 +43,16 @@ void GMR::Compute_GMR(vec _priors, std::vector<vec> _Mu, std::vector<mat> _Sigma
     // compute the infulence of each GMM component, given input x
     //-----------------------------------------------------------------------------
 
-    mat pxi = zeros(nbDataPoints, nbStates);
+    //mat pxi = zeros(nbDataPoints, nbStates);
+    Mat <double> pxi = zeros(nbDataPoints, nbStates);
+
 
     for (int i = 0; i < nbStates; ++i)
     {
         vec mu(1);
         mu(0) = Mu[i](in);
 
-        mat sigma(1, 1);
+        Mat <double> sigma(1, 1);
         sigma(0, 0) = Sigma[i](in, in);
 
         pxi(span::all, i) = priors(i) * pdf.gaussPDF(x, mu, sigma);  // Equation 1.1 ....Error element wise muliplication is not working
@@ -57,9 +60,9 @@ void GMR::Compute_GMR(vec _priors, std::vector<vec> _Mu, std::vector<mat> _Sigma
 
     }
 
-    mat beta = pxi / repmat(sum(pxi,1)+ DBL_MIN,1,nbStates);
+    Mat<double> beta = pxi / repmat(sum(pxi,1)+ DBL_MIN,1,nbStates);
 
-    std::cout<<"beta :" <<beta<<std::endl;
+    //std::cout<<"beta :" <<beta<<std::endl;
 
     //-----------------------------------------------------------------------------
     // Compute expected means y, given input x
@@ -73,7 +76,7 @@ void GMR::Compute_GMR(vec _priors, std::vector<vec> _Mu, std::vector<mat> _Sigma
         vec mu1 (1);
         mu1(0)=Mu[i](in);
 
-        mat sigma(1, 1);
+        Mat <double> sigma(1, 1);
         sigma(0, 0) = Sigma[i](in, in);  // for inverse sigma
 
         y_tmp.slice(i) = repmat(Mu[i](out),1,nbDataPoints) + Sigma[i](out,in) * inv(sigma) *  (x - repmat(mu1,1,nbDataPoints));
@@ -91,8 +94,8 @@ void GMR::Compute_GMR(vec _priors, std::vector<vec> _Mu, std::vector<mat> _Sigma
     beta_tmp.slice(0) = beta;
     beta_tmp.reshape(1, nbDataPoints, nbStates);
 
-    std::cout << "Beta_TMP: "<< beta_tmp<<std::endl;
-    std::cout<<"Size beta_tmp"<<size(beta_tmp)<<"size y_Tmp: "<<size(y_tmp)<<std::endl;
+    //std::cout << "Beta_TMP: "<< beta_tmp<<std::endl;
+    //std::cout<<"Size beta_tmp"<<size(beta_tmp)<<"size y_Tmp: "<<size(y_tmp)<<std::endl;
 
     Cube<double> beta_tmp3(3,nbDataPoints,4);  //out,datapionts, states
     for (int i = 0; i < 3; ++i) {
@@ -101,18 +104,18 @@ void GMR::Compute_GMR(vec _priors, std::vector<vec> _Mu, std::vector<mat> _Sigma
 
     }
 
-    std::cout<<"beta_tmp3 size: "<<size(beta_tmp3)<<std::endl;
+    //std::cout<<"beta_tmp3 size: "<<size(beta_tmp3)<<std::endl;
     Cube <double> y_tmp2 = beta_tmp3 % y_tmp;
     //beta_tmp3.slice(i)= repmat(beta_tmp.slice(1),3,1) % y_tmp;
-    Mat <double> y (3,nbDataPoints);
-    y = sum(y_tmp2,2);  // choose 2 as dim for sum
+    expectedMu = zeros (3,nbDataPoints);
+    expectedMu = sum(y_tmp2,2);  // choose 2 as dim for sum
 
-    std::cout<< "expected mean: "<< y <<std::endl;
-    std::cout<< "expected mean size: "<<size(y)<<std::endl;
+    //std::cout<< "expected mean: "<< y <<std::endl;
+    //std::cout<< "expected mean size: "<<size(y)<<std::endl;
 
     for (int i = 0; i < 200; ++i) {
 
-        filePosition<<y(0,i)<<" "<<y(1,i)<<" "<<y(2,i)<<endl;
+        filePosition<<expectedMu(0,i)<<" "<<expectedMu(1,i)<<" "<<expectedMu(2,i)<<endl;
 
     }
 
@@ -130,6 +133,13 @@ void GMR::Compute_GMR(vec _priors, std::vector<vec> _Mu, std::vector<mat> _Sigma
 
 
 }
+
+
+Mat <double> GMR::returnExpectedMu()
+{
+    return expectedMu ;
+}
+
 
 /*
 %% Compute expected means y, given input x

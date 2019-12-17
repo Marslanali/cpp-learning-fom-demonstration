@@ -33,33 +33,6 @@ int main(int argc, char **argv)
     std::cout<<"\n Position Y "<<positionData.getDataPoints()(2,span::all)<<std::endl;
     std::cout<<"\n Position Z "<<positionData.getDataPoints()(3,span::all)<<std::endl;
 
-    std::vector<double> time, positionX, positionY, positionZ;
-
-    /*
-
-    for (int i = 0; i <positionData.getNumPoints() ; ++i)
-    {
-
-        time.push_back(positionData.getDataPoints()(0,i));
-        positionX.push_back(positionData.getDataPoints()(1,i));
-        positionY.push_back(positionData.getDataPoints()(2,i));
-        positionZ.push_back(positionData.getDataPoints()(3,i));
-
-
-    }
-
-    plt::figure();
-    plt::subplot(2,2,1);
-    plt::plot(time,"red");
-    plt::subplot(2,2,2);
-    plt::plot(positionX);
-    plt::subplot(2,2,3);
-    plt::plot(positionY);
-    plt::subplot(2,2,4);
-    plt::plot(positionZ);
-    plt::show();
-
-     */
 
     EM_Initilization em_init_kmeans;
     em_init_kmeans.learnKmeans(positionData.getDataPoints(), nbStates);
@@ -87,9 +60,15 @@ int main(int argc, char **argv)
     clockSignal = clockSignal.t();
 
 
-    std::cout<<"Clock Signal  "<<clockSignal<<std::endl;
+    //std::cout<<"Clock Signal  "<<clockSignal<<std::endl;
 
-    /*
+
+    GMR gmr;
+    gmr.Compute_GMR(gmm.returnPriors(), gmm.returnMu(), gmm.returnSigma(), clockSignal, 0, gmm.returnPriors());
+
+    //std::cout<<"Expected Mean: "<<gmr.returnExpectedMu()<<std::endl;
+    //std::cout<<"Expected Mean Size: "<<size(gmr.returnExpectedMu())<<std::endl;
+
 
     std::vector<double> plotClock;
 
@@ -101,10 +80,54 @@ int main(int argc, char **argv)
     plt::plot(plotClock);
     plt::show();
 
-*/
 
-    GMR gmr;
-    gmr.Compute_GMR(gmm.returnPriors(), gmm.returnMu(), gmm.returnSigma(), clockSignal, 0, gmm.returnPriors());
+    std::vector<double> time, positionX, positionY, positionZ;
+
+
+    for (int i = 0; i <positionData.getNumPoints() ; ++i)
+    {
+
+        time.push_back(positionData.getDataPoints()(0,i));
+        positionX.push_back(positionData.getDataPoints()(1,i));
+        positionY.push_back(positionData.getDataPoints()(2,i));
+        positionZ.push_back(positionData.getDataPoints()(3,i));
+
+
+    }
+
+    plt::figure();
+    plt::subplot(2,2,1);
+    plt::plot(time,"red");
+    plt::subplot(2,2,2);
+    plt::plot(positionX);
+    plt::subplot(2,2,3);
+    plt::plot(positionY);
+    plt::subplot(2,2,4);
+    plt::plot(positionZ);
+    plt::show();
+
+
+    std::vector<double>  px, py, pz;
+
+    for (int i = 0; i <gmr.returnExpectedMu().n_cols ; ++i)
+    {
+
+        px.push_back(gmr.returnExpectedMu()(0,i));
+        py.push_back(gmr.returnExpectedMu()(1,i));
+        pz.push_back(gmr.returnExpectedMu()(2,i));
+
+
+    }
+
+    plt::figure();
+    plt::subplot(2,2,2);
+    plt::plot(px);
+    plt::subplot(2,2,3);
+    plt::plot(py);
+    plt::subplot(2,2,4);
+    plt::plot(pz);
+    plt::show();
+
 
     return 0;
 }

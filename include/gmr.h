@@ -27,11 +27,14 @@ private:
     vec out;
 
     GaussianDistribution pdf;
+    Mat <double> expectedMu;
 
 
 public:
 
     void Compute_GMR (vec _priors, std::vector<vec> _Mu, std::vector<mat> _Sigma, mat _x, uint _in, vec _out);
+    Mat <double >  returnExpectedMu();
+
 
 
 };
