@@ -17,7 +17,7 @@ The program requires:
 
 Make sure latest version of Armadillo C++ install on your system. For Armadillo installation, see http://arma.sourceforge.net/download.html for instructions.
 
-#### MLPACK installation
+### MLPACK installation
 
 **On Debian and Ubuntu:**
 
