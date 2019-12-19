@@ -9,12 +9,34 @@ This project was buit using CLion with Cmake build system and tested on Ubuntu 1
 The program requires:
 
   - LAPACK (Linear Algebra Package)
+  - MLPACK (C++ Machine Learning Library)
   - Armadillo (C++ library for linear algebra & scientific computing)
   - Matplotlib-CPP (for plotting directly in c++) 
 
 ### Armadillo installation
 
 Make sure latest version of Armadillo C++ install on your system. For Armadillo installation, see http://arma.sourceforge.net/download.html for instructions.
+
+#### MLPACK installation
+
+**On Debian and Ubuntu:**
+
+```
+sudo apt-get install libmlpack-dev
+```
+
+To build from Source, Assuming all dependencies are installed in the system, you can run the commands below directly to build and install mlpack.
+
+```
+wget https://www.mlpack.org/files/mlpack-3.2.2.tar.gz
+tar -xvzpf mlpack-3.2.2.tar.gz
+cd mlpack-3.2.2
+mkdir build 
+cd build
+cmake ../
+make -j4  # The -j is the number of cores you want to use for a build.
+sudo make install
+```
 
 #### LAPACK installation
 

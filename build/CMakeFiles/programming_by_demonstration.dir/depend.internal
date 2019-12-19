@@ -6,6 +6,7 @@ CMakeFiles/programming_by_demonstration.dir/main.cpp.o
  /home/arslan/CLionProjects/cpp_learning_from_demonstration/include/datapoints.h
  /home/arslan/CLionProjects/cpp_learning_from_demonstration/include/gmm.h
  /home/arslan/CLionProjects/cpp_learning_from_demonstration/include/gmr.h
+ /home/arslan/CLionProjects/cpp_learning_from_demonstration/include/kmeans_mlpack.h
  /home/arslan/CLionProjects/cpp_learning_from_demonstration/include/matplotlibcpp.h
  /home/arslan/CLionProjects/cpp_learning_from_demonstration/include/mvn.h
  /home/arslan/CLionProjects/cpp_learning_from_demonstration/main.cpp
@@ -101,6 +102,9 @@ CMakeFiles/programming_by_demonstration.dir/src/gmr.cpp.o
  /home/arslan/CLionProjects/cpp_learning_from_demonstration/include/gmr.h
  /home/arslan/CLionProjects/cpp_learning_from_demonstration/include/mvn.h
  /home/arslan/CLionProjects/cpp_learning_from_demonstration/src/gmr.cpp
+CMakeFiles/programming_by_demonstration.dir/src/kmeans_mlpack.cpp.o
+ /home/arslan/CLionProjects/cpp_learning_from_demonstration/include/kmeans_mlpack.h
+ /home/arslan/CLionProjects/cpp_learning_from_demonstration/src/kmeans_mlpack.cpp
 CMakeFiles/programming_by_demonstration.dir/src/mvn.cpp.o
  /home/arslan/CLionProjects/cpp_learning_from_demonstration/include/mvn.h
  /home/arslan/CLionProjects/cpp_learning_from_demonstration/src/mvn.cpp

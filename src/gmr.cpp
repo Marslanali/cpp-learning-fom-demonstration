@@ -9,7 +9,7 @@
 #include <fstream>
 
 
-void GMR::Compute_GMR(vec _priors, std::vector<vec> _Mu, std::vector<mat> _Sigma, mat _x, uint _in, vec _out)
+void GMR::Compute_GMR( Col <double> _priors, std::vector<vec> _Mu, std::vector<mat> _Sigma, mat _x, uint _in,  Col <double> _out)
 {
 
     nbVars = _Mu.size();
@@ -27,7 +27,6 @@ void GMR::Compute_GMR(vec _priors, std::vector<vec> _Mu, std::vector<mat> _Sigma
 
     const int in = 0;
     const span out(1, nbVars - 1);
-
     const int nb_var_out = out.b - out.a + 1;
 
     const float diag_reg_fact = 1e-8f;
@@ -62,7 +61,7 @@ void GMR::Compute_GMR(vec _priors, std::vector<vec> _Mu, std::vector<mat> _Sigma
 
     Mat<double> beta = pxi / repmat(sum(pxi,1)+ DBL_MIN,1,nbStates);
 
-    //std::cout<<"beta :" <<beta<<std::endl;
+    std::cout<<"beta :\n" <<beta<<std::endl;
 
     //-----------------------------------------------------------------------------
     // Compute expected means y, given input x
@@ -78,8 +77,11 @@ void GMR::Compute_GMR(vec _priors, std::vector<vec> _Mu, std::vector<mat> _Sigma
 
         Mat <double> sigma(1, 1);
         sigma(0, 0) = Sigma[i](in, in);  // for inverse sigma
+        std::cout<<"SIZE Cube:\n"<<size(y_tmp)<<std::endl;
+        //std::cout<<"Mu out:\n"<<Mu[i](out)<<std::endl;
+       std::cout<< repmat(Mu[i](out).t(),1,nbDataPoints)<<std::endl;
 
-        y_tmp.slice(i) = repmat(Mu[i](out),1,nbDataPoints) + Sigma[i](out,in) * inv(sigma) *  (x - repmat(mu1,1,nbDataPoints));
+        //y_tmp.slice(i) = repmat(Mu[i](out),1,nbDataPoints)+Sigma[i](out,in) * inv(sigma) *  (x - repmat(mu1,1,nbDataPoints));
 
         //  std::cout<<y_tmp.slice(i)<<std::endl;
 
@@ -106,10 +108,10 @@ void GMR::Compute_GMR(vec _priors, std::vector<vec> _Mu, std::vector<mat> _Sigma
 
     //std::cout<<"beta_tmp3 size: "<<size(beta_tmp3)<<std::endl;
     Cube <double> y_tmp2 = beta_tmp3 % y_tmp;
+    Mat <double > y = zeros (3,nbDataPoints);
     //beta_tmp3.slice(i)= repmat(beta_tmp.slice(1),3,1) % y_tmp;
     expectedMu = zeros (3,nbDataPoints);
-    expectedMu = sum(y_tmp2,2);  // choose 2 as dim for sum
-
+    //y=sum(y_tmp,2);
     //std::cout<< "expected mean: "<< y <<std::endl;
     //std::cout<< "expected mean size: "<<size(y)<<std::endl;
 

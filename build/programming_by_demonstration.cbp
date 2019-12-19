@@ -34,8 +34,8 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/usr/include/python2.7"/>
 					<Add directory="/home/arslan/CLionProjects/cpp_learning_from_demonstration/include"/>
+					<Add directory="/usr/include/python2.7"/>
 					<Add directory="/usr/include/c++/5"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
 					<Add directory="/usr/include/c++/5/backward"/>
@@ -59,8 +59,8 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/usr/include/python2.7"/>
 					<Add directory="/home/arslan/CLionProjects/cpp_learning_from_demonstration/include"/>
+					<Add directory="/usr/include/python2.7"/>
 					<Add directory="/usr/include/c++/5"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
 					<Add directory="/usr/include/c++/5/backward"/>
@@ -103,6 +103,9 @@
 		<Unit filename="/home/arslan/CLionProjects/cpp_learning_from_demonstration/include/gmr.h">
 			<Option target="programming_by_demonstration"/>
 		</Unit>
+		<Unit filename="/home/arslan/CLionProjects/cpp_learning_from_demonstration/include/kmeans_mlpack.h">
+			<Option target="programming_by_demonstration"/>
+		</Unit>
 		<Unit filename="/home/arslan/CLionProjects/cpp_learning_from_demonstration/include/mvn.h">
 			<Option target="programming_by_demonstration"/>
 		</Unit>
@@ -122,6 +125,9 @@
 			<Option target="programming_by_demonstration"/>
 		</Unit>
 		<Unit filename="/home/arslan/CLionProjects/cpp_learning_from_demonstration/src/gmr.cpp">
+			<Option target="programming_by_demonstration"/>
+		</Unit>
+		<Unit filename="/home/arslan/CLionProjects/cpp_learning_from_demonstration/src/kmeans_mlpack.cpp">
 			<Option target="programming_by_demonstration"/>
 		</Unit>
 		<Unit filename="/home/arslan/CLionProjects/cpp_learning_from_demonstration/src/mvn.cpp">

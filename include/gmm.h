@@ -6,7 +6,7 @@
 #define PROGRAMMING_BY_DEMONSTRATION_GMM_H
 
 #include "/home/arslan/CLionProjects/cpp_learning_from_demonstration/include/mvn.h"
-#include "armadillo"
+#include <armadillo>
 #include <vector>
 
 using namespace arma;
@@ -21,7 +21,7 @@ private:
     mat data;
     std::vector<vec> Mu;
     std::vector<mat> Sigma;
-    vec priors;
+    Col <double> priors;
 
     const float diag_reg_fact = 1e-4f;
 
@@ -30,8 +30,8 @@ private:
 
 public:
 
-    void EM(mat _data, vec _priors, std::vector<vec> _Mu, std::vector<mat> _Sigma);
-    vec returnPriors ();
+    void EM(mat _data,  Col <double> _priors, std::vector<vec> _Mu, std::vector<mat> _Sigma);
+    Col <double> returnPriors ();
     std::vector<vec> returnMu();
     std::vector<mat> returnSigma();
 

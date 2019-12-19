@@ -5,7 +5,7 @@
 #ifndef PROGRAMMING_BY_DEMONSTRATION_EM_INITILIZATION_H
 #define PROGRAMMING_BY_DEMONSTRATION_EM_INITILIZATION_H
 
-#include "armadillo"
+#include <armadillo>
 #include <vector>
 
 using namespace arma;

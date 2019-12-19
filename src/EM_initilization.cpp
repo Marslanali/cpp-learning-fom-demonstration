@@ -16,7 +16,7 @@ void EM_Initilization::learnKmeans(mat _data, uint _nbStates)
     const float diag_reg_fact = 1e-4f;
 
     vec timing_sep = linspace<vec>(data(0, 0), data(0, data.n_cols - 1), nbStates + 1);
-
+    std::cout<<"Timming_sep: "<<timing_sep<<std::endl;
     Mu.clear();
     Sigma.clear();
     priors = vec(nbStates);
@@ -26,15 +26,16 @@ void EM_Initilization::learnKmeans(mat _data, uint _nbStates)
     {
         uvec idtmp = find( (data(0, span::all) >= timing_sep(i)) && (data(0, span::all) < timing_sep(i + 1)) );
 
-      //  std::cout<<"\ndata ids: \n"<< idtmp<<std::endl;
+        //std::cout<<"\ndata ids: \n"<< i<<std::endl;
 
         priors(i) = idtmp.size();
         Mu.push_back(mean(data.cols(idtmp), 1));
+        std::cout<<"Data Cols: "<<data.cols(idtmp).t()<<std::endl;
 
-        mat sigma = cov(data.cols(idtmp).t());
-
+        mat sigma = cov(data.cols(idtmp).t(), data.cols(idtmp).t());
+        std::cout<<"Sigma: "<<sigma<<std::endl;
         // Optional regularization term to avoid numerical instability
-        sigma = sigma + eye(nbVars, nbVars) * diag_reg_fact;
+       // sigma = sigma + eye(nbVars, nbVars) * diag_reg_fact;
 
         Sigma.push_back(sigma);
     }

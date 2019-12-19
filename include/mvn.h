@@ -6,7 +6,7 @@
 #define PROGRAMMING_BY_DEMONSTRATION_MVN_H
 
 #include <stdio.h>
-#include "armadillo"
+#include <armadillo>
 #include <vector>
 #include <cfloat>
 

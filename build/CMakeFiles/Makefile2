@@ -74,12 +74,12 @@ preinstall:
 CMakeFiles/programming_by_demonstration.dir/all:
 	$(MAKE) -f CMakeFiles/programming_by_demonstration.dir/build.make CMakeFiles/programming_by_demonstration.dir/depend
 	$(MAKE) -f CMakeFiles/programming_by_demonstration.dir/build.make CMakeFiles/programming_by_demonstration.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/arslan/CLionProjects/cpp_learning_from_demonstration/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8 "Built target programming_by_demonstration"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/arslan/CLionProjects/cpp_learning_from_demonstration/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9 "Built target programming_by_demonstration"
 .PHONY : CMakeFiles/programming_by_demonstration.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/programming_by_demonstration.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/arslan/CLionProjects/cpp_learning_from_demonstration/build/CMakeFiles 8
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/arslan/CLionProjects/cpp_learning_from_demonstration/build/CMakeFiles 9
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/programming_by_demonstration.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/arslan/CLionProjects/cpp_learning_from_demonstration/build/CMakeFiles 0
 .PHONY : CMakeFiles/programming_by_demonstration.dir/rule

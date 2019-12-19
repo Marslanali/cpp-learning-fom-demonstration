@@ -217,6 +217,18 @@ CMAKE_STRIP:FILEPATH=/usr/bin/strip
 // Studio IDE projects all commands are done without /nologo.
 CMAKE_VERBOSE_MAKEFILE:BOOL=FALSE
 
+//The directory containing a CMake configuration file for MLPACK.
+MLPACK_DIR:PATH=MLPACK_DIR-NOTFOUND
+
+//Path to a file.
+MLPACK_INCLUDE_DIR:PATH=MLPACK_INCLUDE_DIR-NOTFOUND
+
+//Path to a library.
+MLPACK_LIBRARIES:FILEPATH=MLPACK_LIBRARIES-NOTFOUND
+
+//Path to a library.
+MLPACK_LIBRARY:FILEPATH=/usr/local/lib/libmlpack.so
+
 //Path to a file.
 PYTHON_INCLUDE_DIR:PATH=/usr/include/python2.7
 
@@ -399,7 +411,7 @@ CMAKE_UNAME:INTERNAL=/bin/uname
 //ADVANCED property for variable: CMAKE_VERBOSE_MAKEFILE
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
 //Details about finding Armadillo
-FIND_PACKAGE_MESSAGE_DETAILS_Armadillo:INTERNAL=[/usr/lib/x86_64-linux-gnu/libarmadillo.so][/usr/include][v9.800.1(4.4)]
+FIND_PACKAGE_MESSAGE_DETAILS_Armadillo:INTERNAL=[/usr/lib/x86_64-linux-gnu/libarmadillo.so][/usr/include][v6.500.5(4.04)]
 //Details about finding PythonLibs
 FIND_PACKAGE_MESSAGE_DETAILS_PythonLibs:INTERNAL=[/usr/lib/x86_64-linux-gnu/libpython2.7.so][/usr/include/python2.7][v2.7.12(2.7)]
 //ADVANCED property for variable: PYTHON_INCLUDE_DIR

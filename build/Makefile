@@ -285,6 +285,33 @@ src/gmr.cpp.s:
 	$(MAKE) -f CMakeFiles/programming_by_demonstration.dir/build.make CMakeFiles/programming_by_demonstration.dir/src/gmr.cpp.s
 .PHONY : src/gmr.cpp.s
 
+src/kmeans_mlpack.o: src/kmeans_mlpack.cpp.o
+
+.PHONY : src/kmeans_mlpack.o
+
+# target to build an object file
+src/kmeans_mlpack.cpp.o:
+	$(MAKE) -f CMakeFiles/programming_by_demonstration.dir/build.make CMakeFiles/programming_by_demonstration.dir/src/kmeans_mlpack.cpp.o
+.PHONY : src/kmeans_mlpack.cpp.o
+
+src/kmeans_mlpack.i: src/kmeans_mlpack.cpp.i
+
+.PHONY : src/kmeans_mlpack.i
+
+# target to preprocess a source file
+src/kmeans_mlpack.cpp.i:
+	$(MAKE) -f CMakeFiles/programming_by_demonstration.dir/build.make CMakeFiles/programming_by_demonstration.dir/src/kmeans_mlpack.cpp.i
+.PHONY : src/kmeans_mlpack.cpp.i
+
+src/kmeans_mlpack.s: src/kmeans_mlpack.cpp.s
+
+.PHONY : src/kmeans_mlpack.s
+
+# target to generate assembly for a file
+src/kmeans_mlpack.cpp.s:
+	$(MAKE) -f CMakeFiles/programming_by_demonstration.dir/build.make CMakeFiles/programming_by_demonstration.dir/src/kmeans_mlpack.cpp.s
+.PHONY : src/kmeans_mlpack.cpp.s
+
 src/mvn.o: src/mvn.cpp.o
 
 .PHONY : src/mvn.o
@@ -339,6 +366,9 @@ help:
 	@echo "... src/gmr.o"
 	@echo "... src/gmr.i"
 	@echo "... src/gmr.s"
+	@echo "... src/kmeans_mlpack.o"
+	@echo "... src/kmeans_mlpack.i"
+	@echo "... src/kmeans_mlpack.s"
 	@echo "... src/mvn.o"
 	@echo "... src/mvn.i"
 	@echo "... src/mvn.s"

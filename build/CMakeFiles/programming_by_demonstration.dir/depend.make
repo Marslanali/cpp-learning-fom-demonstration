@@ -5,6 +5,7 @@ CMakeFiles/programming_by_demonstration.dir/main.cpp.o: ../include/EM_initilizat
 CMakeFiles/programming_by_demonstration.dir/main.cpp.o: ../include/datapoints.h
 CMakeFiles/programming_by_demonstration.dir/main.cpp.o: ../include/gmm.h
 CMakeFiles/programming_by_demonstration.dir/main.cpp.o: ../include/gmr.h
+CMakeFiles/programming_by_demonstration.dir/main.cpp.o: ../include/kmeans_mlpack.h
 CMakeFiles/programming_by_demonstration.dir/main.cpp.o: ../include/matplotlibcpp.h
 CMakeFiles/programming_by_demonstration.dir/main.cpp.o: ../include/mvn.h
 CMakeFiles/programming_by_demonstration.dir/main.cpp.o: ../main.cpp
@@ -100,6 +101,9 @@ CMakeFiles/programming_by_demonstration.dir/src/gmm.cpp.o: ../src/gmm.cpp
 CMakeFiles/programming_by_demonstration.dir/src/gmr.cpp.o: ../include/gmr.h
 CMakeFiles/programming_by_demonstration.dir/src/gmr.cpp.o: ../include/mvn.h
 CMakeFiles/programming_by_demonstration.dir/src/gmr.cpp.o: ../src/gmr.cpp
+
+CMakeFiles/programming_by_demonstration.dir/src/kmeans_mlpack.cpp.o: ../include/kmeans_mlpack.h
+CMakeFiles/programming_by_demonstration.dir/src/kmeans_mlpack.cpp.o: ../src/kmeans_mlpack.cpp
 
 CMakeFiles/programming_by_demonstration.dir/src/mvn.cpp.o: ../include/mvn.h
 CMakeFiles/programming_by_demonstration.dir/src/mvn.cpp.o: ../src/mvn.cpp

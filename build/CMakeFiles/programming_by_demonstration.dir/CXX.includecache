@@ -8,13 +8,13 @@
 
 /home/arslan/CLionProjects/cpp_learning_from_demonstration/include/EM_initilization.h
 armadillo
-/home/arslan/CLionProjects/cpp_learning_from_demonstration/include/armadillo
+-
 vector
 -
 
 /home/arslan/CLionProjects/cpp_learning_from_demonstration/include/datapoints.h
 armadillo
-/home/arslan/CLionProjects/cpp_learning_from_demonstration/include/armadillo
+-
 fstream
 -
 vector
@@ -24,7 +24,7 @@ vector
 /home/arslan/CLionProjects/cpp_learning_from_demonstration/include/mvn.h
 -
 armadillo
-/home/arslan/CLionProjects/cpp_learning_from_demonstration/include/armadillo
+-
 vector
 -
 
@@ -32,7 +32,15 @@ vector
 /home/arslan/CLionProjects/cpp_learning_from_demonstration/include/mvn.h
 -
 armadillo
-/home/arslan/CLionProjects/cpp_learning_from_demonstration/include/armadillo
+-
+vector
+-
+
+/home/arslan/CLionProjects/cpp_learning_from_demonstration/include/kmeans_mlpack.h
+mlpack/methods/kmeans/kmeans.hpp
+-
+armadillo
+-
 vector
 -
 
@@ -66,7 +74,7 @@ opencv2/opencv.hpp
 stdio.h
 -
 armadillo
-/home/arslan/CLionProjects/cpp_learning_from_demonstration/include/armadillo
+-
 vector
 -
 cfloat
@@ -74,6 +82,8 @@ cfloat
 
 /home/arslan/CLionProjects/cpp_learning_from_demonstration/main.cpp
 iostream
+-
+mlpack/methods/kmeans/kmeans.hpp
 -
 sstream
 -
@@ -83,6 +93,8 @@ include/datapoints.h
 /home/arslan/CLionProjects/cpp_learning_from_demonstration/include/datapoints.h
 include/EM_initilization.h
 /home/arslan/CLionProjects/cpp_learning_from_demonstration/include/EM_initilization.h
+include/kmeans_mlpack.h
+/home/arslan/CLionProjects/cpp_learning_from_demonstration/include/kmeans_mlpack.h
 include/matplotlibcpp.h
 /home/arslan/CLionProjects/cpp_learning_from_demonstration/include/matplotlibcpp.h
 include/gmm.h

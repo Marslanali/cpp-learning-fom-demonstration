@@ -1,40 +1,59 @@
 //
 // Created by arslan on 3/11/19.
 //
-
 #include <iostream>
+#include <mlpack/methods/kmeans/kmeans.hpp>
 #include <sstream>
 #include <fstream>
 #include "include/datapoints.h"
 #include "include/EM_initilization.h"
+#include "include/kmeans_mlpack.h"
 #include "include/matplotlibcpp.h"
 #include "include/gmm.h"
 #include "include/gmr.h"
 
-#define nbStates 4
+#define nbStates 5
 #define nbVar 4
 #define nbData 200
 
 namespace plt = matplotlibcpp;
+using namespace mlpack::kmeans;
 using namespace arma;
+
 
 int main(int argc, char **argv)
 {
+
 
     Datapoints positionData;
 
     positionData.loadFromFile("/home/arslan/CLionProjects/cpp_learning_from_demonstration/data/data_txyz.txt");
 
-    std::cout<<"\n Data : \n "<< positionData.getDataPoints()<<std::endl;
-    std::cout<<"\n nbVars : "<< positionData.getNumVars()<<std::endl;
-    std::cout<<"\n nbDataPoints : "<< positionData.getNumPoints()<<std::endl;
+    std::cout<<"Data :\n"<< positionData.getDataPoints()<<std::endl;
+    std::cout<<"nbVars : "<< positionData.getNumVars()<<std::endl;
+    std::cout<<"nbDataPoints : "<< positionData.getNumPoints()<<std::endl;
 
-    std::cout<<"\n Time is:\n "<<positionData.getDataPoints()(0,span::all)<<std::endl;
-    std::cout<<"\n Position X "<<positionData.getDataPoints()(1,span::all)<<std::endl;
-    std::cout<<"\n Position Y "<<positionData.getDataPoints()(2,span::all)<<std::endl;
-    std::cout<<"\n Position Z "<<positionData.getDataPoints()(3,span::all)<<std::endl;
+    std::cout<<"Time: "<<positionData.getDataPoints()(0,span::all)<<std::endl;
+    std::cout<<"Position X "<<positionData.getDataPoints()(1,span::all)<<std::endl;
+    std::cout<<"Position Y "<<positionData.getDataPoints()(2,span::all)<<std::endl;
+    std::cout<<"Position Z "<<positionData.getDataPoints()(3,span::all)<<std::endl;
 
     std::ofstream filekmeans("/home/arslan/CLionProjects/cpp_learning_from_demonstration/data/kmeans.txt");
+
+
+    EM_Initilization_MLPACK em_init_kmeans_mlpack;
+    em_init_kmeans_mlpack.learnKmeans_mlpack(positionData.getDataPoints(), nbStates);
+
+
+    std::cout<<"Priors Kmeans MLPACK :\n"<<em_init_kmeans_mlpack.getPriors().t()<<std::endl;
+
+    for (int j = 0; j < em_init_kmeans_mlpack.getMu().size(); ++j)
+        std::cout << "Mu Kmeans MLPACK:\n" << em_init_kmeans_mlpack.getMu()[j] << std::endl;
+
+    for (int k = 0; k < em_init_kmeans_mlpack.getSigma().size(); ++k)
+        std::cout<<"Sigma Kmeans MLPACK:\n"<<em_init_kmeans_mlpack.getSigma()[k]<<std::endl;
+
+    /*
 
     EM_Initilization em_init_kmeans;
     em_init_kmeans.learnKmeans(positionData.getDataPoints(), nbStates);
@@ -46,15 +65,16 @@ int main(int argc, char **argv)
 
     for (int k = 0; k < em_init_kmeans.getSigma().size(); ++k)
         std::cout<<"\n Sigma :\n "<<em_init_kmeans.getSigma()[k]<<std::endl;
+*/
 
     GMM gmm;
-    gmm.EM(positionData.getDataPoints(), em_init_kmeans.getPriors(), em_init_kmeans.getMu(), em_init_kmeans.getSigma());
+    gmm.EM(positionData.getDataPoints(), em_init_kmeans_mlpack.getPriors(), em_init_kmeans_mlpack.getMu(), em_init_kmeans_mlpack.getSigma());
 
-       std::cout<<"Final Priors are: "<<gmm.returnPriors()<<std::endl;
+       std::cout<<"Final Priors are:\n"<<gmm.returnPriors()<<std::endl;
     for (int i =0; i<gmm.returnMu().size(); ++i)
-       std::cout<<"Final Mu are :"<<gmm.returnMu()[i]<<std::endl;
+       std::cout<<"Final Mu are :\n"<<gmm.returnMu()[i]<<std::endl;
     for (int i = 0; i < gmm.returnSigma().size() ; ++i)
-       std::cout<<"Final Sigma are: "<<gmm.returnSigma()[i]<<std::endl;
+       std::cout<<"Final Sigma are:\n"<<gmm.returnSigma()[i]<<std::endl;
 
 
     // GMR for expected mean and covariances
@@ -64,7 +84,7 @@ int main(int argc, char **argv)
 
     std::cout<<"Clock Signal  "<<clockSignal<<std::endl;
 
-
+/*
     GMR gmr;
     gmr.Compute_GMR(gmm.returnPriors(), gmm.returnMu(), gmm.returnSigma(), clockSignal, 0, gmm.returnPriors());
 
@@ -130,6 +150,7 @@ int main(int argc, char **argv)
     plt::plot(pz);
     plt::show();
 
+*/
 
     return 0;
 }

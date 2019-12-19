@@ -5,6 +5,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/programming_by_demonstration.dir/src/demonstrations.cpp.o"
   "CMakeFiles/programming_by_demonstration.dir/src/gmm.cpp.o"
   "CMakeFiles/programming_by_demonstration.dir/src/gmr.cpp.o"
+  "CMakeFiles/programming_by_demonstration.dir/src/kmeans_mlpack.cpp.o"
   "CMakeFiles/programming_by_demonstration.dir/src/mvn.cpp.o"
   "programming_by_demonstration"
   "programming_by_demonstration.pdb"

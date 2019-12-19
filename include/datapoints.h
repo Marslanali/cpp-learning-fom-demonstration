@@ -9,7 +9,7 @@
 #define PROGRAMMING_BY_DEMONSTRATION_DATAPOINTS_H
 
 
-#include "armadillo"
+#include <armadillo>
 #include <fstream>
 #include <vector>
 
