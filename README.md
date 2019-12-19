@@ -38,7 +38,7 @@ make -j4  # The -j is the number of cores you want to use for a build.
 sudo make install
 ```
 
-#### LAPACK installation
+### LAPACK installation
 
 **On Debian and Ubuntu:**
 
