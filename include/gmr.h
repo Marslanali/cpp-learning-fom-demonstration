@@ -17,14 +17,14 @@ private:
     uint nbVars;
     uint nbStates;
     uint nbDataPoints;
-    uint in;
 
 
+    Col <double> priors;
     std::vector<vec> Mu;
     std::vector<mat> Sigma;
-    Col <double> priors;
     mat x;  //clock signal as input
-    Col <double> out;
+    span in;
+    span out;
 
     GaussianDistribution pdf;
     Mat <double> expectedMu;
@@ -32,7 +32,7 @@ private:
 
 public:
 
-    void Compute_GMR ( Col <double> _priors, std::vector<vec> _Mu, std::vector<mat> _Sigma, mat _x, uint _in,  Col <double> _out);
+    void Compute_GMR ( Col <double> _priors, std::vector<vec> _Mu, std::vector<mat> _Sigma, mat _x, span _in, span _out);
     Mat <double >  returnExpectedMu();
 
 

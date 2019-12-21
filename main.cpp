@@ -12,9 +12,9 @@
 #include "include/gmm.h"
 #include "include/gmr.h"
 
-#define nbStates 5
+#define nbStates 2
 #define nbVar 4
-#define nbData 200
+//#define nbData 200
 
 namespace plt = matplotlibcpp;
 using namespace mlpack::kmeans;
@@ -30,13 +30,13 @@ int main(int argc, char **argv)
     positionData.loadFromFile("/home/arslan/CLionProjects/cpp_learning_from_demonstration/data/data_txyz.txt");
 
     std::cout<<"Data :\n"<< positionData.getDataPoints()<<std::endl;
-    std::cout<<"nbVars : "<< positionData.getNumVars()<<std::endl;
-    std::cout<<"nbDataPoints : "<< positionData.getNumPoints()<<std::endl;
+    std::cout<<"nbVars :\n"<< positionData.getNumVars()<<std::endl;
+    std::cout<<"nbDataPoints :\n"<< positionData.getNumPoints()<<std::endl;
 
-    std::cout<<"Time: "<<positionData.getDataPoints()(0,span::all)<<std::endl;
-    std::cout<<"Position X "<<positionData.getDataPoints()(1,span::all)<<std::endl;
-    std::cout<<"Position Y "<<positionData.getDataPoints()(2,span::all)<<std::endl;
-    std::cout<<"Position Z "<<positionData.getDataPoints()(3,span::all)<<std::endl;
+//    std::cout<<"Time: "<<positionData.getDataPoints()(0,span::all)<<std::endl;
+    std::cout<<"Position X\n"<<positionData.getDataPoints()(0,span::all)<<std::endl;
+    std::cout<<"Position Y\n"<<positionData.getDataPoints()(1,span::all)<<std::endl;
+    std::cout<<"Position Z\n"<<positionData.getDataPoints()(2,span::all)<<std::endl;
 
     std::ofstream filekmeans("/home/arslan/CLionProjects/cpp_learning_from_demonstration/data/kmeans.txt");
 
@@ -44,7 +44,7 @@ int main(int argc, char **argv)
     EM_Initilization_MLPACK em_init_kmeans_mlpack;
     em_init_kmeans_mlpack.learnKmeans_mlpack(positionData.getDataPoints(), nbStates);
 
-
+/*
     std::cout<<"Priors Kmeans MLPACK :\n"<<em_init_kmeans_mlpack.getPriors().t()<<std::endl;
 
     for (int j = 0; j < em_init_kmeans_mlpack.getMu().size(); ++j)
@@ -52,7 +52,7 @@ int main(int argc, char **argv)
 
     for (int k = 0; k < em_init_kmeans_mlpack.getSigma().size(); ++k)
         std::cout<<"Sigma Kmeans MLPACK:\n"<<em_init_kmeans_mlpack.getSigma()[k]<<std::endl;
-
+*/
     /*
 
     EM_Initilization em_init_kmeans;
@@ -81,27 +81,17 @@ int main(int argc, char **argv)
     mat clockSignal = linspace<vec>(min(positionData.getDataPoints()(0,span::all)),max(positionData.getDataPoints()(0,span::all)), positionData.getNumPoints());
     clockSignal = clockSignal.t();
 
-
     std::cout<<"Clock Signal  "<<clockSignal<<std::endl;
 
-/*
+    const span in(0);
+    const span out(1, positionData.getNumVars() - 1);
+
+
     GMR gmr;
-    gmr.Compute_GMR(gmm.returnPriors(), gmm.returnMu(), gmm.returnSigma(), clockSignal, 0, gmm.returnPriors());
+    gmr.Compute_GMR(gmm.returnPriors(), gmm.returnMu(), gmm.returnSigma(), clockSignal,in, out);
 
     std::cout<<"Expected Mean: "<<gmr.returnExpectedMu()<<std::endl;
     std::cout<<"Expected Mean Size: "<<size(gmr.returnExpectedMu())<<std::endl;
-
-
-    std::vector<double> plotClock;
-
-    for (int i = 0; i <positionData.getNumPoints() ; ++i)
-        plotClock.push_back(clockSignal(0,i));
-
-
-    plt::figure();
-    plt::plot(plotClock);
-    plt::show();
-
 
     std::vector<double> time, positionX, positionY, positionZ;
 
@@ -117,18 +107,6 @@ int main(int argc, char **argv)
 
     }
 
-    plt::figure();
-    plt::subplot(2,2,1);
-    plt::plot(time,"red");
-    plt::subplot(2,2,2);
-    plt::plot(positionX);
-    plt::subplot(2,2,3);
-    plt::plot(positionY);
-    plt::subplot(2,2,4);
-    plt::plot(positionZ);
-    plt::show();
-
-
     std::vector<double>  px, py, pz;
 
     for (int i = 0; i <gmr.returnExpectedMu().n_cols ; ++i)
@@ -141,16 +119,29 @@ int main(int argc, char **argv)
 
     }
 
+
+    std::vector<double> plotClock;
+
+    for (int i = 0; i <positionData.getNumPoints() ; ++i)
+        plotClock.push_back(clockSignal(0,i));
+
+
     plt::figure();
+    plt::subplot(2,2,1);
+    plt::plot(time,"red");
     plt::subplot(2,2,2);
-    plt::plot(px);
+    plt::plot(positionX,"red");
     plt::subplot(2,2,3);
-    plt::plot(py);
+    plt::plot(positionY,"red");
     plt::subplot(2,2,4);
-    plt::plot(pz);
+    plt::plot(positionZ,"red");
     plt::show();
 
-*/
+    plt::figure();
+    plt::plot(px,"green");
+    plt::show();
+
+
 
     return 0;
 }

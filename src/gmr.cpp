@@ -9,7 +9,7 @@
 #include <fstream>
 
 
-void GMR::Compute_GMR( Col <double> _priors, std::vector<vec> _Mu, std::vector<mat> _Sigma, mat _x, uint _in,  Col <double> _out)
+void GMR::Compute_GMR( Col <double> _priors, std::vector<vec> _Mu, std::vector<mat> _Sigma, mat _x, span _in, span _out)
 {
 
     nbVars = _Mu.size();
@@ -25,18 +25,15 @@ void GMR::Compute_GMR( Col <double> _priors, std::vector<vec> _Mu, std::vector<m
 
     std::ofstream filePosition("/home/arslan/CLionProjects/cpp_learning_from_demonstration/data/Position.txt");
 
-    const int in = 0;
-    const span out(1, nbVars - 1);
+   // const int in = 0;
+    //const span out(1, nbVars - 1);
     const int nb_var_out = out.b - out.a + 1;
-
     const float diag_reg_fact = 1e-8f;
 
     //mat mu_tmp = zeros(nb_var_out, nbStates);
     Mat <double> mu_tmp = zeros(nb_var_out, nbStates);
 
-
-//    mat mat_priors;
- //   mat_priors = priors; // for making .* i.e % compatable in equation 1.1
+    //std::cout<<"input:\n"<<x<<std::endl;
 
     //-----------------------------------------------------------------------------
     // compute the infulence of each GMM component, given input x
@@ -44,76 +41,115 @@ void GMR::Compute_GMR( Col <double> _priors, std::vector<vec> _Mu, std::vector<m
 
     //mat pxi = zeros(nbDataPoints, nbStates);
     Mat <double> pxi = zeros(nbDataPoints, nbStates);
+    Col <double> PDF;
 
 
     for (int i = 0; i < nbStates; ++i)
     {
-        vec mu(1);
-        mu(0) = Mu[i](in);
-
         Mat <double> sigma(1, 1);
-        sigma(0, 0) = Sigma[i](in, in);
-
-        pxi(span::all, i) = priors(i) * pdf.gaussPDF(x, mu, sigma);  // Equation 1.1 ....Error element wise muliplication is not working
-
+        //std::cout<<"PDF\n"<<pdf.gaussPDF(x, Mu[i](in), Sigma[i](in,in))<<std::endl;
+        //PDF = pdf.gaussPDF(x, Mu[i](in), Sigma[i](in,in));
+        pxi(span::all, i) = priors(i) * pdf.gaussPDF(x, Mu[i](in), Sigma[i](in,in));  // Equation 1.1 ....Error element wise muliplication is not working
 
     }
 
+
+    //std::cout<<"Pxi\n"<<pxi<<std::endl;
+    //std::cout<<"DBL_MIN\n"<<DBL_MIN<<std::endl;
+
     Mat<double> beta = pxi / repmat(sum(pxi,1)+ DBL_MIN,1,nbStates);
 
-    std::cout<<"beta :\n" <<beta<<std::endl;
+    //std::cout<<"beta:\n" <<beta<<std::endl;
 
     //-----------------------------------------------------------------------------
     // Compute expected means y, given input x
     //-----------------------------------------------------------------------------
 
-    Cube <double> y_tmp(3,nbDataPoints,nbStates);  // output, dataPoints, nbStates
+    Cube <double> y_tmp(nb_var_out,nbDataPoints,nbStates);  // output, dataPoints, nbStates
 
     for (int i = 0; i < nbStates; ++i)
     {
+
+        y_tmp.slice(i) = repmat(Mu[i](out),1,nbDataPoints) + Sigma[i](out,in) * inv (Sigma[i](in,in)) * (x - repmat(Mu[i](in),1,nbDataPoints));
+
+        std::cout<<"Size Cube:\n"<<size(y_tmp)<<std::endl;
+        std::cout<<y_tmp.slice(i)<<std::endl;
+
+        /*
 
         vec mu1 (1);
         mu1(0)=Mu[i](in);
 
         Mat <double> sigma(1, 1);
         sigma(0, 0) = Sigma[i](in, in);  // for inverse sigma
-        std::cout<<"SIZE Cube:\n"<<size(y_tmp)<<std::endl;
+
+
         //std::cout<<"Mu out:\n"<<Mu[i](out)<<std::endl;
+
        std::cout<< repmat(Mu[i](out).t(),1,nbDataPoints)<<std::endl;
 
         //y_tmp.slice(i) = repmat(Mu[i](out),1,nbDataPoints)+Sigma[i](out,in) * inv(sigma) *  (x - repmat(mu1,1,nbDataPoints));
 
-        //  std::cout<<y_tmp.slice(i)<<std::endl;
-
+        */
     }
+
+
+    /*
+     * %% Compute expected means y, given input x
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+for j=1:nbStates
+  y_tmp(:,:,j) = repmat(Mu(out,j),1,nbData) + Sigma(out,in,j)*inv(Sigma(in,in,j)) * (x-repmat(Mu(in,j),1,nbData));
+end
+beta_tmp = reshape(beta,[1 size(beta)]);
+y_tmp2 = repmat(beta_tmp,[length(out) 1 1]) .* y_tmp;
+y = sum(y_tmp2,3);
+     */
 
     const uword N = 1;
     const uword num_rows = nbDataPoints;
     const uword num_cols = nbStates;
 
-    Cube<double> beta_tmp(num_rows,num_cols, 1);
+    Cube<double> beta_tmp(num_rows, num_cols, 1);
 
     beta_tmp.slice(0) = beta;
     beta_tmp.reshape(1, nbDataPoints, nbStates);
 
-    //std::cout << "Beta_TMP: "<< beta_tmp<<std::endl;
-    //std::cout<<"Size beta_tmp"<<size(beta_tmp)<<"size y_Tmp: "<<size(y_tmp)<<std::endl;
+   // std::cout << "beta_tmp:\n"<< beta_tmp<<std::endl;
+    std::cout<<"Size beta\n"<<size(beta)<<"\nsize beta_tmp:\n"<<size(beta_tmp)<<std::endl;
 
-    Cube<double> beta_tmp3(3,nbDataPoints,4);  //out,datapionts, states
-    for (int i = 0; i < 3; ++i) {
+    Cube<double> beta_tmp2(nb_var_out,nbDataPoints,nbStates);  //out,datapionts, states
+    for (int i = 0; i < nbStates; ++i) {
 
-        beta_tmp3.slice(i)=repmat(beta_tmp.slice(0),3,1);
+        beta_tmp2.slice(i)=repmat(beta_tmp.slice(0),3,1);
 
     }
 
     //std::cout<<"beta_tmp3 size: "<<size(beta_tmp3)<<std::endl;
-    Cube <double> y_tmp2 = beta_tmp3 % y_tmp;
-    Mat <double > y = zeros (3,nbDataPoints);
+    Cube <double> y_tmp2 (nb_var_out, nbDataPoints, nbStates);
+    y_tmp2 = beta_tmp2 % y_tmp;
+    std::cout<<"\ny_tmp2\n"<<y_tmp2<<std::endl;
+    Mat <double > y = zeros (nb_var_out,nbDataPoints);
     //beta_tmp3.slice(i)= repmat(beta_tmp.slice(1),3,1) % y_tmp;
-    expectedMu = zeros (3,nbDataPoints);
-    //y=sum(y_tmp,2);
+    expectedMu = zeros (nb_var_out,nbDataPoints);
     //std::cout<< "expected mean: "<< y <<std::endl;
     //std::cout<< "expected mean size: "<<size(y)<<std::endl;
+
+    Row <double> sum1 (nbDataPoints);
+    Row <double> sum2 (nbDataPoints);
+    Row <double> sum3 (nbDataPoints);
+
+    for (int i = 0; i < nbDataPoints; ++i) {
+
+      std:cout<< y_tmp2.slice(0)(0, i) + y_tmp2.slice(1)(0, i)<<std::endl;
+     // sum2 = y_tmp2.slice(0)(1, i) + y_tmp2.slice(1)(1, i);
+     // sum3 = y_tmp2.slice(0)(2, i) + y_tmp2.slice(1)(2, i);
+    }
+
+    y(0,span::all) = sum1;
+    //y(1,span::all) = sum2;
+    //y(2,span::all) = sum3;
+
+    expectedMu = y;
 
     for (int i = 0; i < 200; ++i) {
 
@@ -122,16 +158,6 @@ void GMR::Compute_GMR( Col <double> _priors, std::vector<vec> _Mu, std::vector<m
     }
 
 
-    /*
-    Cube<double> A(3, 5, 1, fill::randu);
-    Cube<double> B(3, 5, 1, fill::randu);
-
-    Mat<double> x = A.slice(0);
-    Mat<double> y = B.slice(0);
-
-    std::cout << "x:\n" << x << "\ny:\n" << y << std::endl;
-    std::cout << "x*y:\n" << x%y << std::endl;
-*/
 
 
 }

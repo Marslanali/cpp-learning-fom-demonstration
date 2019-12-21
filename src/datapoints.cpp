@@ -42,10 +42,12 @@ void Datapoints::setData(mat _data)
 void Datapoints::loadFromFile(std::string path, bool is_transpose)
 {
     mat _data;
-    _data.load(path, raw_ascii);
+    _data.load(path,  arma::raw_ascii);
     if(is_transpose)
         _data = _data.t();
     setData(_data);
+
+
 }
 
 

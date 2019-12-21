@@ -48,7 +48,7 @@ void EM_Initilization_MLPACK::learnKmeans_mlpack(mat _data, uint _nbStates)
     for (int i = 0; i < nbStates; ++i)
     {
         idtmp = find(assignments==i);
-        //std::cout<<"\n IDTMP: \n "<<idtmp.n_elem<<std::endl;
+        std::cout<<"\n IDTMP: \n "<<idtmp.n_elem<<std::endl;
         priors(i) = idtmp.n_elem;
        // std::cout<<"\n KMEANS Priors: \n "<< priors(i)<<std::endl;
        // std::cout<<"\n Data for specific Index: \n "<<data.cols(idtmp).t()<<std::endl;
