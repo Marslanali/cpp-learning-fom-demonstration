@@ -96,8 +96,8 @@ void GMR::Compute_GMR( Col <double> _priors, std::vector<vec> _Mu, std::vector<m
    // Mat <double > y = zeros (nb_var_out,nbDataPoints);
     //beta_tmp3.slice(i)= repmat(beta_tmp.slice(1),3,1) % y_tmp;
     expectedMu = zeros (nb_var_out,nbDataPoints);
-    //std::cout<< "expected mean: "<< y <<std::endl;
-    //std::cout<< "expected mean size: "<<size(y)<<std::endl;
+    std::cout<< "expected mean: "<< y <<std::endl;
+    std::cout<< "expected mean size: "<<size(y)<<std::endl;
     //mat y = randu<mat>(2,2);
     //mat y1=sum(y,0);
     //std::cout<<"input\n"<<y<<"\noutput\n"<<y1<<std::endl;
