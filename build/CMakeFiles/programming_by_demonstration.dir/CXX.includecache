@@ -102,6 +102,14 @@ include/gmm.h
 include/gmr.h
 /home/arslan/CLionProjects/cpp_learning_from_demonstration/include/gmr.h
 
+/home/arslan/CLionProjects/cpp_learning_from_demonstration/src/gmr.cpp
+/home/arslan/CLionProjects/cpp_learning_from_demonstration/include/gmr.h
+-
+iostream
+-
+fstream
+-
+
 /usr/include/python2.7/Python.h
 patchlevel.h
 /usr/include/python2.7/patchlevel.h

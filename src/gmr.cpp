@@ -102,13 +102,48 @@ void GMR::Compute_GMR( Col <double> _priors, std::vector<vec> _Mu, std::vector<m
     //mat y1=sum(y,0);
     //std::cout<<"input\n"<<y<<"\noutput\n"<<y1<<std::endl;
 
+    Mat <double> positionX(nbStates, nbDataPoints);
+    Mat <double> positionY(nbStates, nbDataPoints);
+    Mat <double> positionZ(nbStates, nbDataPoints);
+
+
+    for (int i = 0; i < nbStates; ++i) {
+
+        positionX(i,span::all) = y_tmp2.slice(i)(0,span::all);
+        positionY(i,span::all) = y_tmp2.slice(i)(1,span::all);
+        positionZ(i,span::all) = y_tmp2.slice(i)(2,span::all);
+
+    }
+
+    expectedMu(0,span::all) = sum(positionX,0);
+    expectedMu(1,span::all) = sum(positionY,0);
+    expectedMu(2,span::all) = sum(positionZ,0);
+
+
+/*
     std::vector <double> s1;
     std::vector <double> s2;
     std::vector <double> s3;
 
+    std::vector <std::vector<double>> x;
+    std::vector <double> y;
+    std::vector <double> z;
+
+    for (int i = 0; i < nbStates; ++i) {
+        for (int j = 0; j < nbDataPoints; ++j) {
+
+            x.push_back(y_tmp2.slice(i)(0,j));
+
+
+        }
+
+    }
+
+
+
 
     for (int i = 0; i < nbDataPoints; ++i) {
-        s1.push_back(y_tmp2.slice(0)(0,i) + y_tmp2.slice(1)(0,i));
+        s1.push_back(y_tmp2.slice(0)(0,i) + y_tmp2.slice(1)(0,i) );
         s2.push_back(y_tmp2.slice(0)(1,i) + y_tmp2.slice(1)(1,i));
         s3.push_back(y_tmp2.slice(0)(2,i) + y_tmp2.slice(1)(2,i));
     }
@@ -124,7 +159,7 @@ void GMR::Compute_GMR( Col <double> _priors, std::vector<vec> _Mu, std::vector<m
 
     }
 
-
+*/
 }
 
 

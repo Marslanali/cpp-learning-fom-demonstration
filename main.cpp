@@ -12,7 +12,7 @@
 #include "include/gmm.h"
 #include "include/gmr.h"
 
-#define nbStates 30
+#define nbStates 10
 #define nbVar 4
 #define nbData 200
 
@@ -86,7 +86,7 @@ int main(int argc, char **argv)
 
 
     GMR gmr;
-   // gmr.Compute_GMR(gmm.returnPriors(), gmm.returnMu(), gmm.returnSigma(), clockSignal,in, out);
+    //gmr.Compute_GMR(gmm.returnPriors(), gmm.returnMu(), gmm.returnSigma(), clockSignal,in, out);
 
     std::cout<<"Expected Mean: "<<gmr.returnExpectedMu()<<std::endl;
     std::cout<<"Expected Mean Size: "<<size(gmr.returnExpectedMu())<<std::endl;
@@ -180,6 +180,8 @@ int main(int argc, char **argv)
 */
 
     std::vector<double> time, positionX, positionY, positionZ;
+    std::vector<double>  px, py, pz;
+    std::vector<double>  plotClock;
 
 
     for (int i = 0; i <positionData.getNumPoints() ; ++i)
@@ -190,23 +192,15 @@ int main(int argc, char **argv)
         positionY.push_back(positionData.getDataPoints()(1,i));
       //  positionZ.push_back(positionData.getDataPoints()(3,i));
 
-
     }
-
-    std::vector<double>  px, py, pz;
 
     for (int i = 0; i <gmr.returnExpectedMu().n_cols ; ++i)
     {
-
         px.push_back(gmr.returnExpectedMu()(0,i));
         py.push_back(gmr.returnExpectedMu()(1,i));
         //pz.push_back(gmr.returnExpectedMu()(2,i));
-
-
     }
 
-
-    std::vector<double> plotClock;
 
     for (int i = 0; i <positionData.getNumPoints() ; ++i)
         plotClock.push_back(clockSignal(0,i));
@@ -225,15 +219,12 @@ int main(int argc, char **argv)
 
     plt::figure();
     plt::stem(x,y,".*");
-    plt::save("/home/arslan/CLionProjects/cpp_learning_from_demonstration/plots/centroids.jpg");
+    plt::save("/home/arslan/CLionProjects/cpp_learning_from_demonstration/plots/centroids_gmm.jpg");
     plt::show();
-
 
     plt::plot(positionX,positionY,"red");
     plt::save("/home/arslan/CLionProjects/cpp_learning_from_demonstration/plots/input_data.jpg");
     plt::show();
-
-
 
     plt::figure();
     plt::subplot(2,1,1);
