@@ -40,8 +40,6 @@ void GMM::EM(mat _data,  Col <double> _priors, std::vector<vec> _Mu, std::vector
 
 
 
-
-
     // Training of a Gaussian mixture model (GMM) with an expectation-maximization
     // (EM) algorithm
     const int nb_max_steps = 100;			// Maximum number of iterations allowed
@@ -62,14 +60,14 @@ void GMM::EM(mat _data,  Col <double> _priors, std::vector<vec> _Mu, std::vector
         {
             //Compute probability p(x|i)
             pxi(span::all, i) = pdf.gaussPDF(data, Mu[i], Sigma[i]);
-            //std::cout<<"This is pdf type checking: "<<pdf.gaussPDF(data,Mu[i],Sigma[i])<<std::endl;
+            //std::cout<<"\nPxi\n"<<pxi<<std::endl;
 
         }
         //Compute posterior probability p(i|x)
         mat pix_tmp = repmat(priors.t(), nbDataPoints, 1) % pxi;
         mat pix = pix_tmp / repmat(sum(pix_tmp, 1), 1, nbStates);
         //compute cumulated posterior probability
-        mat E = sum(pix);
+        mat E = sum(pix,0);
 
 
         //*********************************M-Step***************************************

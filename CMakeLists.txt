@@ -14,7 +14,7 @@ find_package(PythonLibs 2.7)
 #target_link_libraries(programming_by_demonstration ${PYTHON_LIBRARIES})
 
 ## Armadillo Libraries and MLPACK Libraries
-find_package(Armadillo 4.04 REQUIRED)
+find_package(Armadillo 5.04 REQUIRED)
 
 include_directories(include ${PYTHON_INCLUDE_DIRS} ${ARMADILLO_INCLUDE_DIRS} ${MLPACK_INCLUDE_DIRS})
 

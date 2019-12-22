@@ -23,7 +23,7 @@ void GMR::Compute_GMR( Col <double> _priors, std::vector<vec> _Mu, std::vector<m
     in = _in;
     out = _out;
 
-    std::ofstream filePosition("/home/arslan/CLionProjects/cpp_learning_from_demonstration/data/Position.txt");
+    std::ofstream filePosition("/home/arslan/Arslan Ali/Arslan_Data/GMM-GMR-v2.0/data/Position.txt");
 
    // const int in = 0;
     //const span out(1, nbVars - 1);
@@ -68,42 +68,7 @@ void GMR::Compute_GMR( Col <double> _priors, std::vector<vec> _Mu, std::vector<m
     Cube <double> y_tmp(nb_var_out,nbDataPoints,nbStates);  // output, dataPoints, nbStates
 
     for (int i = 0; i < nbStates; ++i)
-    {
-
         y_tmp.slice(i) = repmat(Mu[i](out),1,nbDataPoints) + Sigma[i](out,in) * inv (Sigma[i](in,in)) * (x - repmat(Mu[i](in),1,nbDataPoints));
-
-        std::cout<<"Size Cube:\n"<<size(y_tmp)<<std::endl;
-        std::cout<<y_tmp.slice(i)<<std::endl;
-
-        /*
-
-        vec mu1 (1);
-        mu1(0)=Mu[i](in);
-
-        Mat <double> sigma(1, 1);
-        sigma(0, 0) = Sigma[i](in, in);  // for inverse sigma
-
-
-        //std::cout<<"Mu out:\n"<<Mu[i](out)<<std::endl;
-
-       std::cout<< repmat(Mu[i](out).t(),1,nbDataPoints)<<std::endl;
-
-        //y_tmp.slice(i) = repmat(Mu[i](out),1,nbDataPoints)+Sigma[i](out,in) * inv(sigma) *  (x - repmat(mu1,1,nbDataPoints));
-
-        */
-    }
-
-
-    /*
-     * %% Compute expected means y, given input x
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-for j=1:nbStates
-  y_tmp(:,:,j) = repmat(Mu(out,j),1,nbData) + Sigma(out,in,j)*inv(Sigma(in,in,j)) * (x-repmat(Mu(in,j),1,nbData));
-end
-beta_tmp = reshape(beta,[1 size(beta)]);
-y_tmp2 = repmat(beta_tmp,[length(out) 1 1]) .* y_tmp;
-y = sum(y_tmp2,3);
-     */
 
     const uword N = 1;
     const uword num_rows = nbDataPoints;
@@ -115,7 +80,7 @@ y = sum(y_tmp2,3);
     beta_tmp.reshape(1, nbDataPoints, nbStates);
 
    // std::cout << "beta_tmp:\n"<< beta_tmp<<std::endl;
-    std::cout<<"Size beta\n"<<size(beta)<<"\nsize beta_tmp:\n"<<size(beta_tmp)<<std::endl;
+    //std::cout<<"Size beta\n"<<size(beta)<<"\nsize beta_tmp:\n"<<size(beta_tmp)<<std::endl;
 
     Cube<double> beta_tmp2(nb_var_out,nbDataPoints,nbStates);  //out,datapionts, states
     for (int i = 0; i < nbStates; ++i) {
@@ -125,39 +90,39 @@ y = sum(y_tmp2,3);
     }
 
     //std::cout<<"beta_tmp3 size: "<<size(beta_tmp3)<<std::endl;
-    Cube <double> y_tmp2 (nb_var_out, nbDataPoints, nbStates);
-    y_tmp2 = beta_tmp2 % y_tmp;
-    std::cout<<"\ny_tmp2\n"<<y_tmp2<<std::endl;
-    Mat <double > y = zeros (nb_var_out,nbDataPoints);
+   // Cube <double> y_tmp2 (nb_var_out, nbDataPoints, nbStates);
+    Cube <double> y_tmp2  = beta_tmp2 % y_tmp;
+    //std::cout<<"\ny_tmp2\n"<<y_tmp2<<std::endl;
+   // Mat <double > y = zeros (nb_var_out,nbDataPoints);
     //beta_tmp3.slice(i)= repmat(beta_tmp.slice(1),3,1) % y_tmp;
     expectedMu = zeros (nb_var_out,nbDataPoints);
     //std::cout<< "expected mean: "<< y <<std::endl;
     //std::cout<< "expected mean size: "<<size(y)<<std::endl;
+    //mat y = randu<mat>(2,2);
+    //mat y1=sum(y,0);
+    //std::cout<<"input\n"<<y<<"\noutput\n"<<y1<<std::endl;
 
-    Row <double> sum1 (nbDataPoints);
-    Row <double> sum2 (nbDataPoints);
-    Row <double> sum3 (nbDataPoints);
+    std::vector <double> s1;
+    std::vector <double> s2;
+    std::vector <double> s3;
+
 
     for (int i = 0; i < nbDataPoints; ++i) {
-
-      std:cout<< y_tmp2.slice(0)(0, i) + y_tmp2.slice(1)(0, i)<<std::endl;
-     // sum2 = y_tmp2.slice(0)(1, i) + y_tmp2.slice(1)(1, i);
-     // sum3 = y_tmp2.slice(0)(2, i) + y_tmp2.slice(1)(2, i);
+        s1.push_back(y_tmp2.slice(0)(0,i) + y_tmp2.slice(1)(0,i));
+        s2.push_back(y_tmp2.slice(0)(1,i) + y_tmp2.slice(1)(1,i));
+        s3.push_back(y_tmp2.slice(0)(2,i) + y_tmp2.slice(1)(2,i));
     }
 
-    y(0,span::all) = sum1;
-    //y(1,span::all) = sum2;
-    //y(2,span::all) = sum3;
+    for (int j = 0; j < 200 ; ++j)
+    std::cout<<"Sumis \n"<<s1[j]<<std::endl;
 
-    expectedMu = y;
+
 
     for (int i = 0; i < 200; ++i) {
 
-        filePosition<<expectedMu(0,i)<<" "<<expectedMu(1,i)<<" "<<expectedMu(2,i)<<endl;
+        filePosition<<s1[i]<<std::endl;
 
     }
-
-
 
 
 }
@@ -167,23 +132,3 @@ Mat <double> GMR::returnExpectedMu()
 {
     return expectedMu ;
 }
-
-
-/*
-%% Compute expected means y, given input x
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-for j=1:nbStates
-  y_tmp(:,:,j) = repmat(Mu(out,j),1,nbData) + Sigma(out,in,j)*inv(Sigma(in,in,j)) * (x-repmat(Mu(in,j),1,nbData));
-end
-beta_tmp = reshape(beta,[1 size(beta)]);
-y_tmp2 = repmat(beta_tmp,[length(out) 1 1]) .* y_tmp;
-y = sum(y_tmp2,3);
-%% Compute expected covariance matrices Sigma_y, given input x
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-for j=1:nbStates
-  Sigma_y_tmp(:,:,1,j) = Sigma(out,out,j) - (Sigma(out,in,j)*inv(Sigma(in,in,j))*Sigma(in,out,j));
-end
-beta_tmp = reshape(beta,[1 1 size(beta)]);
-Sigma_y_tmp2 = repmat(beta_tmp.*beta_tmp, [length(out) length(out) 1 1]) .* repmat(Sigma_y_tmp,[1 1 nbData 1]);
-Sigma_y = sum(Sigma_y_tmp2,4);
- */

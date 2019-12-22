@@ -6,36 +6,33 @@
 
 void EM_Initilization_MLPACK::learnKmeans_mlpack(mat _data, uint _nbStates)
 {
+    // The dataset we are clustering.
     data = _data;
-    nbStates = _nbStates;
 
+    nbStates = _nbStates;
     nbVars = _data.n_rows;
     nbDataPoints = _data.n_cols;
 
     // Initialization of Gaussian Mixture Model (GMM) parameters by clustering
     // the data into equal bins based on the first variable (time steps).
     const float diag_reg_fact = 1e-4f;
-   // vec timing_sep = linspace<vec>(data(0, 0), data(0, data.n_cols - 1), nbStates + 1);
+
     Mu.clear();
     Sigma.clear();
-   // Priors.clear();
+    Priors.clear();
 
-
-
-    // The dataset we are clustering.
-   // mat data;
-// The number of clusters we are getting.
+    // The number of clusters we are getting.
     size_t clusters = nbStates;
-// The assignments will be stored in this vector.
+    // The assignments will be stored in this vector.
     Row <size_t> assignments;
-// The centroids will be stored in this matrix.
+    // The centroids will be stored in this matrix.
     Mat <double> centroids;
-// Initialize with the default arguments.
+    // Initialize with the default arguments.
     KMeans<> k;
     k.Cluster(data, clusters, assignments, centroids);
 
-    //std::cout<<"Assignments : "<<assignments<<std::endl;
-   // std::cout<<"Centroids: "<<centroids<<std::endl;
+    std::cout<<"Assignments:\n"<<assignments<<std::endl;
+    std::cout<<"Centroids:\n"<<centroids<<std::endl;
 
     uvec idtmp;
     Col <double> priors (nbStates);
@@ -43,29 +40,32 @@ void EM_Initilization_MLPACK::learnKmeans_mlpack(mat _data, uint _nbStates)
     for (int i = 0; i < nbStates; ++i)
     Mu.push_back(centroids(span::all,i));
 
-    //std::cout<<"Means:\n"<<centroids<<std::endl;
-
     for (int i = 0; i < nbStates; ++i)
     {
         idtmp = find(assignments==i);
         std::cout<<"\n IDTMP: \n "<<idtmp.n_elem<<std::endl;
         priors(i) = idtmp.n_elem;
-       // std::cout<<"\n KMEANS Priors: \n "<< priors(i)<<std::endl;
-       // std::cout<<"\n Data for specific Index: \n "<<data.cols(idtmp).t()<<std::endl;
+        std::cout<<"\n KMEANS Priors: \n "<< priors(i)<<std::endl;
+        std::cout<<"\n Data for specific Index: \n "<<data.cols(idtmp).t()<<std::endl;
 
         mat sigma = cov(data.cols(idtmp).t());
-        //std::cout<<"Covariances Matrices:\n"<<sigma<<std::endl;
+        std::cout<<"Covariances Matrices:\n"<<sigma<<std::endl;
+
+        if(sigma.n_rows==nbVars && sigma.n_cols==nbVars)
         // Optional regularization term to avoid numerical instability
         sigma = sigma + eye(nbVars, nbVars) * diag_reg_fact;
+
+        else {
+            std::cout << "\n Sigma Singularity Error!!!!!!\n" << std::endl;
+            sigma = eye(nbVars, nbVars) * diag_reg_fact;
+        }
 
         Sigma.push_back(sigma);
     }
 
     Priors = priors / sum(priors);
-   // std::cout<<"Overall Priors:\n"<<priors<<std::endl;
-    //std::cout<<"Priors Sum: "<< sum(priors)<<std::endl;
-
-
+    // std::cout<<"Overall Priors:\n"<<priors<<std::endl;
+    //std::cout<<"Priors Sum:\n"<< sum(priors)<<std::endl;
 
 }
 

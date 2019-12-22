@@ -19,7 +19,6 @@ class EM_Initilization_MLPACK
 private:
     mat data;
     uint nbStates;
-
     uint nbVars;
     uint nbDataPoints;
 
