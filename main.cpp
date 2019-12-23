@@ -12,7 +12,7 @@
 #include "include/gmm.h"
 #include "include/gmr.h"
 
-#define nbStates 10
+#define nbStates 100
 #define nbVar 4
 #define nbData 200
 
@@ -229,7 +229,7 @@ int main(int argc, char **argv)
     plt::figure();
     plt::subplot(2,1,1);
     //plt::plot(time,"red");
-   // plt::subplot(2,2,2);
+    // plt::subplot(2,2,2);
     plt::plot(positionX,"red");
     plt::subplot(2,1,2);
     plt::plot(positionY,"red");

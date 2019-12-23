@@ -51,12 +51,32 @@ void EM_Initilization_MLPACK::learnKmeans_mlpack(mat _data, uint _nbStates)
         mat sigma = cov(data.cols(idtmp).t());
         std::cout<<"Covariances Matrices:\n"<<sigma<<std::endl;
 
+/*
+        try {
+
+            if(sigma.n_rows==nbVars && sigma.n_cols==nbVars)
+                // Optional regularization term to avoid numerical instability
+                sigma = sigma + eye(nbVars, nbVars) * diag_reg_fact;
+
+           else
+                throw "Something went wrong Sigma Error!!!!!!\n";
+
+        }
+
+        catch(char const * e) {
+            sigma = eye(nbVars, nbVars) * diag_reg_fact;
+            cout << "Error message: " << e << endl;
+        }
+
+*/
+
         if(sigma.n_rows==nbVars && sigma.n_cols==nbVars)
-        // Optional regularization term to avoid numerical instability
-        sigma = sigma + eye(nbVars, nbVars) * diag_reg_fact;
+                // Optional regularization term to avoid numerical instability
+                sigma = sigma + eye(nbVars, nbVars) * diag_reg_fact;
+
 
         else {
-            std::cout << "\n Sigma Singularity Error!!!!!!\n" << std::endl;
+            std::cout << "\n Something went wrong Sigma Error!!!!!!\n" << std::endl;
             sigma = eye(nbVars, nbVars) * diag_reg_fact;
         }
 

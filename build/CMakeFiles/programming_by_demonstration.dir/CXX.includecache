@@ -6,29 +6,15 @@
 
 #IncludeRegexTransform: 
 
-/home/arslan/CLionProjects/cpp_learning_from_demonstration/include/gmr.h
-/home/arslan/CLionProjects/cpp_learning_from_demonstration/include/mvn.h
+/home/arslan/CLionProjects/cpp_learning_from_demonstration/include/kmeans_mlpack.h
+mlpack/methods/kmeans/kmeans.hpp
 -
 armadillo
 -
 vector
 -
 
-/home/arslan/CLionProjects/cpp_learning_from_demonstration/include/mvn.h
-stdio.h
--
-armadillo
--
-vector
--
-cfloat
--
-
-/home/arslan/CLionProjects/cpp_learning_from_demonstration/src/gmr.cpp
-/home/arslan/CLionProjects/cpp_learning_from_demonstration/include/gmr.h
--
-iostream
--
-fstream
+/home/arslan/CLionProjects/cpp_learning_from_demonstration/src/kmeans_mlpack.cpp
+/home/arslan/CLionProjects/cpp_learning_from_demonstration/include/kmeans_mlpack.h
 -
 
