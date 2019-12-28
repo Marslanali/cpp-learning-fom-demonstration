@@ -18,6 +18,9 @@
 ARMADILLO_INCLUDE_DIR:PATH=/usr/include
 
 //Path to a library.
+ARMADILLO_LIBRARIES:FILEPATH=/usr/lib/x86_64-linux-gnu/libarmadillo.so
+
+//Path to a library.
 ARMADILLO_LIBRARY:FILEPATH=/usr/lib/x86_64-linux-gnu/libarmadillo.so
 
 //Path to a program.

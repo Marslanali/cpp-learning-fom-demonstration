@@ -8,18 +8,23 @@ set(HEADER_FILES include/datapoints.h include/demonstrations.h include/gmm.h inc
 
 add_executable(programming_by_demonstration ${SOURCE_FILES}  ${HEADER_FILES} )
 
-#Matplotlib-cpp Libraries
-find_package(PythonLibs 2.7)
-#target_include_directories(programming_by_demonstration PRIVATE ${PYTHON_INCLUDE_DIRS})
-#target_link_libraries(programming_by_demonstration ${PYTHON_LIBRARIES})
-
 ## Armadillo Libraries and MLPACK Libraries
 find_package(Armadillo 5.04 REQUIRED)
+#Matplotlib-cpp Libraries
+find_package(PythonLibs 2.7)
 
+# find libraries
+find_library(ARMADILLO_LIBRARIES armadillo)
+
+#target includes
 include_directories(include ${PYTHON_INCLUDE_DIRS} ${ARMADILLO_INCLUDE_DIRS} ${MLPACK_INCLUDE_DIRS})
 
-find_library(ARMADILLO_LIBRARIES armadillo)
+#target link .so libraries
 target_link_libraries(programming_by_demonstration ${PYTHON_LIBRARIES}  ${ARMADILLO_LIBRARIES} libmlpack.so)
+
+
+#target_include_directories(programming_by_demonstration PRIVATE ${PYTHON_INCLUDE_DIRS})
+#target_link_libraries(programming_by_demonstration ${PYTHON_LIBRARIES})
 
 ## MLPACK
 #add extra include directories
