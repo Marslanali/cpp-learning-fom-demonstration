@@ -1,8 +1,8 @@
 //
 // Created by arslan on 16/11/19.
 //
-/*
- This Class learns the parameters of a Gaussian Mixture Model
+/**
+ This class learns the parameters of a Gaussian Mixture Model
  (GMM) using a recursive Expectation-Maximization (EM) algorithm, starting
  from an initial estimation of the parameters.
 
@@ -39,9 +39,11 @@ void GMM::EM(mat _data,  Col <double> _priors, std::vector<vec> _Mu, std::vector
     priors = _priors;
 
 
+    /**
+     * Training of a Gaussian mixture model (GMM) with an expectation-maximization
+     * (EM) algorithm.
+     */
 
-    // Training of a Gaussian mixture model (GMM) with an expectation-maximization
-    // (EM) algorithm
     const int nb_max_steps = 100;			// Maximum number of iterations allowed
     const int nb_min_steps = 5;				// Minimum number of iterations allowed
     const double max_diff_log_likelihood = 1e-4;	// Likelihood increase threshold

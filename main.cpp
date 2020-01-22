@@ -1,6 +1,18 @@
 //
 // Created by arslan on 3/11/19.
 //
+
+/**
+ * @author: Arslan Ali
+ * @email: arslanali800@hotmail.com
+ *
+ * C++ Implementation of gaussian mixture model and gaussain mixture regression for learning 3-dof
+ * task. The data set contains mutliple demonstrations of the task which are trained using gaussian
+ * mixture model. Gaussian Mixture Regression had been used for generating single generalized trajectory
+ * with expected mean and expected covariance matrices.The learned generalized trajectory is exectued on
+ * the robot using simple PD controller.The algorithm is tested on 3-degree freedom phantom premium robot.
+ *
+ */
 #include <iostream>
 #include <mlpack/methods/kmeans/kmeans.hpp>
 #include <sstream>
@@ -27,6 +39,8 @@ int main(int argc, char **argv)
 
     Datapoints positionData;
 
+    //Load dataset containing cartesian position of the robot
+
     positionData.loadFromFile("/home/arslan/CLionProjects/cpp_learning_from_demonstration/data/input_data/data_xy.txt");
 
     std::cout<<"Data :\n"<< positionData.getDataPoints()<<std::endl;
@@ -38,9 +52,15 @@ int main(int argc, char **argv)
     std::cout<<"Position Y\n"<<positionData.getDataPoints()(1,span::all)<<std::endl;
     //std::cout<<"Position Z\n"<<positionData.getDataPoints()(2,span::all)<<std::endl;
 
+    // Initial estimation of the parameters using kmeans algorithm
+
     EM_Initilization_MLPACK em_init_kmeans_mlpack;
     em_init_kmeans_mlpack.learnKmeans_mlpack(positionData.getDataPoints(), nbStates);
 
+
+    /**
+     * print learned priors, means and covarainces matrices
+     */
 
     std::cout<<"Priors Kmeans MLPACK :\n"<<em_init_kmeans_mlpack.getPriors().t()<<std::endl;
 
@@ -65,6 +85,8 @@ int main(int argc, char **argv)
 */
 
 
+    // Final estimation of the parameters using gaussian mixture model
+
     GMM gmm;
     gmm.EM(positionData.getDataPoints(), em_init_kmeans_mlpack.getPriors(), em_init_kmeans_mlpack.getMu(), em_init_kmeans_mlpack.getSigma());
 
@@ -75,7 +97,11 @@ int main(int argc, char **argv)
        std::cout<<"Final Sigma are:\n"<<gmm.returnSigma()[i]<<std::endl;
 
 
-    // GMR for expected mean and covariances
+    /**
+     * GMR for expected mean and covariances
+     * we can get learned generalized trajectory using Gaussian Mixture Regression which time variable
+     * as an input and mean, covariance matrix as ouptut. The time variable can be generated using linspace
+     */
     mat clockSignal = linspace<vec>(min(positionData.getDataPoints()(0,span::all)),max(positionData.getDataPoints()(0,span::all)), positionData.getNumPoints());
     clockSignal = clockSignal.t();
 
@@ -84,6 +110,9 @@ int main(int argc, char **argv)
     const span in(0);
     const span out(1, positionData.getNumVars() - 1);
 
+    /**
+     * computing GMR with time variable as input
+     */
 
     GMR gmr;
     //gmr.Compute_GMR(gmm.returnPriors(), gmm.returnMu(), gmm.returnSigma(), clockSignal,in, out);
@@ -187,10 +216,10 @@ int main(int argc, char **argv)
     for (int i = 0; i <positionData.getNumPoints() ; ++i)
     {
 
-    //    time.push_back(positionData.getDataPoints()(0,i));
+        // time.push_back(positionData.getDataPoints()(0,i));
         positionX.push_back(positionData.getDataPoints()(0,i));
         positionY.push_back(positionData.getDataPoints()(1,i));
-      //  positionZ.push_back(positionData.getDataPoints()(3,i));
+        //  positionZ.push_back(positionData.getDataPoints()(3,i));
 
     }
 

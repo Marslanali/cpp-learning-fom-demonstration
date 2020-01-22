@@ -2,6 +2,20 @@
 // Created by arslan on 16/11/19.
 //
 
+/**
+ * This class computer the gaussian distribution.
+
+   Inputs -----------------------------------------------------------------
+   o data:
+   o Mu:
+   o Sigma:
+
+  Outputs ----------------------------------------------------------------
+   o prob:    N array representing the computed probability density function
+
+ *
+ */
+
 #include "/home/arslan/CLionProjects/cpp_learning_from_demonstration/include/mvn.h"
 
 vec GaussianDistribution::gaussPDF(mat _data, colvec _Mu, mat _Sigma)

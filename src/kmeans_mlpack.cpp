@@ -2,6 +2,23 @@
 // Created by arslan on 18/12/19.
 //
 
+/**
+ * This class implements kmeans clustering algorithm using C++ MLPACK Libraray
+
+ Inputs -----------------------------------------------------------------
+   o data:     D x N array representing N datapoints of D dimensions.
+   o nbStates: D representing the K GMM components.
+
+ Outputs ----------------------------------------------------------------
+   o priors:  Q x N array representing the retrieved N datapoints of
+              Q dimensions, i.e. expected means.
+   o Mu:      Q x Q x N array representing the N expected covariance
+              matrices retrieved.
+   o Sigma:   Q x Q x N array representing the N expected covariance
+              matrices retrieved.
+
+ */
+
 #include "/home/arslan/CLionProjects/cpp_learning_from_demonstration/include/kmeans_mlpack.h"
 
 void EM_Initilization_MLPACK::learnKmeans_mlpack(mat _data, uint _nbStates)
