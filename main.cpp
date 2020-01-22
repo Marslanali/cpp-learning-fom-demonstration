@@ -266,9 +266,6 @@ int main(int argc, char **argv)
     //plt::plot(positionZ,"red");
     plt::show();
 
-    //plt::figure();
-    //plt::plot(px,"green");
-    //plt::show();
 
     return 0;
 }
