@@ -3,7 +3,7 @@
 //
 
 #include "/home/arslan/CLionProjects/cpp_learning_from_demonstration/include/EM_initilization.h"
-void EM_Initilization::learnKmeans(mat _data, uint _nbStates)
+void EM_Initilization::learnKmeans(const mat& _data, const uint& _nbStates)
 {
     data = _data;
     nbStates = _nbStates;

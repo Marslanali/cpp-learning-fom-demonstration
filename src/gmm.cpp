@@ -27,7 +27,7 @@
 #include "/home/arslan/CLionProjects/cpp_learning_from_demonstration/include/gmm.h"
 #include <iostream>
 
-void GMM::EM(mat _data,  Col <double> _priors, std::vector<vec> _Mu, std::vector<mat> _Sigma)
+void GMM::EM(const mat& _data,  const colvec& _priors, const std::vector<vec>& _Mu, const std::vector<mat>& _Sigma)
 {
     nbVars = _data.n_rows;
     nbDataPoints = _data.n_cols;
@@ -114,7 +114,7 @@ void GMM::EM(mat _data,  Col <double> _priors, std::vector<vec> _Mu, std::vector
 }
 
 
-Col <double> GMM::returnPriors()
+colvec GMM::returnPriors()
 {
     return priors;
 }

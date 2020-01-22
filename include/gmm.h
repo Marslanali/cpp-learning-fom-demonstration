@@ -30,8 +30,8 @@ private:
 
 public:
 
-    void EM(mat _data,  Col <double> _priors, std::vector<vec> _Mu, std::vector<mat> _Sigma);
-    Col <double> returnPriors ();
+    void EM(const mat& _data,  const colvec& _priors, const std::vector<vec>& _Mu, const std::vector<mat>& _Sigma);
+    colvec returnPriors ();
     std::vector<vec> returnMu();
     std::vector<mat> returnSigma();
 

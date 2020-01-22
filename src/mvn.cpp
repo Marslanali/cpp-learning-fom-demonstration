@@ -18,15 +18,15 @@
 
 #include "/home/arslan/CLionProjects/cpp_learning_from_demonstration/include/mvn.h"
 
-vec GaussianDistribution::gaussPDF(mat _data, colvec _Mu, mat _Sigma)
+vec GaussianDistribution::gaussPDF(const mat& _data, const colvec& _Mu, const mat& _Sigma)
 {
 
     data = _data;
     Mu = _Mu;
     Sigma = _Sigma;
 
-    nbVars = _data.n_rows;;
-    nbDataPoints = _data.n_cols;
+    nbVars = data.n_rows;;
+    nbDataPoints = data.n_cols;
 
     data = data.t() - repmat(Mu.t(), nbDataPoints,1);
     vec prob = sum((data*inv(Sigma)) % data,1);

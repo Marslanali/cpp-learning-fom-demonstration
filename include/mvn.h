@@ -25,7 +25,7 @@ private:
 
 public:
 
-    vec gaussPDF(mat _data, colvec _Mu, mat _Sigma);
+    vec gaussPDF(const mat& _data, const colvec& _Mu, const mat& _Sigma);
 
 };
 

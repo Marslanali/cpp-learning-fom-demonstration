@@ -19,7 +19,7 @@ private:
     uint nbDataPoints;
 
 
-    Col <double> priors;
+    colvec priors;
     std::vector<vec> Mu;
     std::vector<mat> Sigma;
     mat x;  //clock signal as input
@@ -27,13 +27,13 @@ private:
     span out;
 
     GaussianDistribution pdf;
-    Mat <double> expectedMu;
+    mat expectedMu;
 
 
 public:
 
-    void Compute_GMR ( Col <double> _priors, std::vector<vec> _Mu, std::vector<mat> _Sigma, mat _x, span _in, span _out);
-    Mat <double >  returnExpectedMu();
+    void Compute_GMR ( const colvec& _priors, const std::vector<vec>& _Mu, const  std::vector<mat>& _Sigma, const mat& _x, span _in, span _out);
+    mat  returnExpectedMu();
 
 
 

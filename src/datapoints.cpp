@@ -5,11 +5,11 @@
 
 #include "/home/arslan/CLionProjects/cpp_learning_from_demonstration/include/datapoints.h"
 
-Datapoints::Datapoints(uint _nbVar, uint _nbPoints)
+Datapoints::Datapoints(const uint& nbVars, const uint& nbPoints)
 {
-    nbVars = _nbVar;
-    nbPoints = _nbPoints;
-    data = zeros(nbVars, nbPoints);
+    this->nbVars = nbVars;
+    this->nbPoints = nbPoints;
+    data = zeros(this->nbVars, this->nbPoints);
 }
 
 
@@ -33,11 +33,11 @@ std::vector <std::string> Datapoints::getVarNames()
 
 }
 
-void Datapoints::setData(mat _data)
+void Datapoints::setData(const mat& data)
 {
-    data = _data;
-    nbVars = _data.n_rows;
-    nbPoints = _data.n_cols;
+    this->data = data;
+    nbVars     = data.n_rows;
+    nbPoints   = data.n_cols;
 }
 
 void Datapoints::loadFromFile(std::string path, bool is_transpose)

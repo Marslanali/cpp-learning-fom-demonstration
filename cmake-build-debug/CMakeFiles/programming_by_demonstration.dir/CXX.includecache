@@ -102,22 +102,6 @@ include/gmm.h
 include/gmr.h
 /home/arslan/CLionProjects/cpp_learning_from_demonstration/include/gmr.h
 
-/home/arslan/CLionProjects/cpp_learning_from_demonstration/src/EM_initilization.cpp
-/home/arslan/CLionProjects/cpp_learning_from_demonstration/include/EM_initilization.h
--
-
-/home/arslan/CLionProjects/cpp_learning_from_demonstration/src/datapoints.cpp
-/home/arslan/CLionProjects/cpp_learning_from_demonstration/include/datapoints.h
--
-
-/home/arslan/CLionProjects/cpp_learning_from_demonstration/src/demonstrations.cpp
-
-/home/arslan/CLionProjects/cpp_learning_from_demonstration/src/gmm.cpp
-/home/arslan/CLionProjects/cpp_learning_from_demonstration/include/gmm.h
--
-iostream
--
-
 /home/arslan/CLionProjects/cpp_learning_from_demonstration/src/gmr.cpp
 /home/arslan/CLionProjects/cpp_learning_from_demonstration/include/gmr.h
 -
@@ -128,10 +112,6 @@ fstream
 
 /home/arslan/CLionProjects/cpp_learning_from_demonstration/src/kmeans_mlpack.cpp
 /home/arslan/CLionProjects/cpp_learning_from_demonstration/include/kmeans_mlpack.h
--
-
-/home/arslan/CLionProjects/cpp_learning_from_demonstration/src/mvn.cpp
-/home/arslan/CLionProjects/cpp_learning_from_demonstration/include/mvn.h
 -
 
 /usr/include/python2.7/Python.h

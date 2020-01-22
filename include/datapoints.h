@@ -26,14 +26,14 @@ private:
 public:
 
     Datapoints(){};
-    Datapoints(uint _nbVar , uint _nbPoints);
+    Datapoints(const uint& nbVars ,const uint& nbPoints);
 
     mat getDataPoints();
     uint getNumPoints();
     uint getNumVars();
     std::vector <std::string> getVarNames();
 
-    void setData(mat _data);
+    void setData(const mat& data);
     void loadFromFile(std::string path, bool is_transpose = false);
     void saveInFile(std::string path);
 };

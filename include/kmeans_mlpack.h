@@ -24,14 +24,14 @@ private:
 
     std::vector<vec> Mu;
     std::vector<mat> Sigma;
-    Col <double> Priors;
+    colvec Priors;
 
 public:
 
-    void learnKmeans_mlpack(mat _data, uint _nbStates);
+    void learnKmeans_mlpack(const mat& _data, const uint& _nbStates);
     void saveParams_kmeans(const char filename []);
 
-    Col <double> getPriors();
+    colvec getPriors();
     std::vector<vec> getMu();
     std::vector<mat> getSigma();
 
