@@ -25,7 +25,7 @@ private:
 
 public:
 
-    void learnKmeans(const mat& _data, const uint& _nbStates);
+    void learnKmeans(const mat& _data, uint _nbStates);
 
     vec getPriors();
     std::vector<vec> getMu();

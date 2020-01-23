@@ -5,7 +5,7 @@
 
 #include "/home/arslan/CLionProjects/cpp_learning_from_demonstration/include/datapoints.h"
 
-Datapoints::Datapoints(const uint& nbVars, const uint& nbPoints)
+Datapoints::Datapoints(uint nbVars, uint nbPoints)
 {
     this->nbVars = nbVars;
     this->nbPoints = nbPoints;

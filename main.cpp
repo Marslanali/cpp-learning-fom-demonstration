@@ -37,38 +37,38 @@ int main(int argc, char **argv)
 {
 
 
-    Datapoints positionData;
+    Datapoints* positionData = new Datapoints();
 
     //Load dataset containing cartesian position of the robot
 
-    positionData.loadFromFile("/home/arslan/CLionProjects/cpp_learning_from_demonstration/data/input_data/data_xy.txt");
+    positionData->loadFromFile("/home/arslan/CLionProjects/cpp_learning_from_demonstration/data/input_data/data_xy.txt");
 
-    std::cout<<"Data :\n"<< positionData.getDataPoints()<<std::endl;
-    std::cout<<"nbVars :\n"<< positionData.getNumVars()<<std::endl;
-    std::cout<<"nbDataPoints :\n"<< positionData.getNumPoints()<<std::endl;
+    std::cout<<"Data :\n"<< positionData->getDataPoints()<<std::endl;
+    std::cout<<"nbVars :\n"<< positionData->getNumVars()<<std::endl;
+    std::cout<<"nbDataPoints :\n"<< positionData->getNumPoints()<<std::endl;
 
     //std::cout<<"Time: "<<positionData.getDataPoints()(0,span::all)<<std::endl;
-    std::cout<<"Position X\n"<<positionData.getDataPoints()(0,span::all)<<std::endl;
-    std::cout<<"Position Y\n"<<positionData.getDataPoints()(1,span::all)<<std::endl;
+    std::cout<<"Position X\n"<<positionData->getDataPoints()(0,span::all)<<std::endl;
+    std::cout<<"Position Y\n"<<positionData->getDataPoints()(1,span::all)<<std::endl;
     //std::cout<<"Position Z\n"<<positionData.getDataPoints()(2,span::all)<<std::endl;
 
     // Initial estimation of the parameters using kmeans algorithm
 
-    EM_Initilization_MLPACK em_init_kmeans_mlpack;
-    em_init_kmeans_mlpack.learnKmeans_mlpack(positionData.getDataPoints(), nbStates);
+    EM_Initilization_MLPACK* em_init_kmeans_mlpack = new EM_Initilization_MLPACK();
+    em_init_kmeans_mlpack->learnKmeans_mlpack(positionData->getDataPoints(), nbStates);
 
 
     /**
      * print learned priors, means and covarainces matrices
      */
 
-    std::cout<<"Priors Kmeans MLPACK :\n"<<em_init_kmeans_mlpack.getPriors().t()<<std::endl;
+    std::cout<<"Priors Kmeans MLPACK :\n"<<em_init_kmeans_mlpack->getPriors().t()<<std::endl;
 
-    for (int j = 0; j < em_init_kmeans_mlpack.getMu().size(); ++j)
-        std::cout << "Mu Kmeans MLPACK:\n" << em_init_kmeans_mlpack.getMu()[j] << std::endl;
+    for (int j = 0; j < em_init_kmeans_mlpack->getMu().size(); ++j)
+        std::cout << "Mu Kmeans MLPACK:\n" << em_init_kmeans_mlpack->getMu()[j] << std::endl;
 
-    for (int k = 0; k < em_init_kmeans_mlpack.getSigma().size(); ++k)
-        std::cout<<"Sigma Kmeans MLPACK:\n"<<em_init_kmeans_mlpack.getSigma()[k]<<std::endl;
+    for (int k = 0; k < em_init_kmeans_mlpack->getSigma().size(); ++k)
+        std::cout<<"Sigma Kmeans MLPACK:\n"<<em_init_kmeans_mlpack->getSigma()[k]<<std::endl;
 
     /*
 
@@ -87,14 +87,14 @@ int main(int argc, char **argv)
 
     // Final estimation of the parameters using gaussian mixture model
 
-    GMM gmm;
-    gmm.EM(positionData.getDataPoints(), em_init_kmeans_mlpack.getPriors(), em_init_kmeans_mlpack.getMu(), em_init_kmeans_mlpack.getSigma());
+    GMM* gmm = new GMM();
+    gmm->EM(positionData->getDataPoints(), em_init_kmeans_mlpack->getPriors(), em_init_kmeans_mlpack->getMu(), em_init_kmeans_mlpack->getSigma());
 
-       std::cout<<"Final Priors are:\n"<<gmm.returnPriors()<<std::endl;
-    for (int i =0; i<gmm.returnMu().size(); ++i)
-       std::cout<<"Final Mu are :\n"<<gmm.returnMu()[i]<<std::endl;
-    for (int i = 0; i < gmm.returnSigma().size() ; ++i)
-       std::cout<<"Final Sigma are:\n"<<gmm.returnSigma()[i]<<std::endl;
+       std::cout<<"Final Priors are:\n"<<gmm->returnPriors()<<std::endl;
+    for (int i =0; i<gmm->returnMu().size(); ++i)
+       std::cout<<"Final Mu are :\n"<<gmm->returnMu()[i]<<std::endl;
+    for (int i = 0; i < gmm->returnSigma().size() ; ++i)
+       std::cout<<"Final Sigma are:\n"<<gmm->returnSigma()[i]<<std::endl;
 
 
     /**
@@ -102,23 +102,23 @@ int main(int argc, char **argv)
      * we can get learned generalized trajectory using Gaussian Mixture Regression which time variable
      * as an input and mean, covariance matrix as ouptut. The time variable can be generated using linspace
      */
-    mat clockSignal = linspace<vec>(min(positionData.getDataPoints()(0,span::all)),max(positionData.getDataPoints()(0,span::all)), positionData.getNumPoints());
+    mat clockSignal = linspace<vec>(min(positionData->getDataPoints()(0,span::all)),max(positionData->getDataPoints()(0,span::all)), positionData->getNumPoints());
     clockSignal = clockSignal.t();
 
     std::cout<<"Clock Signal  "<<clockSignal<<std::endl;
 
     const span in(0);
-    const span out(1, positionData.getNumVars() - 1);
+    const span out(1, positionData->getNumVars() - 1);
 
     /**
      * computing GMR with time variable as input
      */
 
-    GMR gmr;
+    GMR* gmr = new GMR();
     //gmr.Compute_GMR(gmm.returnPriors(), gmm.returnMu(), gmm.returnSigma(), clockSignal,in, out);
 
-    std::cout<<"Expected Mean: "<<gmr.returnExpectedMu()<<std::endl;
-    std::cout<<"Expected Mean Size: "<<size(gmr.returnExpectedMu())<<std::endl;
+    std::cout<<"Expected Mean: "<<gmr->returnExpectedMu()<<std::endl;
+    std::cout<<"Expected Mean Size: "<<size(gmr->returnExpectedMu())<<std::endl;
 
 
 
@@ -142,18 +142,18 @@ int main(int argc, char **argv)
     //file << 2 << " ";
     //file << nbStates << std::endl;
     for(int i=0;i<nbStates;i++)
-        fileKmeans << em_init_kmeans_mlpack.getPriors()[i] << " ";
+        fileKmeans << em_init_kmeans_mlpack->getPriors()[i] << " ";
     fileKmeans << std::endl;
     for(int s=0;s<nbStates;s++) {
         for(int i=0;i<dim;i++) {
-            fileKmeans << em_init_kmeans_mlpack.getMu()[s](i) << " ";
+            fileKmeans << em_init_kmeans_mlpack->getMu()[s](i) << " ";
         }
         fileKmeans << std::endl;
     }
     for(int s=0;s<nbStates;s++) {
         for(int j=0;j<dim;j++) {
             for(int i=0;i<dim;i++) {
-                fileKmeans << em_init_kmeans_mlpack.getSigma()[s](i,j) << " ";
+                fileKmeans << em_init_kmeans_mlpack->getSigma()[s](i,j) << " ";
             }
             fileKmeans << std::endl;
         }
@@ -168,18 +168,18 @@ int main(int argc, char **argv)
     //file << 2 << " ";
     //file << nbStates << std::endl;
     for(int i=0;i<nbStates;i++)
-        fileGMM << gmm.returnPriors()[i] << " ";
+        fileGMM << gmm->returnPriors()[i] << " ";
     fileGMM << std::endl;
     for(int s=0;s<nbStates;s++) {
         for(int i=0;i<dim;i++) {
-            fileGMM << gmm.returnMu()[s](i) << " ";
+            fileGMM << gmm->returnMu()[s](i) << " ";
         }
         fileGMM << std::endl;
     }
     for(int s=0;s<nbStates;s++) {
         for(int j=0;j<dim;j++) {
             for(int i=0;i<dim;i++) {
-                fileGMM << gmm.returnSigma()[s](i,j) << " ";
+                fileGMM << gmm->returnSigma()[s](i,j) << " ";
             }
             fileGMM << std::endl;
         }
@@ -213,25 +213,25 @@ int main(int argc, char **argv)
     std::vector<double>  plotClock;
 
 
-    for (int i = 0; i <positionData.getNumPoints() ; ++i)
+    for (int i = 0; i <positionData->getNumPoints() ; ++i)
     {
 
         // time.push_back(positionData.getDataPoints()(0,i));
-        positionX.push_back(positionData.getDataPoints()(0,i));
-        positionY.push_back(positionData.getDataPoints()(1,i));
+        positionX.push_back(positionData->getDataPoints()(0,i));
+        positionY.push_back(positionData->getDataPoints()(1,i));
         //  positionZ.push_back(positionData.getDataPoints()(3,i));
 
     }
 
-    for (int i = 0; i <gmr.returnExpectedMu().n_cols ; ++i)
+    for (int i = 0; i <gmr->returnExpectedMu().n_cols ; ++i)
     {
-        px.push_back(gmr.returnExpectedMu()(0,i));
-        py.push_back(gmr.returnExpectedMu()(1,i));
+        px.push_back(gmr->returnExpectedMu()(0,i));
+        py.push_back(gmr->returnExpectedMu()(1,i));
         //pz.push_back(gmr.returnExpectedMu()(2,i));
     }
 
 
-    for (int i = 0; i <positionData.getNumPoints() ; ++i)
+    for (int i = 0; i <positionData->getNumPoints() ; ++i)
         plotClock.push_back(clockSignal(0,i));
 
     plt::figure();
@@ -242,8 +242,8 @@ int main(int argc, char **argv)
     std::vector <double> x,y;
 
     for (int i = 0; i <nbStates ; ++i) {
-        x.push_back(gmm.returnMu()[i](0));
-        y.push_back(gmm.returnMu()[i](1));
+        x.push_back(gmm->returnMu()[i](0));
+        y.push_back(gmm->returnMu()[i](1));
     }
 
     plt::figure();
@@ -265,6 +265,11 @@ int main(int argc, char **argv)
     //plt::subplot(2,2,4);
     //plt::plot(positionZ,"red");
     plt::show();
+
+
+    delete positionData;
+    delete em_init_kmeans_mlpack;
+    delete gmm, gmr;
 
 
     return 0;

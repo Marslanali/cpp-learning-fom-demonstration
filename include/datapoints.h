@@ -26,7 +26,7 @@ private:
 public:
 
     Datapoints(){};
-    Datapoints(const uint& nbVars ,const uint& nbPoints);
+    Datapoints( uint nbVars , uint nbPoints);
 
     mat getDataPoints();
     uint getNumPoints();

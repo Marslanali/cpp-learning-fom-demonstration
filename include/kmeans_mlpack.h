@@ -28,7 +28,7 @@ private:
 
 public:
 
-    void learnKmeans_mlpack(const mat& _data, const uint& _nbStates);
+    void learnKmeans_mlpack(const mat& _data, uint _nbStates);
     void saveParams_kmeans(const char filename []);
 
     colvec getPriors();

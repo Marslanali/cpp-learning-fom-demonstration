@@ -21,7 +21,7 @@
 
 #include "/home/arslan/CLionProjects/cpp_learning_from_demonstration/include/kmeans_mlpack.h"
 
-void EM_Initilization_MLPACK::learnKmeans_mlpack(const mat& _data, const uint& _nbStates)
+void EM_Initilization_MLPACK::learnKmeans_mlpack(const mat& _data, uint _nbStates)
 {
     // The dataset we are clustering.
     data = _data;

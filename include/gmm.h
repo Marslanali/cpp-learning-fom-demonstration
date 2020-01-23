@@ -21,7 +21,7 @@ private:
     mat data;
     std::vector<vec> Mu;
     std::vector<mat> Sigma;
-    Col <double> priors;
+    colvec priors;
 
     const float diag_reg_fact = 1e-4f;
 
