@@ -2,15 +2,15 @@
 // Created by arslan on 16/11/19.
 //
 
-#ifndef PROGRAMMING_BY_DEMONSTRATION_EM_INITILIZATION_H
-#define PROGRAMMING_BY_DEMONSTRATION_EM_INITILIZATION_H
+#ifndef PROGRAMMING_BY_DEMONSTRATION_EMINITILIZATION_H
+#define PROGRAMMING_BY_DEMONSTRATION_EMINITILIZATION_H
 
 #include <armadillo>
 #include <vector>
 
 using namespace arma;
 
-class EM_Initilization
+class EmInitilization
 {
 private:
     mat data;
@@ -33,4 +33,4 @@ public:
 
 };
 
-#endif //PROGRAMMING_BY_DEMONSTRATION_EM_INITILIZATION_H
+#endif //PROGRAMMING_BY_DEMONSTRATION_EMINITILIZATION_H

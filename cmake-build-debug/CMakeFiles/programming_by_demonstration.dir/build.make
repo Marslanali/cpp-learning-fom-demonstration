@@ -135,31 +135,31 @@ CMakeFiles/programming_by_demonstration.dir/src/mvn.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/programming_by_demonstration.dir/src/mvn.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/arslan/CLionProjects/cpp_learning_from_demonstration/src/mvn.cpp -o CMakeFiles/programming_by_demonstration.dir/src/mvn.cpp.s
 
-CMakeFiles/programming_by_demonstration.dir/src/EM_initilization.cpp.o: CMakeFiles/programming_by_demonstration.dir/flags.make
-CMakeFiles/programming_by_demonstration.dir/src/EM_initilization.cpp.o: ../src/EM_initilization.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/arslan/CLionProjects/cpp_learning_from_demonstration/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/programming_by_demonstration.dir/src/EM_initilization.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/programming_by_demonstration.dir/src/EM_initilization.cpp.o -c /home/arslan/CLionProjects/cpp_learning_from_demonstration/src/EM_initilization.cpp
+CMakeFiles/programming_by_demonstration.dir/src/emInitilization.cpp.o: CMakeFiles/programming_by_demonstration.dir/flags.make
+CMakeFiles/programming_by_demonstration.dir/src/emInitilization.cpp.o: ../src/emInitilization.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/arslan/CLionProjects/cpp_learning_from_demonstration/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/programming_by_demonstration.dir/src/emInitilization.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/programming_by_demonstration.dir/src/emInitilization.cpp.o -c /home/arslan/CLionProjects/cpp_learning_from_demonstration/src/emInitilization.cpp
 
-CMakeFiles/programming_by_demonstration.dir/src/EM_initilization.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/programming_by_demonstration.dir/src/EM_initilization.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/arslan/CLionProjects/cpp_learning_from_demonstration/src/EM_initilization.cpp > CMakeFiles/programming_by_demonstration.dir/src/EM_initilization.cpp.i
+CMakeFiles/programming_by_demonstration.dir/src/emInitilization.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/programming_by_demonstration.dir/src/emInitilization.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/arslan/CLionProjects/cpp_learning_from_demonstration/src/emInitilization.cpp > CMakeFiles/programming_by_demonstration.dir/src/emInitilization.cpp.i
 
-CMakeFiles/programming_by_demonstration.dir/src/EM_initilization.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/programming_by_demonstration.dir/src/EM_initilization.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/arslan/CLionProjects/cpp_learning_from_demonstration/src/EM_initilization.cpp -o CMakeFiles/programming_by_demonstration.dir/src/EM_initilization.cpp.s
+CMakeFiles/programming_by_demonstration.dir/src/emInitilization.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/programming_by_demonstration.dir/src/emInitilization.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/arslan/CLionProjects/cpp_learning_from_demonstration/src/emInitilization.cpp -o CMakeFiles/programming_by_demonstration.dir/src/emInitilization.cpp.s
 
-CMakeFiles/programming_by_demonstration.dir/src/kmeans_mlpack.cpp.o: CMakeFiles/programming_by_demonstration.dir/flags.make
-CMakeFiles/programming_by_demonstration.dir/src/kmeans_mlpack.cpp.o: ../src/kmeans_mlpack.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/arslan/CLionProjects/cpp_learning_from_demonstration/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/programming_by_demonstration.dir/src/kmeans_mlpack.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/programming_by_demonstration.dir/src/kmeans_mlpack.cpp.o -c /home/arslan/CLionProjects/cpp_learning_from_demonstration/src/kmeans_mlpack.cpp
+CMakeFiles/programming_by_demonstration.dir/src/emInitilizationMlpack.cpp.o: CMakeFiles/programming_by_demonstration.dir/flags.make
+CMakeFiles/programming_by_demonstration.dir/src/emInitilizationMlpack.cpp.o: ../src/emInitilizationMlpack.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/arslan/CLionProjects/cpp_learning_from_demonstration/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/programming_by_demonstration.dir/src/emInitilizationMlpack.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/programming_by_demonstration.dir/src/emInitilizationMlpack.cpp.o -c /home/arslan/CLionProjects/cpp_learning_from_demonstration/src/emInitilizationMlpack.cpp
 
-CMakeFiles/programming_by_demonstration.dir/src/kmeans_mlpack.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/programming_by_demonstration.dir/src/kmeans_mlpack.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/arslan/CLionProjects/cpp_learning_from_demonstration/src/kmeans_mlpack.cpp > CMakeFiles/programming_by_demonstration.dir/src/kmeans_mlpack.cpp.i
+CMakeFiles/programming_by_demonstration.dir/src/emInitilizationMlpack.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/programming_by_demonstration.dir/src/emInitilizationMlpack.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/arslan/CLionProjects/cpp_learning_from_demonstration/src/emInitilizationMlpack.cpp > CMakeFiles/programming_by_demonstration.dir/src/emInitilizationMlpack.cpp.i
 
-CMakeFiles/programming_by_demonstration.dir/src/kmeans_mlpack.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/programming_by_demonstration.dir/src/kmeans_mlpack.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/arslan/CLionProjects/cpp_learning_from_demonstration/src/kmeans_mlpack.cpp -o CMakeFiles/programming_by_demonstration.dir/src/kmeans_mlpack.cpp.s
+CMakeFiles/programming_by_demonstration.dir/src/emInitilizationMlpack.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/programming_by_demonstration.dir/src/emInitilizationMlpack.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/arslan/CLionProjects/cpp_learning_from_demonstration/src/emInitilizationMlpack.cpp -o CMakeFiles/programming_by_demonstration.dir/src/emInitilizationMlpack.cpp.s
 
 # Object files for target programming_by_demonstration
 programming_by_demonstration_OBJECTS = \
@@ -169,8 +169,8 @@ programming_by_demonstration_OBJECTS = \
 "CMakeFiles/programming_by_demonstration.dir/src/gmm.cpp.o" \
 "CMakeFiles/programming_by_demonstration.dir/src/gmr.cpp.o" \
 "CMakeFiles/programming_by_demonstration.dir/src/mvn.cpp.o" \
-"CMakeFiles/programming_by_demonstration.dir/src/EM_initilization.cpp.o" \
-"CMakeFiles/programming_by_demonstration.dir/src/kmeans_mlpack.cpp.o"
+"CMakeFiles/programming_by_demonstration.dir/src/emInitilization.cpp.o" \
+"CMakeFiles/programming_by_demonstration.dir/src/emInitilizationMlpack.cpp.o"
 
 # External object files for target programming_by_demonstration
 programming_by_demonstration_EXTERNAL_OBJECTS =
@@ -181,8 +181,8 @@ programming_by_demonstration: CMakeFiles/programming_by_demonstration.dir/src/de
 programming_by_demonstration: CMakeFiles/programming_by_demonstration.dir/src/gmm.cpp.o
 programming_by_demonstration: CMakeFiles/programming_by_demonstration.dir/src/gmr.cpp.o
 programming_by_demonstration: CMakeFiles/programming_by_demonstration.dir/src/mvn.cpp.o
-programming_by_demonstration: CMakeFiles/programming_by_demonstration.dir/src/EM_initilization.cpp.o
-programming_by_demonstration: CMakeFiles/programming_by_demonstration.dir/src/kmeans_mlpack.cpp.o
+programming_by_demonstration: CMakeFiles/programming_by_demonstration.dir/src/emInitilization.cpp.o
+programming_by_demonstration: CMakeFiles/programming_by_demonstration.dir/src/emInitilizationMlpack.cpp.o
 programming_by_demonstration: CMakeFiles/programming_by_demonstration.dir/build.make
 programming_by_demonstration: /usr/lib/x86_64-linux-gnu/libpython2.7.so
 programming_by_demonstration: /usr/lib/x86_64-linux-gnu/libarmadillo.so

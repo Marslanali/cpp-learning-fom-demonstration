@@ -19,9 +19,9 @@
 
  */
 
-#include "/home/arslan/CLionProjects/cpp_learning_from_demonstration/include/kmeans_mlpack.h"
+#include "emInitilizationMlpack.h"
 
-void EM_Initilization_MLPACK::learnKmeans_mlpack(const mat& _data, uint _nbStates)
+void EmInitilizationMlpack::learnKmeansMlpack(const mat& _data, uint _nbStates)
 {
     // The dataset we are clustering.
     data = _data;
@@ -107,25 +107,25 @@ void EM_Initilization_MLPACK::learnKmeans_mlpack(const mat& _data, uint _nbState
 }
 
 
-Col <double> EM_Initilization_MLPACK::getPriors()
+Col <double> EmInitilizationMlpack::getPriors()
 {
     return Priors;
 
 }
 
-std::vector<vec> EM_Initilization_MLPACK::getMu()
+std::vector<vec> EmInitilizationMlpack::getMu()
 {
     return Mu;
 
 }
 
-std::vector <mat> EM_Initilization_MLPACK::getSigma()
+std::vector <mat> EmInitilizationMlpack::getSigma()
 {
     return Sigma;
 }
 
 
-void EM_Initilization_MLPACK::saveParams_kmeans(const char filename [])
+void EmInitilizationMlpack::saveParamskmeans(const char filename [])
 {/*
     // save the current kmeans parameters, coefficents to a file, to be retrieved
     // by the loadParams method

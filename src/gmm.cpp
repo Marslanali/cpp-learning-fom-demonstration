@@ -31,7 +31,7 @@ void GMM::EM(const mat& _data,  const colvec& _priors, const std::vector<vec>& _
 {
     nbVars = _data.n_rows;
     nbDataPoints = _data.n_cols;
-    nbStates= _Sigma.size();
+    nbStates = _Sigma.size();
 
     data = _data;
     Mu = _Mu;

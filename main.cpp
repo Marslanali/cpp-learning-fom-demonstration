@@ -18,13 +18,13 @@
 #include <sstream>
 #include <fstream>
 #include "include/datapoints.h"
-#include "include/EM_initilization.h"
-#include "include/kmeans_mlpack.h"
+#include "emInitilization.h"
+#include "emInitilizationMlpack.h"
 #include "include/matplotlibcpp.h"
 #include "include/gmm.h"
 #include "include/gmr.h"
 
-#define nbStates 100
+#define nbStates 4
 #define nbVar 4
 #define nbData 200
 
@@ -54,8 +54,8 @@ int main(int argc, char **argv)
 
     // Initial estimation of the parameters using kmeans algorithm
 
-    EM_Initilization_MLPACK* em_init_kmeans_mlpack = new EM_Initilization_MLPACK();
-    em_init_kmeans_mlpack->learnKmeans_mlpack(positionData->getDataPoints(), nbStates);
+    EmInitilizationMlpack* em_init_kmeans_mlpack = new EmInitilizationMlpack();
+    em_init_kmeans_mlpack->learnKmeansMlpack(positionData->getDataPoints(), nbStates);
 
 
     /**
@@ -268,9 +268,9 @@ int main(int argc, char **argv)
 
 
     delete positionData;
-    delete em_init_kmeans_mlpack;
-    delete gmm, gmr;
-
+//    delete em_init_kmeans_mlpack;
+//    delete gmm, gmr;
+//
 
     return 0;
 }

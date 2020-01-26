@@ -20,20 +20,20 @@ class Datapoints
 private:
     uint nbVars;
     uint nbPoints;
-    std::vector<std::string> vars_names;
+    std::vector<std::string> varsNames;
     mat data;
 
 public:
 
     Datapoints(){};
-    Datapoints( uint nbVars , uint nbPoints);
+    Datapoints( uint _nbVars , uint _nbPoints);
 
     mat getDataPoints();
     uint getNumPoints();
     uint getNumVars();
     std::vector <std::string> getVarNames();
 
-    void setData(const mat& data);
+    void setData(const mat& _data);
     void loadFromFile(std::string path, bool is_transpose = false);
     void saveInFile(std::string path);
 };

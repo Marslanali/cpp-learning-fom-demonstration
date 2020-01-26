@@ -33,7 +33,7 @@
 #include <fstream>
 
 
-void GMR::Compute_GMR( const colvec& _priors, const std::vector<vec>& _Mu, const  std::vector<mat>& _Sigma, const mat& _x, span _in, span _out)
+void GMR::computeGmr( const colvec& _priors, const std::vector<vec>& _Mu, const  std::vector<mat>& _Sigma, const mat& _x, span _in, span _out)
 {
 
     nbVars = _Mu.size();

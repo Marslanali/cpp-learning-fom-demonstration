@@ -2,14 +2,14 @@
 // Created by arslan on 16/11/19.
 //
 
-#include "/home/arslan/CLionProjects/cpp_learning_from_demonstration/include/EM_initilization.h"
-void EM_Initilization::learnKmeans(const mat& _data, uint _nbStates)
+#include "emInitilization.h"
+void EmInitilization::learnKmeans(const mat& _data, uint _nbStates)
 {
     data = _data;
     nbStates = _nbStates;
 
-    nbVars = _data.n_rows;
-    nbDataPoints = _data.n_cols;
+    nbVars = data.n_rows;
+    nbDataPoints = data.n_cols;
 
     // Initialization of Gaussian Mixture Model (GMM) parameters by clustering
     // the data into equal bins based on the first variable (time steps).
@@ -47,19 +47,19 @@ void EM_Initilization::learnKmeans(const mat& _data, uint _nbStates)
 }
 
 
-vec EM_Initilization::getPriors()
+vec EmInitilization::getPriors()
 {
     return priors;
 
 }
 
-std::vector<vec> EM_Initilization::getMu()
+std::vector<vec> EmInitilization::getMu()
 {
     return Mu;
 
 }
 
-std::vector <mat> EM_Initilization::getSigma()
+std::vector <mat> EmInitilization::getSigma()
 {
     return Sigma;
 }

@@ -3,8 +3,8 @@ project(programming_by_demonstration)
 
 set(CMAKE_CXX_STANDARD 11)
 
-set(SOURCE_FILES main.cpp src/datapoints.cpp src/demonstrations.cpp src/gmm.cpp src/gmr.cpp src/mvn.cpp src/EM_initilization.cpp src/kmeans_mlpack.cpp)
-set(HEADER_FILES include/datapoints.h include/demonstrations.h include/gmm.h include/gmr.h include/mvn.h include/EM_initilization.h include/kmeans_mlpack.h)
+set(SOURCE_FILES main.cpp src/datapoints.cpp src/demonstrations.cpp src/gmm.cpp src/gmr.cpp src/mvn.cpp src/emInitilization.cpp src/emInitilizationMlpack.cpp)
+set(HEADER_FILES include/datapoints.h include/demonstrations.h include/gmm.h include/gmr.h include/mvn.h include/emInitilization.h include/emInitilizationMlpack.h)
 
 add_executable(programming_by_demonstration ${SOURCE_FILES}  ${HEADER_FILES} )
 

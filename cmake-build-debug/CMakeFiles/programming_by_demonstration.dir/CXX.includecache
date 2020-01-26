@@ -6,7 +6,15 @@
 
 #IncludeRegexTransform: 
 
-/home/arslan/CLionProjects/cpp_learning_from_demonstration/include/EM_initilization.h
+../include/emInitilization.h
+armadillo
+-
+vector
+-
+
+../include/emInitilizationMlpack.h
+mlpack/methods/kmeans/kmeans.hpp
+-
 armadillo
 -
 vector
@@ -30,14 +38,6 @@ vector
 
 /home/arslan/CLionProjects/cpp_learning_from_demonstration/include/gmr.h
 /home/arslan/CLionProjects/cpp_learning_from_demonstration/include/mvn.h
--
-armadillo
--
-vector
--
-
-/home/arslan/CLionProjects/cpp_learning_from_demonstration/include/kmeans_mlpack.h
-mlpack/methods/kmeans/kmeans.hpp
 -
 armadillo
 -
@@ -91,34 +91,16 @@ fstream
 -
 include/datapoints.h
 /home/arslan/CLionProjects/cpp_learning_from_demonstration/include/datapoints.h
-include/EM_initilization.h
-/home/arslan/CLionProjects/cpp_learning_from_demonstration/include/EM_initilization.h
-include/kmeans_mlpack.h
-/home/arslan/CLionProjects/cpp_learning_from_demonstration/include/kmeans_mlpack.h
+emInitilization.h
+/home/arslan/CLionProjects/cpp_learning_from_demonstration/emInitilization.h
+emInitilizationMlpack.h
+/home/arslan/CLionProjects/cpp_learning_from_demonstration/emInitilizationMlpack.h
 include/matplotlibcpp.h
 /home/arslan/CLionProjects/cpp_learning_from_demonstration/include/matplotlibcpp.h
 include/gmm.h
 /home/arslan/CLionProjects/cpp_learning_from_demonstration/include/gmm.h
 include/gmr.h
 /home/arslan/CLionProjects/cpp_learning_from_demonstration/include/gmr.h
-
-/home/arslan/CLionProjects/cpp_learning_from_demonstration/src/EM_initilization.cpp
-/home/arslan/CLionProjects/cpp_learning_from_demonstration/include/EM_initilization.h
--
-
-/home/arslan/CLionProjects/cpp_learning_from_demonstration/src/datapoints.cpp
-/home/arslan/CLionProjects/cpp_learning_from_demonstration/include/datapoints.h
--
-
-/home/arslan/CLionProjects/cpp_learning_from_demonstration/src/gmm.cpp
-/home/arslan/CLionProjects/cpp_learning_from_demonstration/include/gmm.h
--
-iostream
--
-
-/home/arslan/CLionProjects/cpp_learning_from_demonstration/src/kmeans_mlpack.cpp
-/home/arslan/CLionProjects/cpp_learning_from_demonstration/include/kmeans_mlpack.h
--
 
 /usr/include/python2.7/Python.h
 patchlevel.h

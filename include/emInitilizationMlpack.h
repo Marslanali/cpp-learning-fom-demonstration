@@ -2,8 +2,8 @@
 // Created by arslan on 18/12/19.
 //
 
-#ifndef PROGRAMMING_BY_DEMONSTRATION_KMEANS_MLPACK_H
-#define PROGRAMMING_BY_DEMONSTRATION_KMEANS_MLPACK_H
+#ifndef PROGRAMMING_BY_DEMONSTRATION_EMINITILIZATIONMLPACK_H
+#define PROGRAMMING_BY_DEMONSTRATION_EMINITILIZATIONMLPACK_H
 #include <mlpack/methods/kmeans/kmeans.hpp>
 
 using namespace mlpack::kmeans;
@@ -14,7 +14,7 @@ using namespace mlpack::kmeans;
 
 using namespace arma;
 
-class EM_Initilization_MLPACK
+class EmInitilizationMlpack
 {
 private:
     mat data;
@@ -28,8 +28,8 @@ private:
 
 public:
 
-    void learnKmeans_mlpack(const mat& _data, uint _nbStates);
-    void saveParams_kmeans(const char filename []);
+    void learnKmeansMlpack(const mat& _data, uint _nbStates);
+    void saveParamskmeans(const char filename []);
 
     colvec getPriors();
     std::vector<vec> getMu();
@@ -40,4 +40,4 @@ public:
 
 
 
-#endif //PROGRAMMING_BY_DEMONSTRATION_KMEANS_MLPACK_H
+#endif //PROGRAMMING_BY_DEMONSTRATION_EMINITILIZATIONMLPACK_H
