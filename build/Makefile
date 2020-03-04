@@ -39,19 +39,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /opt/clion-2019.2.4/bin/cmake/linux/bin/cmake
+CMAKE_COMMAND = /opt/clion-2019.3.4/bin/cmake/linux/bin/cmake
 
 # The command to remove a file.
-RM = /opt/clion-2019.2.4/bin/cmake/linux/bin/cmake -E remove -f
+RM = /opt/clion-2019.3.4/bin/cmake/linux/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/arslan/CLionProjects/cpp_learning_from_demonstration
+CMAKE_SOURCE_DIR = /home/arslanali/CLionProjects/cpp_learning_from_demonstration
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/arslan/CLionProjects/cpp_learning_from_demonstration/build
+CMAKE_BINARY_DIR = /home/arslanali/CLionProjects/cpp_learning_from_demonstration/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -59,7 +59,7 @@ CMAKE_BINARY_DIR = /home/arslan/CLionProjects/cpp_learning_from_demonstration/bu
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/opt/clion-2019.2.4/bin/cmake/linux/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/opt/clion-2019.3.4/bin/cmake/linux/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -70,7 +70,7 @@ rebuild_cache/fast: rebuild_cache
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/opt/clion-2019.2.4/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+	/opt/clion-2019.3.4/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/arslan/CLionProjects/cpp_learning_from_demonstration/build/CMakeFiles /home/arslan/CLionProjects/cpp_learning_from_demonstration/build/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/arslanali/CLionProjects/cpp_learning_from_demonstration/build/CMakeFiles /home/arslanali/CLionProjects/cpp_learning_from_demonstration/build/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/arslan/CLionProjects/cpp_learning_from_demonstration/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/arslanali/CLionProjects/cpp_learning_from_demonstration/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -150,33 +150,6 @@ main.cpp.s:
 	$(MAKE) -f CMakeFiles/programming_by_demonstration.dir/build.make CMakeFiles/programming_by_demonstration.dir/main.cpp.s
 .PHONY : main.cpp.s
 
-src/EM_initilization.o: src/EM_initilization.cpp.o
-
-.PHONY : src/EM_initilization.o
-
-# target to build an object file
-src/EM_initilization.cpp.o:
-	$(MAKE) -f CMakeFiles/programming_by_demonstration.dir/build.make CMakeFiles/programming_by_demonstration.dir/src/EM_initilization.cpp.o
-.PHONY : src/EM_initilization.cpp.o
-
-src/EM_initilization.i: src/EM_initilization.cpp.i
-
-.PHONY : src/EM_initilization.i
-
-# target to preprocess a source file
-src/EM_initilization.cpp.i:
-	$(MAKE) -f CMakeFiles/programming_by_demonstration.dir/build.make CMakeFiles/programming_by_demonstration.dir/src/EM_initilization.cpp.i
-.PHONY : src/EM_initilization.cpp.i
-
-src/EM_initilization.s: src/EM_initilization.cpp.s
-
-.PHONY : src/EM_initilization.s
-
-# target to generate assembly for a file
-src/EM_initilization.cpp.s:
-	$(MAKE) -f CMakeFiles/programming_by_demonstration.dir/build.make CMakeFiles/programming_by_demonstration.dir/src/EM_initilization.cpp.s
-.PHONY : src/EM_initilization.cpp.s
-
 src/datapoints.o: src/datapoints.cpp.o
 
 .PHONY : src/datapoints.o
@@ -230,6 +203,60 @@ src/demonstrations.s: src/demonstrations.cpp.s
 src/demonstrations.cpp.s:
 	$(MAKE) -f CMakeFiles/programming_by_demonstration.dir/build.make CMakeFiles/programming_by_demonstration.dir/src/demonstrations.cpp.s
 .PHONY : src/demonstrations.cpp.s
+
+src/emInitilization.o: src/emInitilization.cpp.o
+
+.PHONY : src/emInitilization.o
+
+# target to build an object file
+src/emInitilization.cpp.o:
+	$(MAKE) -f CMakeFiles/programming_by_demonstration.dir/build.make CMakeFiles/programming_by_demonstration.dir/src/emInitilization.cpp.o
+.PHONY : src/emInitilization.cpp.o
+
+src/emInitilization.i: src/emInitilization.cpp.i
+
+.PHONY : src/emInitilization.i
+
+# target to preprocess a source file
+src/emInitilization.cpp.i:
+	$(MAKE) -f CMakeFiles/programming_by_demonstration.dir/build.make CMakeFiles/programming_by_demonstration.dir/src/emInitilization.cpp.i
+.PHONY : src/emInitilization.cpp.i
+
+src/emInitilization.s: src/emInitilization.cpp.s
+
+.PHONY : src/emInitilization.s
+
+# target to generate assembly for a file
+src/emInitilization.cpp.s:
+	$(MAKE) -f CMakeFiles/programming_by_demonstration.dir/build.make CMakeFiles/programming_by_demonstration.dir/src/emInitilization.cpp.s
+.PHONY : src/emInitilization.cpp.s
+
+src/emInitilizationMlpack.o: src/emInitilizationMlpack.cpp.o
+
+.PHONY : src/emInitilizationMlpack.o
+
+# target to build an object file
+src/emInitilizationMlpack.cpp.o:
+	$(MAKE) -f CMakeFiles/programming_by_demonstration.dir/build.make CMakeFiles/programming_by_demonstration.dir/src/emInitilizationMlpack.cpp.o
+.PHONY : src/emInitilizationMlpack.cpp.o
+
+src/emInitilizationMlpack.i: src/emInitilizationMlpack.cpp.i
+
+.PHONY : src/emInitilizationMlpack.i
+
+# target to preprocess a source file
+src/emInitilizationMlpack.cpp.i:
+	$(MAKE) -f CMakeFiles/programming_by_demonstration.dir/build.make CMakeFiles/programming_by_demonstration.dir/src/emInitilizationMlpack.cpp.i
+.PHONY : src/emInitilizationMlpack.cpp.i
+
+src/emInitilizationMlpack.s: src/emInitilizationMlpack.cpp.s
+
+.PHONY : src/emInitilizationMlpack.s
+
+# target to generate assembly for a file
+src/emInitilizationMlpack.cpp.s:
+	$(MAKE) -f CMakeFiles/programming_by_demonstration.dir/build.make CMakeFiles/programming_by_demonstration.dir/src/emInitilizationMlpack.cpp.s
+.PHONY : src/emInitilizationMlpack.cpp.s
 
 src/gmm.o: src/gmm.cpp.o
 
@@ -285,33 +312,6 @@ src/gmr.cpp.s:
 	$(MAKE) -f CMakeFiles/programming_by_demonstration.dir/build.make CMakeFiles/programming_by_demonstration.dir/src/gmr.cpp.s
 .PHONY : src/gmr.cpp.s
 
-src/kmeans_mlpack.o: src/kmeans_mlpack.cpp.o
-
-.PHONY : src/kmeans_mlpack.o
-
-# target to build an object file
-src/kmeans_mlpack.cpp.o:
-	$(MAKE) -f CMakeFiles/programming_by_demonstration.dir/build.make CMakeFiles/programming_by_demonstration.dir/src/kmeans_mlpack.cpp.o
-.PHONY : src/kmeans_mlpack.cpp.o
-
-src/kmeans_mlpack.i: src/kmeans_mlpack.cpp.i
-
-.PHONY : src/kmeans_mlpack.i
-
-# target to preprocess a source file
-src/kmeans_mlpack.cpp.i:
-	$(MAKE) -f CMakeFiles/programming_by_demonstration.dir/build.make CMakeFiles/programming_by_demonstration.dir/src/kmeans_mlpack.cpp.i
-.PHONY : src/kmeans_mlpack.cpp.i
-
-src/kmeans_mlpack.s: src/kmeans_mlpack.cpp.s
-
-.PHONY : src/kmeans_mlpack.s
-
-# target to generate assembly for a file
-src/kmeans_mlpack.cpp.s:
-	$(MAKE) -f CMakeFiles/programming_by_demonstration.dir/build.make CMakeFiles/programming_by_demonstration.dir/src/kmeans_mlpack.cpp.s
-.PHONY : src/kmeans_mlpack.cpp.s
-
 src/mvn.o: src/mvn.cpp.o
 
 .PHONY : src/mvn.o
@@ -351,24 +351,24 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
-	@echo "... src/EM_initilization.o"
-	@echo "... src/EM_initilization.i"
-	@echo "... src/EM_initilization.s"
 	@echo "... src/datapoints.o"
 	@echo "... src/datapoints.i"
 	@echo "... src/datapoints.s"
 	@echo "... src/demonstrations.o"
 	@echo "... src/demonstrations.i"
 	@echo "... src/demonstrations.s"
+	@echo "... src/emInitilization.o"
+	@echo "... src/emInitilization.i"
+	@echo "... src/emInitilization.s"
+	@echo "... src/emInitilizationMlpack.o"
+	@echo "... src/emInitilizationMlpack.i"
+	@echo "... src/emInitilizationMlpack.s"
 	@echo "... src/gmm.o"
 	@echo "... src/gmm.i"
 	@echo "... src/gmm.s"
 	@echo "... src/gmr.o"
 	@echo "... src/gmr.i"
 	@echo "... src/gmr.s"
-	@echo "... src/kmeans_mlpack.o"
-	@echo "... src/kmeans_mlpack.i"
-	@echo "... src/kmeans_mlpack.s"
 	@echo "... src/mvn.o"
 	@echo "... src/mvn.i"
 	@echo "... src/mvn.s"

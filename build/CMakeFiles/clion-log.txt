@@ -1,4 +1,5 @@
-/opt/clion-2019.2.4/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug build -G "CodeBlocks - Unix Makefiles" /home/arslan/CLionProjects/cpp_learning_from_demonstration
+/opt/clion-2019.3.4/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/arslanali/CLionProjects/cpp_learning_from_demonstration
+-- Found Armadillo: /usr/lib/x86_64-linux-gnu/libarmadillo.so (found suitable version "9.850.1", minimum required is "5.04") 
 -- Configuring done
 -- Generating done
--- Build files have been written to: /home/arslan/CLionProjects/cpp_learning_from_demonstration/build
+-- Build files have been written to: /home/arslanali/CLionProjects/cpp_learning_from_demonstration/build

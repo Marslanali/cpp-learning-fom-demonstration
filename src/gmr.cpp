@@ -28,7 +28,7 @@
               matrices retrieved.
 
  */
-#include "/home/arslan/CLionProjects/cpp_learning_from_demonstration/include/gmr.h"
+#include "../include/gmr.h"
 #include <iostream>
 #include <fstream>
 

@@ -19,7 +19,7 @@
 
  */
 
-#include "emInitilizationMlpack.h"
+#include "../include/emInitilizationMlpack.h"
 
 void EmInitilizationMlpack::learnKmeansMlpack(const mat& _data, uint _nbStates)
 {

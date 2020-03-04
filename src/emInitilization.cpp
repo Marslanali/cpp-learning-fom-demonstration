@@ -2,7 +2,7 @@
 // Created by arslan on 16/11/19.
 //
 
-#include "emInitilization.h"
+#include "../include/emInitilization.h"
 void EmInitilization::learnKmeans(const mat& _data, uint _nbStates)
 {
     data = _data;

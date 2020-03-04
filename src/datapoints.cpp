@@ -3,7 +3,7 @@
 //
 
 
-#include "/home/arslan/CLionProjects/cpp_learning_from_demonstration/include/datapoints.h"
+#include "../include/datapoints.h"
 
 Datapoints::Datapoints(uint _nbVars, uint _nbPoints)
 {

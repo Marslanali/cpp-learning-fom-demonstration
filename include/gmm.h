@@ -5,7 +5,7 @@
 #ifndef PROGRAMMING_BY_DEMONSTRATION_GMM_H
 #define PROGRAMMING_BY_DEMONSTRATION_GMM_H
 
-#include "/home/arslan/CLionProjects/cpp_learning_from_demonstration/include/mvn.h"
+#include "../include/mvn.h"
 #include <armadillo>
 #include <vector>
 

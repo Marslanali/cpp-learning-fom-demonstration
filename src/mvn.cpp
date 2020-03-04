@@ -16,7 +16,7 @@
  *
  */
 
-#include "/home/arslan/CLionProjects/cpp_learning_from_demonstration/include/mvn.h"
+#include "../include/mvn.h"
 
 vec GaussianDistribution::gaussPDF(const mat& _data, const colvec& _Mu, const mat& _Sigma)
 {
