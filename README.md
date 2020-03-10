@@ -65,32 +65,28 @@ make
 ```
 
 
------------------------
+
 <p align="center">
   <img src="plots/input_clock.jpg" width ="300" height="300"/>
   <br/>
   Fig. 1. Input Clock 
 </p>
 
------------------------
 
------------------------
 <p align="center">
-  <img src=""plots/input_data.jpg" width ="300" height="300""/>
+  <img src="plots/input_data.jpg" width ="300" height="300"/>
   <br/>
   Fig. 1. Input Data 
 </p>
 
------------------------
 
------------------------
 <p align="center">
   <img src="plots/centroids_gmm.jpg" width ="300" height="300"/>
   <br/>
   Fig. 1. GMM centroids
 </p>
 
------------------------
+
 
 
 
