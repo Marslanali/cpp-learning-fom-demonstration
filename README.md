@@ -64,6 +64,10 @@ cmake ..
 make
 ```
 
+![](plots/input_clock.jpg)
+
+
+
 ### Data for example code
 
 The data folder contains the test data which constitutes of 4 demonstrations. The collected demonstratiosn consists of cartesian trajectories of 3 DOF robot.
