@@ -66,24 +66,24 @@ make
 
 
 
-<p align="center">
+<p align="left">
   <img src="plots/input_clock.jpg" width ="300" height="300"/>
   <br/>
   Fig. 1. Input Clock 
 </p>
 
 
-<p align="center">
+<p align="right">
   <img src="plots/input_data.jpg" width ="300" height="300"/>
   <br/>
-  Fig. 1. Input Data 
+  Fig. 2. Input Data 
 </p>
 
 
-<p align="center">
+<p align="left">
   <img src="plots/centroids_gmm.jpg" width ="300" height="300"/>
   <br/>
-  Fig. 1. GMM centroids
+  Fig. 3. GMM centroids
 </p>
 
 
