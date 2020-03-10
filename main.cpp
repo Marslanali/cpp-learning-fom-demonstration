@@ -17,6 +17,7 @@
 #include <mlpack/methods/kmeans/kmeans.hpp>
 #include <sstream>
 #include <fstream>
+#include <memory>
 #include "include/datapoints.h"
 #include "emInitilization.h"
 #include "emInitilizationMlpack.h"
@@ -37,7 +38,8 @@ int main(int argc, char **argv)
 {
 
 
-    Datapoints* positionData = new Datapoints();
+    //Datapoints* positionData = new Datapoints();
+    std::shared_ptr<Datapoints> positionData = std::make_shared<Datapoints>();
 
     //Load dataset containing cartesian position of the robot
 
@@ -54,13 +56,13 @@ int main(int argc, char **argv)
 
     // Initial estimation of the parameters using kmeans algorithm
 
-    EmInitilizationMlpack* em_init_kmeans_mlpack = new EmInitilizationMlpack();
+    //EmInitilizationMlpack* em_init_kmeans_mlpack = new EmInitilizationMlpack();
+    std::shared_ptr<EmInitilizationMlpack> em_init_kmeans_mlpack = std::make_shared<EmInitilizationMlpack>();
     em_init_kmeans_mlpack->learnKmeansMlpack(positionData->getDataPoints(), nbStates);
 
     /*
      * print learned priors, means and covarainces matrices
      */
-
 
     std::cout<<"Priors Kmeans MLPACK :\n"<<em_init_kmeans_mlpack->getPriors().t()<<std::endl;
 
@@ -69,8 +71,6 @@ int main(int argc, char **argv)
 
     for (int k = 0; k < em_init_kmeans_mlpack->getSigma().size(); ++k)
         std::cout<<"Sigma Kmeans MLPACK:\n"<<em_init_kmeans_mlpack->getSigma()[k]<<std::endl;
-
-
 
     /*EM_Initilization em_init_kmeans;
     em_init_kmeans.learnKmeans(positionData.getDataPoints(), nbStates);
@@ -82,12 +82,12 @@ int main(int argc, char **argv)
 
     for (int k = 0; k < em_init_kmeans.getSigma().size(); ++k)
         std::cout<<"\n Sigma :\n "<<em_init_kmeans.getSigma()[k]<<std::endl;
-
 */
 
     // Final estimation of the parameters using gaussian mixture model
 
-    GMM* gmm = new GMM();
+    //GMM* gmm = new GMM();
+    std::shared_ptr<GMM> gmm = std::make_shared<GMM>();
     gmm->EM(positionData->getDataPoints(), em_init_kmeans_mlpack->getPriors(), em_init_kmeans_mlpack->getMu(), em_init_kmeans_mlpack->getSigma());
 
        std::cout<<"Final Priors are:\n"<<gmm->returnPriors()<<std::endl;
@@ -109,83 +109,74 @@ int main(int argc, char **argv)
 
     const span in(0);
     const span out(1, positionData->getNumVars() - 1);
-
     /**
      * computing GMR with time variable as input
      */
 
-    GMR* gmr = new GMR();
-    //gmr.Compute_GMR(gmm.returnPriors(), gmm.returnMu(), gmm.returnSigma(), clockSignal,in, out);
+    /*GMR* gmr = new GMR();
+    std::shared_ptr<GMR> gmr = std::make_shared<GMR>();
+    gmr.Compute_GMR(gmm.returnPriors(), gmm.returnMu(), gmm.returnSigma(), clockSignal,in, out);
 
     std::cout<<"Expected Mean: "<<gmr->returnExpectedMu()<<std::endl;
-    std::cout<<"Expected Mean Size: "<<size(gmr->returnExpectedMu())<<std::endl;
-
-
-
-
+    std::cout<<"Expected Mean Size: "<<size(gmr->returnExpectedMu())<<std::endl;*/
     std::ofstream filekmeans_mu("../plots/kmeans_mu.txt");
     std::ofstream filekmeans_sigma("../plots/kmeans_sigma.txt");
     std::ofstream fileGMM_mu("/../plots/gmm_mu.txt");
     std::ofstream fileGMM_sigma("../plots/gmm_sigma.txt");
+/*
     std::ofstream fileGMR_mu("../plots/gmr_mu.txt");
     std::ofstream fileGMR_sigma("../plots/gmr_sigma.txt");
-
-
-
+*/
 
     int dim = 2;
 
+    // save the current kmeans parameters
 
-//    // save the current kmeans parameters
-//
-//    std::ofstream fileKmeans("../data/kmeans/kmeans.txt");
-//    //file << 2 << " ";
-//    //file << nbStates << std::endl;
-//    for(int i=0;i<nbStates;i++)
-//        fileKmeans << em_init_kmeans_mlpack->getPriors()[i] << " ";
-//    fileKmeans << std::endl;
-//    for(int s=0;s<nbStates;s++) {
-//        for(int i=0;i<dim;i++) {
-//            fileKmeans << em_init_kmeans_mlpack->getMu()[s](i) << " ";
-//        }
-//        fileKmeans << std::endl;
-//    }
-//    for(int s=0;s<nbStates;s++) {
-//        for(int j=0;j<dim;j++) {
-//            for(int i=0;i<dim;i++) {
-//                fileKmeans << em_init_kmeans_mlpack->getSigma()[s](i,j) << " ";
-//            }
-//            fileKmeans << std::endl;
-//        }
-//    }
-//
-//
-//
-//
-//    // save the current gmm parameters
-//
-//    std::ofstream fileGMM("/home/arslan/CLionProjects/cpp_learning_from_demonstration/data/gmm/gmm.txt");
-//    //file << 2 << " ";
-//    //file << nbStates << std::endl;
-//    for(int i=0;i<nbStates;i++)
-//        fileGMM << gmm->returnPriors()[i] << " ";
-//    fileGMM << std::endl;
-//    for(int s=0;s<nbStates;s++) {
-//        for(int i=0;i<dim;i++) {
-//            fileGMM << gmm->returnMu()[s](i) << " ";
-//        }
-//        fileGMM << std::endl;
-//    }
-//    for(int s=0;s<nbStates;s++) {
-//        for(int j=0;j<dim;j++) {
-//            for(int i=0;i<dim;i++) {
-//                fileGMM << gmm->returnSigma()[s](i,j) << " ";
-//            }
-//            fileGMM << std::endl;
-//        }
-//    }
-//
-//
+    std::ofstream fileKmeans("../data/kmeans/kmeans.txt");
+    //file << 2 << " ";
+    //file << nbStates << std::endl;
+    for(int i=0;i<nbStates;i++)
+        fileKmeans << em_init_kmeans_mlpack->getPriors()[i] << " ";
+    fileKmeans << std::endl;
+    for(int s=0;s<nbStates;s++) {
+        for(int i=0;i<dim;i++) {
+            fileKmeans << em_init_kmeans_mlpack->getMu()[s](i) << " ";
+        }
+        fileKmeans << std::endl;
+    }
+    for(int s=0;s<nbStates;s++) {
+        for(int j=0;j<dim;j++) {
+            for(int i=0;i<dim;i++) {
+                fileKmeans << em_init_kmeans_mlpack->getSigma()[s](i,j) << " ";
+            }
+            fileKmeans << std::endl;
+        }
+    }
+
+
+    // save the current gmm parameters
+    std::ofstream fileGMM("../data/gmm/gmm.txt");
+    //file << 2 << " ";
+    //file << nbStates << std::endl;
+    for(int i=0;i<nbStates;i++)
+        fileGMM << gmm->returnPriors()[i] << " ";
+    fileGMM << std::endl;
+    for(int s=0;s<nbStates;s++) {
+        for(int i=0;i<dim;i++) {
+            fileGMM << gmm->returnMu()[s](i) << " ";
+        }
+        fileGMM << std::endl;
+    }
+    for(int s=0;s<nbStates;s++) {
+        for(int j=0;j<dim;j++) {
+            for(int i=0;i<dim;i++) {
+                fileGMM << gmm->returnSigma()[s](i,j) << " ";
+            }
+            fileGMM << std::endl;
+        }
+    }
+
+
 //    // save the current gmr parameters
 //
 //    std::ofstream fileGMR("/home/arslan/CLionProjects/cpp_learning_from_demonstration/data/gmr/gmr.txt");
@@ -207,70 +198,69 @@ int main(int argc, char **argv)
 //    }
 //
 //
-//
-//    std::vector<double> time, positionX, positionY, positionZ;
-//    std::vector<double>  px, py, pz;
-//    std::vector<double>  plotClock;
-//
-//
-//    for (int i = 0; i <positionData->getNumPoints() ; ++i)
-//    {
-//
-//        // time.push_back(positionData.getDataPoints()(0,i));
-//        positionX.push_back(positionData->getDataPoints()(0,i));
-//        positionY.push_back(positionData->getDataPoints()(1,i));
-//        //  positionZ.push_back(positionData.getDataPoints()(3,i));
-//
-//    }
-//
-//    for (int i = 0; i <gmr->returnExpectedMu().n_cols ; ++i)
-//    {
-//        px.push_back(gmr->returnExpectedMu()(0,i));
-//        py.push_back(gmr->returnExpectedMu()(1,i));
-//        //pz.push_back(gmr.returnExpectedMu()(2,i));
-//    }
-//
-//
-//    for (int i = 0; i <positionData->getNumPoints() ; ++i)
-//        plotClock.push_back(clockSignal(0,i));
-//
-//    plt::figure();
-//    plt::plot(plotClock);
-//    plt::save("/home/arslan/CLionProjects/cpp_learning_from_demonstration/plots/input_clock.jpg");
-//    plt::show();
-//
-//    std::vector <double> x,y;
-//
-//    for (int i = 0; i <nbStates ; ++i) {
-//        x.push_back(gmm->returnMu()[i](0));
-//        y.push_back(gmm->returnMu()[i](1));
-//    }
-//
-//    plt::figure();
-//    plt::stem(x,y,".*");
-//    plt::save("/home/arslan/CLionProjects/cpp_learning_from_demonstration/plots/centroids_gmm.jpg");
-//    plt::show();
-//
-//    plt::plot(positionX,positionY,"red");
-//    plt::save("/home/arslan/CLionProjects/cpp_learning_from_demonstration/plots/input_data.jpg");
-//    plt::show();
-//
-//    plt::figure();
-//    plt::subplot(2,1,1);
-//    //plt::plot(time,"red");
-//    // plt::subplot(2,2,2);
-//    plt::plot(positionX,"red");
-//    plt::subplot(2,1,2);
-//    plt::plot(positionY,"red");
-//    //plt::subplot(2,2,4);
-//    //plt::plot(positionZ,"red");
-//    plt::show();
-//
-//
-//    delete positionData;
-////    delete em_init_kmeans_mlpack;
-////    delete gmm, gmr;
-////
-//
+
+    std::vector<double> time, positionX, positionY, positionZ;
+    std::vector<double>  px, py, pz;
+    std::vector<double>  plotClock;
+
+
+    for (int i = 0; i <positionData->getNumPoints() ; ++i)
+    {
+
+        // time.push_back(positionData.getDataPoints()(0,i));
+        positionX.push_back(positionData->getDataPoints()(0,i));
+        positionY.push_back(positionData->getDataPoints()(1,i));
+        //  positionZ.push_back(positionData.getDataPoints()(3,i));
+
+    }
+
+ /*   for (int i = 0; i <gmr->returnExpectedMu().n_cols ; ++i)
+    {
+        px.push_back(gmr->returnExpectedMu()(0,i));
+        py.push_back(gmr->returnExpectedMu()(1,i));
+        //pz.push_back(gmr.returnExpectedMu()(2,i));
+    }
+*/
+
+    for (int i = 0; i <positionData->getNumPoints() ; ++i)
+        plotClock.push_back(clockSignal(0,i));
+
+    plt::figure();
+    plt::plot(plotClock);
+    plt::save("../plots/input_clock.jpg");
+    plt::show();
+
+    std::vector <double> x,y;
+
+    for (int i = 0; i <nbStates ; ++i) {
+        x.push_back(gmm->returnMu()[i](0));
+        y.push_back(gmm->returnMu()[i](1));
+    }
+
+    plt::figure();
+    plt::stem(x,y,".*");
+    plt::save("../plots/centroids_gmm.jpg");
+    plt::show();
+
+    plt::plot(positionX,positionY,"red");
+    plt::save("../plots/input_data.jpg");
+    plt::show();
+
+    plt::figure();
+    plt::subplot(2,1,1);
+    //plt::plot(time,"red");
+    // plt::subplot(2,2,2);
+    plt::plot(positionX,"red");
+    plt::subplot(2,1,2);
+    plt::plot(positionY,"red");
+    //plt::subplot(2,2,4);
+    //plt::plot(positionZ,"red");
+    plt::show();
+
+/*    delete positionData;
+    delete em_init_kmeans_mlpack;
+    delete gmm, gmr;*/
+
+
     return 0;
 }
