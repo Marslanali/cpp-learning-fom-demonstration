@@ -68,13 +68,10 @@ make
 
 <p align="left">
   <img src="plots/input_clock.jpg" width ="300" height="300"/>
- <br/>
   Fig. 1. Input Clock
   <img src="plots/input_data.jpg" width ="300" height="300"/>
- <br/>
   Fig. 2. Input Data
   <img src="plots/centroids_gmm.jpg" width ="250" height="250"/>
-  <br/>
   Fig. 3. GMM Centroids 
 </p>
 
