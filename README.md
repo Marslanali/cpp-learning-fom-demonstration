@@ -64,15 +64,16 @@ cmake ..
 make
 ```
 
-<img src="plots/input_clock.jpg" width ="100", height="30">
-
+<img src="plots/input_clock.jpg" width ="50", height="30">
+<img src="plots/input_data.jpg" width ="50", height="30">
+<img src="plots/centroids_gmm.jpg" width ="50", height="30">
 ![](plots/input_clock.jpg )
 
-<img src="plots/input_data.jpg" width ="100", height="30">
+
 
 ![](plots/input_data.jpg)
 
-<img src="plots/centroids_gmm.jpg" width ="100", height="30">
+
 
 ![](plots/centroids_gmm.jpg)
 
