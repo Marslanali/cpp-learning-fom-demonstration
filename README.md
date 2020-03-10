@@ -64,9 +64,9 @@ cmake ..
 make
 ```
 
-<img src="plots/input_clock.jpg" width ="100" height="100">
-<img src="plots/input_data.jpg" width ="100" height="100">
-<img src="plots/centroids_gmm.jpg" width ="100" height="100">
+<img src="plots/input_clock.jpg" width ="300" height="300">
+<img src="plots/input_data.jpg" width ="300" height="300">
+<img src="plots/centroids_gmm.jpg" width ="300" height="300">
 
 ![](plots/input_clock.jpg )
 
