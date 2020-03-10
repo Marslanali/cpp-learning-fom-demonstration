@@ -71,10 +71,15 @@ make
   <img src="plots/input_data.jpg" width ="300" height="300"/>
   <img src="plots/centroids_gmm.jpg" width ="300" height="300"/>
   <br/>
-  Fig. 1. Input Clock, Input Data, and GMM Centroids
+  Fig. 1. Input Clock and Input Data
 </p>
 
 
+<p align="left">
+  <img src="plots/centroids_gmm.jpg" width ="270" height="300"/>
+  <br/>
+  Fig. 2. GMM Centroids
+</p>
 
 
 ### Data for example code
