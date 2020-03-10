@@ -64,16 +64,44 @@ cmake ..
 make
 ```
 
-<img src="plots/input_clock.jpg" width ="300" height="300">
-<img src="plots/input_data.jpg" width ="300" height="300">
-<img src="plots/centroids_gmm.jpg" width ="300" height="300">
-
-![](plots/input_clock.jpg )
+#<img src="plots/input_clock.jpg" width ="300" height="300">
+#<img src="plots/input_data.jpg" width ="300" height="300">
+#<img src="plots/centroids_gmm.jpg" width ="300" height="300">
 
 
-![](plots/input_data.jpg)
+-----------------------
+<p align="center">
+  <img src="plots/input_clock.jpg" width ="300" height="300"/>
+  <br/>
+  Fig. 1. Input Clock 
+</p>
 
-![](plots/centroids_gmm.jpg)
+-----------------------
+
+-----------------------
+<p align="center">
+  <img src=""plots/input_data.jpg" width ="300" height="300""/>
+  <br/>
+  Fig. 1. Input Data 
+</p>
+
+-----------------------
+
+-----------------------
+<p align="center">
+  <img src="plots/centroids_gmm.jpg" width ="300" height="300"/>
+  <br/>
+  Fig. 1. GMM centroids
+</p>
+
+-----------------------
+
+#![](plots/input_clock.jpg )
+
+
+#![](plots/input_data.jpg)
+
+#![](plots/centroids_gmm.jpg)
 
 
 ### Data for example code
