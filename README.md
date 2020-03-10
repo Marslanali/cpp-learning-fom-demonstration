@@ -67,17 +67,18 @@ make
 
 
 <p align="left">
-  <img src="plots/input_clock.jpg" width ="300" height="300"/>
-  <img src="plots/input_data.jpg" width ="300" height="300"/>
+  <img src="plots/input_data_2D.jpg" width ="300" height="300"/>
+  <img src="plots/input_data_1D.jpg" width ="300" height="300"/>
   <br/>
-  Fig. 1. Input Clock and Input Data
+  Fig. 1. Input Data
 </p>
 
 
 <p align="left">
+  <img src="plots/input_clock.jpg" width ="300" height="300"/>
   <img src="plots/centroids_gmm.jpg" width ="300" height="300"/>
   <br/>
-  Fig. 2. GMM Centroids
+  Fig. 2. Input Clock and, GMM Centroids
 </p>
 
 

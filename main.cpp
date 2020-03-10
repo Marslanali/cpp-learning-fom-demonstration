@@ -25,7 +25,7 @@
 #include "include/gmm.h"
 #include "include/gmr.h"
 
-#define nbStates 4
+#define nbStates 30
 #define nbVar 4
 #define nbData 200
 
@@ -227,6 +227,7 @@ int main(int argc, char **argv)
 
     plt::figure();
     plt::plot(plotClock);
+    plt::title("Input clock");
     plt::save("../plots/input_clock.jpg");
     plt::show();
 
@@ -238,12 +239,14 @@ int main(int argc, char **argv)
     }
 
     plt::figure();
+    plt::title("GMM centroids");
     plt::stem(x,y,".*");
     plt::save("../plots/centroids_gmm.jpg");
     plt::show();
 
     plt::plot(positionX,positionY,"red");
-    plt::save("../plots/input_data.jpg");
+    plt::title("2-D Input data");
+    plt::save("../plots/input_data_2D.jpg");
     plt::show();
 
     plt::figure();
@@ -251,8 +254,11 @@ int main(int argc, char **argv)
     //plt::plot(time,"red");
     // plt::subplot(2,2,2);
     plt::plot(positionX,"red");
+    plt::title("Input data, x-axis position");
     plt::subplot(2,1,2);
     plt::plot(positionY,"red");
+    plt::title("Input data, y-axis position" );
+    plt::save("../plots/input_data_1D.jpg");
     //plt::subplot(2,2,4);
     //plt::plot(positionZ,"red");
     plt::show();
