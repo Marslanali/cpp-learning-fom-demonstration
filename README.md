@@ -64,10 +64,9 @@ cmake ..
 make
 ```
 
-<img src="plots/input_clock.jpg" width ="20", height="20">
-<img src="plots/input_data.jpg" width ="20", height="20">
-<img src="plots/centroids_gmm.jpg" width ="20", height="20">
-
+<img src="plots/input_clock.jpg" width ="20" height="20">
+<img src="plots/input_data.jpg" width ="20" height="20">
+<img src="plots/centroids_gmm.jpg" width ="20" height="20">
 
 
 
