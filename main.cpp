@@ -25,7 +25,7 @@
 #include "include/gmm.h"
 #include "include/gmr.h"
 
-#define nbStates 30
+#define nbStates 50
 #define nbVar 4
 #define nbData 200
 

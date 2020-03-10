@@ -67,8 +67,8 @@ make
 
 
 <p align="left">
-  <img src="plots/input_data_2D.jpg" width ="300" height="300"/>
-  <img src="plots/input_data_1D.jpg" width ="300" height="300"/>
+   <img src="plots/input_data_1D.jpg" width ="300" height="300"/>  
+   <img src="plots/input_data_2D.jpg" width ="300" height="300"/>
   <br/>
   Fig. 1. Input Data
 </p>
