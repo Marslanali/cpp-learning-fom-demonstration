@@ -64,10 +64,6 @@ cmake ..
 make
 ```
 
-#<img src="plots/input_clock.jpg" width ="300" height="300">
-#<img src="plots/input_data.jpg" width ="300" height="300">
-#<img src="plots/centroids_gmm.jpg" width ="300" height="300">
-
 
 -----------------------
 <p align="center">
@@ -96,12 +92,6 @@ make
 
 -----------------------
 
-#![](plots/input_clock.jpg )
-
-
-#![](plots/input_data.jpg)
-
-#![](plots/centroids_gmm.jpg)
 
 
 ### Data for example code
@@ -114,5 +104,7 @@ For reference please check the following papers.
 
 https://ieeexplore.ieee.org/document/4126276/
 
+Author:
+_Arslan Ali_
 
 If you face any difficulty, feel free to drop an email at arslanali800@hotmail.com
