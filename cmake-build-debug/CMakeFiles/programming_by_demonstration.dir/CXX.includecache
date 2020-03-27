@@ -28,12 +28,6 @@ fstream
 vector
 -
 
-/home/arslanali/CLionProjects/cpp_learning_from_demonstration/include/emInitilization.h
-armadillo
--
-vector
--
-
 /home/arslanali/CLionProjects/cpp_learning_from_demonstration/include/emInitilizationMlpack.h
 mlpack/methods/kmeans/kmeans.hpp
 -
@@ -118,16 +112,6 @@ include/gmm.h
 include/gmr.h
 /home/arslanali/CLionProjects/cpp_learning_from_demonstration/include/gmr.h
 
-/home/arslanali/CLionProjects/cpp_learning_from_demonstration/src/datapoints.cpp
-../include/datapoints.h
-/home/arslanali/CLionProjects/cpp_learning_from_demonstration/include/datapoints.h
-
-/home/arslanali/CLionProjects/cpp_learning_from_demonstration/src/demonstrations.cpp
-
-/home/arslanali/CLionProjects/cpp_learning_from_demonstration/src/emInitilization.cpp
-../include/emInitilization.h
-/home/arslanali/CLionProjects/cpp_learning_from_demonstration/include/emInitilization.h
-
 /home/arslanali/CLionProjects/cpp_learning_from_demonstration/src/emInitilizationMlpack.cpp
 ../include/emInitilizationMlpack.h
 /home/arslanali/CLionProjects/cpp_learning_from_demonstration/include/emInitilizationMlpack.h
@@ -145,10 +129,6 @@ iostream
 -
 fstream
 -
-
-/home/arslanali/CLionProjects/cpp_learning_from_demonstration/src/mvn.cpp
-../include/mvn.h
-/home/arslanali/CLionProjects/cpp_learning_from_demonstration/include/mvn.h
 
 /usr/include/python2.7/Python.h
 patchlevel.h

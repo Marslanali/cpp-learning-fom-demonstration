@@ -81,8 +81,8 @@ void GMM::EM(const  arma::Mat<double>& _data,  const arma::Col<double>& _priors,
             //Update the centers
             mu[i] = data * pix( arma::span::all, i) / E[i];
             // update the covariance matrices
-             arma::Mat<double> Data_tmp1 = data - repmat(mu[i], 1, nb_data_points);
-            sigma[i] = (repmat(pix( arma::span::all, i).t(), nb_vars, 1) % Data_tmp1 * Data_tmp1.t()) / E[i];
+             arma::Mat<double> data_tmp1 = data - repmat(mu[i], 1, nb_data_points);
+            sigma[i] = (repmat(pix( arma::span::all, i).t(), nb_vars, 1) % data_tmp1 * data_tmp1.t()) / E[i];
             // Add a tiny variance to avoid numerical instability
             sigma[i] = sigma[i] +  arma::eye(data.n_rows, data.n_rows) * diag_reg_fact;
 

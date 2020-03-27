@@ -18,12 +18,12 @@
 
 #include "../include/emInitilizationMlpack.h"
 
-void EmInitilizationMlpack::learn_kmean_mlpack(const  arma::Mat<double>& _data, uint _nbStates)
+void EmInitilizationMlpack::learn_kmean_mlpack(const  arma::Mat<double>& _data, uint _nb_states)
 {
     // The dataset we are clustering.
     data = _data;
 
-    nb_states = _nbStates;
+    nb_states = _nb_states;
     nb_vars = _data.n_rows;
     nb_data_points = _data.n_cols;
 
