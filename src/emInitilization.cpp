@@ -3,41 +3,41 @@
 //
 
 #include "../include/emInitilization.h"
-void EmInitilization::learnKmeans(const mat& _data, uint _nbStates)
+void EmInitilization::learn_kmeans(const  arma::Mat<double>& _data, uint _nb_states)
 {
     data = _data;
-    nbStates = _nbStates;
+    nb_states = _nb_states;
 
-    nbVars = data.n_rows;
-    nbDataPoints = data.n_cols;
+    nb_vars = data.n_rows;
+    nb_data_points = data.n_cols;
 
     // Initialization of Gaussian Mixture Model (GMM) parameters by clustering
     // the data into equal bins based on the first variable (time steps).
     const float diag_reg_fact = 1e-4f;
 
-    vec timing_sep = linspace<vec>(data(0, 0), data(0, data.n_cols - 1), nbStates + 1);
+    arma::Col<double> timing_sep = arma::linspace<arma::Col<double>>(data(0, 0), data(0, data.n_cols - 1), nb_states + 1);
     std::cout<<"Timming_sep: "<<timing_sep<<std::endl;
-    Mu.clear();
-    Sigma.clear();
-    priors = vec(nbStates);
+    mu.clear();
+    sigma.clear();
+    priors = arma::Col<double>(nb_states);
 
 
-    for (unsigned int i = 0; i < nbStates; ++i)
+    for (unsigned int i = 0; i < nb_states; ++i)
     {
-        uvec idtmp = find( (data(0, span::all) >= timing_sep(i)) && (data(0, span::all) < timing_sep(i + 1)) );
+        arma::Col<arma::uword> idtmp = find( (data(0, arma::span::all) >= timing_sep(i)) && (data(0, arma::span::all) < timing_sep(i + 1)) );
 
         //std::cout<<"\ndata ids: \n"<< i<<std::endl;
 
         priors(i) = idtmp.size();
-        Mu.push_back(mean(data.cols(idtmp), 1));
+        mu.push_back(mean(data.cols(idtmp), 1));
         std::cout<<"Data Cols: "<<data.cols(idtmp).t()<<std::endl;
 
-        mat sigma = cov(data.cols(idtmp).t(), data.cols(idtmp).t());
-        std::cout<<"Sigma: "<<sigma<<std::endl;
+        arma::Mat<double> sigma_tmp = cov(data.cols(idtmp).t(), data.cols(idtmp).t());
+        std::cout<<"Sigma: "<<sigma_tmp<<std::endl;
         // Optional regularization term to avoid numerical instability
-       // sigma = sigma + eye(nbVars, nbVars) * diag_reg_fact;
+       // sigma = sigma + eye(nb_vars, nb_vars) * diag_reg_fact;
 
-        Sigma.push_back(sigma);
+        sigma.push_back(sigma_tmp);
     }
 
 
@@ -47,21 +47,21 @@ void EmInitilization::learnKmeans(const mat& _data, uint _nbStates)
 }
 
 
-vec EmInitilization::getPriors()
+arma::Col<double> EmInitilization::get_priors()
 {
     return priors;
 
 }
 
-std::vector<vec> EmInitilization::getMu()
+std::vector<arma::Col<double>> EmInitilization::get_mu()
 {
-    return Mu;
+    return mu;
 
 }
 
-std::vector <mat> EmInitilization::getSigma()
+std::vector < arma::Mat<double>> EmInitilization::get_sigma()
 {
-    return Sigma;
+    return sigma;
 }
 
 /*

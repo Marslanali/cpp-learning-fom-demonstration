@@ -11,15 +11,15 @@
    o _data:    D x N array representing N datapoints of D dimensions.
    o _priors: 1 x K array representing the initial prior probabilities
               of the K GMM components.
-   o _Mu:     D x K array representing the initial centers of the K GMM
+   o _mu:     D x K array representing the initial centers of the K GMM
               components.
-   o _Sigma:  D x D x K array representing the initial covariance matrices
+   o _sigma:  D x D x K array representing the initial covariance matrices
               of the K GMM components.
  Outputs ----------------------------------------------------------------
    o Priors:  1 x K array representing the prior probabilities of the K GMM
               components.
-   o Mu:      D x K array representing the centers of the K GMM components.
-   o Sigma:   D x D x K array representing the covariance matrices of the
+   o mu:      D x K array representing the centers of the K GMM components.
+   o sigma:   D x D x K array representing the covariance matrices of the
               K GMM components.
 
 */
@@ -27,15 +27,15 @@
 #include "../include/gmm.h"
 #include <iostream>
 
-void GMM::EM(const mat& _data,  const colvec& _priors, const std::vector<vec>& _Mu, const std::vector<mat>& _Sigma)
+void GMM::EM(const  arma::Mat<double>& _data,  const arma::Col<double>& _priors, const std::vector<arma::Col<double>>& _mu, const std::vector< arma::Mat<double>>& _sigma)
 {
-    nbVars = _data.n_rows;
-    nbDataPoints = _data.n_cols;
-    nbStates = _Sigma.size();
+    nb_vars = _data.n_rows;
+    nb_data_points = _data.n_cols;
+    nb_states = _sigma.size();
 
     data = _data;
-    Mu = _Mu;
-    Sigma = _Sigma;
+    mu = _mu;
+    sigma = _sigma;
     priors = _priors;
 
 
@@ -50,54 +50,54 @@ void GMM::EM(const mat& _data,  const colvec& _priors, const std::vector<vec>& _
     // to stop the algorithm
     std::vector<double> log_likelihoods;
 
-    int stepsCount=0;
+    int count_steps=0;
 
     for (int iter = 0; iter < nb_max_steps; ++iter)
     {
-        stepsCount += 1;
+        count_steps += 1;
         //******************E-STEP************************************
-        mat pxi = zeros(nbDataPoints, nbStates);
+        arma::Mat<double> pxi =  arma::zeros(nb_data_points, nb_states);
 
-        for (int i = 0; i < nbStates; ++i)
+        for (int i = 0; i < nb_states; ++i)
         {
             //Compute probability p(x|i)
-            pxi(span::all, i) = pdf.gaussPDF(data, Mu[i], Sigma[i]);
+            pxi( arma::span::all, i) = pdf.gausspdf_vec(data, mu[i], sigma[i]);
             //std::cout<<"\nPxi\n"<<pxi<<std::endl;
 
         }
         //Compute posterior probability p(i|x)
-        mat pix_tmp = repmat(priors.t(), nbDataPoints, 1) % pxi;
-        mat pix = pix_tmp / repmat(sum(pix_tmp, 1), 1, nbStates);
+        arma::Mat<double> pix_tmp = repmat(priors.t(), nb_data_points, 1) % pxi;
+        arma::Mat<double> pix = pix_tmp / repmat(sum(pix_tmp, 1), 1, nb_states);
         //compute cumulated posterior probability
-        mat E = sum(pix,0);
+        arma::Mat<double> E = sum(pix,0);
 
 
         //*********************************M-Step***************************************
 
-        for (int i = 0; i < nbStates; ++i)
+        for (int i = 0; i < nb_states; ++i)
         {
             //Update the priors
-            priors[i] = E[i] / nbDataPoints;
+            priors[i] = E[i] / nb_data_points;
             //Update the centers
-            Mu[i] = data * pix(span::all, i) / E[i];
+            mu[i] = data * pix( arma::span::all, i) / E[i];
             // update the covariance matrices
-            mat Data_tmp1 = data - repmat(Mu[i], 1, nbDataPoints);
-            Sigma[i] = (repmat(pix(span::all, i).t(), nbVars, 1) % Data_tmp1 * Data_tmp1.t()) / E[i];
+             arma::Mat<double> Data_tmp1 = data - repmat(mu[i], 1, nb_data_points);
+            sigma[i] = (repmat(pix( arma::span::all, i).t(), nb_vars, 1) % Data_tmp1 * Data_tmp1.t()) / E[i];
             // Add a tiny variance to avoid numerical instability
-            Sigma[i] = Sigma[i] + eye(data.n_rows, data.n_rows) * diag_reg_fact;
+            sigma[i] = sigma[i] +  arma::eye(data.n_rows, data.n_rows) * diag_reg_fact;
 
         }
 
         // EM stopping criteria
-        mat L = zeros(nbStates, data.n_cols);
+        arma::Mat<double> L =  arma::zeros(nb_states, data.n_cols);
 
-        for (int i = 0; i < nbStates; ++i)
+        for (int i = 0; i < nb_states; ++i)
         {
-            L(i, span::all) = priors(i) * mat(pdf.gaussPDF(data, Mu[i], Sigma[i])).t();
+            L(i,  arma::span::all) = priors(i) *  arma::Mat<double>(pdf.gausspdf_vec(data, mu[i], sigma[i])).t();
         }
 
         // Compute average log-likelihood
-        log_likelihoods.push_back(vec(sum(log(sum(L, 0)), 1))[0] / data.n_cols);
+        log_likelihoods.push_back(arma::Col<double>(sum(log(sum(L, 0)), 1))[0] / data.n_cols);
 
         // Stop the algorithm if EM converged (small change of log-likelihood)
         if (iter >= nb_min_steps)
@@ -109,22 +109,22 @@ void GMM::EM(const mat& _data,  const colvec& _priors, const std::vector<vec>& _
 
     }
 
-   // std::cout<<"Total EM Steps are: "<<stepsCount<<std::endl;
+   // std::cout<<"Total EM Steps are: "<<count_steps<<std::endl;
 
 }
 
 
-colvec GMM::returnPriors()
+arma::Col<double> GMM::return_priors()
 {
     return priors;
 }
 
-std::vector<vec> GMM::returnMu()
+std::vector<arma::Col<double>> GMM::return_mu()
 {
-    return Mu;
+    return mu;
 }
 
-std::vector<mat> GMM::returnSigma()
+std::vector< arma::Mat<double>> GMM::return_sigma()
 {
-    return Sigma;
+    return sigma;
 }

@@ -12,28 +12,26 @@ using namespace mlpack::kmeans;
 #include <vector>
 
 
-using namespace arma;
-
 class EmInitilizationMlpack
 {
 private:
-    mat data;
-    uint nbStates;
-    uint nbVars;
-    uint nbDataPoints;
+    arma::Mat<double> data;
+    uint nb_states;
+    uint nb_vars;
+    uint nb_data_points;
 
-    std::vector<vec> Mu;
-    std::vector<mat> Sigma;
-    colvec Priors;
+    std::vector<arma::Col<double>> mu;
+    std::vector< arma::Mat<double>> sigma;
+    arma::Col<double> priors;
 
 public:
 
-    void learnKmeansMlpack(const mat& _data, uint _nbStates);
-    void saveParamskmeans(const char filename []);
+    void learn_kmean_mlpack(const  arma::Mat<double>& _data, uint _nb_states);
+    void save_kmean_parm(const char file_name []);
 
-    colvec getPriors();
-    std::vector<vec> getMu();
-    std::vector<mat> getSigma();
+    arma::Col<double> get_priors();
+    std::vector<arma::Col<double>> get_mu();
+    std::vector< arma::Mat<double>> get_sigma();
 
 };
 

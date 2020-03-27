@@ -5,54 +5,54 @@
 
 #include "../include/datapoints.h"
 
-Datapoints::Datapoints(uint _nbVars, uint _nbPoints)
+Datapoints::Datapoints(uint _nb_vars, uint _nb_points)
 {
-    nbVars = _nbVars;
-    nbPoints = _nbPoints;
-    data = zeros(_nbVars, _nbPoints);
+    nb_vars = _nb_vars;
+    nb_points = _nb_points;
+    data = arma::zeros(_nb_vars, _nb_points);
 }
 
 
-mat Datapoints::getDataPoints()
+arma::Mat<double> Datapoints::get_data_points()
 {
     return data;
 }
 
-uint Datapoints::getNumVars()
+uint Datapoints::get_num_vars()
 {
-    return nbVars;
+    return nb_vars;
 }
 
-uint Datapoints::getNumPoints()
+uint Datapoints::get_num_points()
 {
-    return nbPoints;
+    return nb_points;
 }
 
-std::vector <std::string> Datapoints::getVarNames()
+std::vector <std::string> Datapoints::get_var_names()
 {
 
 }
 
-void Datapoints::setData(const mat& _data)
+void Datapoints::set_data(const  arma::Mat<double>& _data)
 {
     data = _data;
-    nbVars = data.n_rows;
-    nbPoints = data.n_cols;
+    nb_vars = data.n_rows;
+    nb_points = data.n_cols;
 }
 
-void Datapoints::loadFromFile(std::string path, bool is_transpose)
+void Datapoints::load_from_file(std::string path, bool is_transpose)
 {
-    mat data;
+    arma::Mat<double> data;
     data.load(path,  arma::raw_ascii);
     if(is_transpose)
         data = data.t();
-    setData(data);
+    set_data(data);
 
 
 }
 
 
-void Datapoints::saveInFile(std::string path)
+void Datapoints::save_file(std::string path)
 {
-    data.save(path, raw_ascii);
+    data.save(path, arma::raw_ascii);
 }

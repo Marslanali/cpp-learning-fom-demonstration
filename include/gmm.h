@@ -9,31 +9,29 @@
 #include <armadillo>
 #include <vector>
 
-using namespace arma;
-
 class GMM
 {
 private:
-    uint nbVars;
-    uint nbStates;
-    uint nbDataPoints;
+    uint nb_vars;
+    uint nb_states;
+    uint nb_data_points;
 
-    mat data;
-    std::vector<vec> Mu;
-    std::vector<mat> Sigma;
-    colvec priors;
+    arma::Mat<double> data;
+    std::vector<arma::Col<double>> mu;
+    std::vector< arma::Mat<double> > sigma;
+    arma::Col<double> priors;
 
     const float diag_reg_fact = 1e-4f;
 
-    std::vector<GaussianDistribution> PDF;
+    std::vector<GaussianDistribution> pdf_vec;
     GaussianDistribution pdf;
 
 public:
 
-    void EM(const mat& _data,  const colvec& _priors, const std::vector<vec>& _Mu, const std::vector<mat>& _Sigma);
-    colvec returnPriors ();
-    std::vector<vec> returnMu();
-    std::vector<mat> returnSigma();
+    void EM(const  arma::Mat<double>& _data,  const arma::Col<double>& _priors, const std::vector<arma::Col<double>>& _mu, const std::vector<arma::Mat<double> >& _sigma);
+    arma::Col<double> return_priors ();
+    std::vector<arma::Col<double>> return_mu();
+    std::vector< arma::Mat<double> > return_sigma();
 
 
 };

@@ -10,22 +10,21 @@
 #include <vector>
 #include <cfloat>
 
-using namespace arma;
 
 class GaussianDistribution
 {
 private:
 
-    uint nbVars;
-    uint nbDataPoints;
+    uint nb_vars;
+    uint nb_data_points;
 
-    mat data;
-    colvec Mu;
-    mat Sigma;
+    arma::Mat<double> data;
+    arma::Col<double> mu;
+    arma::Mat<double> sigma;
 
 public:
 
-    vec gaussPDF(const mat& _data, const colvec& _Mu, const mat& _Sigma);
+    arma::Col<double> gausspdf_vec(const  arma::Mat<double>& _data, const arma::Col<double>& _mu, const  arma::Mat<double>& _sigma);
 
 };
 

@@ -4,46 +4,43 @@
 
 /**
  * This class implements kmeans clustering algorithm using C++ MLPACK Libraray
-
  Inputs -----------------------------------------------------------------
    o data:     D x N array representing N datapoints of D dimensions.
-   o nbStates: D representing the K GMM components.
-
+   o nb_states: D representing the K GMM components.
  Outputs ----------------------------------------------------------------
    o priors:  Q x N array representing the retrieved N datapoints of
               Q dimensions, i.e. expected means.
-   o Mu:      Q x Q x N array representing the N expected covariance
+   o mu:      Q x Q x N array representing the N expected covariance
               matrices retrieved.
-   o Sigma:   Q x Q x N array representing the N expected covariance
+   o sigma:   Q x Q x N array representing the N expected covariance
               matrices retrieved.
-
  */
 
 #include "../include/emInitilizationMlpack.h"
 
-void EmInitilizationMlpack::learnKmeansMlpack(const mat& _data, uint _nbStates)
+void EmInitilizationMlpack::learn_kmean_mlpack(const  arma::Mat<double>& _data, uint _nbStates)
 {
     // The dataset we are clustering.
     data = _data;
 
-    nbStates = _nbStates;
-    nbVars = _data.n_rows;
-    nbDataPoints = _data.n_cols;
+    nb_states = _nbStates;
+    nb_vars = _data.n_rows;
+    nb_data_points = _data.n_cols;
 
     // Initialization of Gaussian Mixture Model (GMM) parameters by clustering
     // the data into equal bins based on the first variable (time steps).
     const float diag_reg_fact = 1e-4f;
 
-    Mu.clear();
-    Sigma.clear();
-    Priors.clear();
+    mu.clear();
+    sigma.clear();
+    priors.clear();
 
     // The number of clusters we are getting.
-    size_t clusters = nbStates;
+    size_t clusters = nb_states;
     // The assignments will be stored in this vector.
-    Row <size_t> assignments;
+    arma::Row <size_t> assignments;
     // The centroids will be stored in this matrix.
-    Mat <double> centroids;
+    arma::Mat <double> centroids;
     // Initialize with the default arguments.
     KMeans<> k;
     k.Cluster(data, clusters, assignments, centroids);
@@ -51,99 +48,94 @@ void EmInitilizationMlpack::learnKmeansMlpack(const mat& _data, uint _nbStates)
     std::cout<<"Assignments:\n"<<assignments<<std::endl;
     std::cout<<"Centroids:\n"<<centroids<<std::endl;
 
-    uvec idtmp;
-    Col <double> priors (nbStates);
+    arma::Col<arma::uword> idtmp;
+    arma::Col <double> priors_tmp (nb_states);
 
-    for (int i = 0; i < nbStates; ++i)
-    Mu.push_back(centroids(span::all,i));
+    for (int i = 0; i < nb_states; ++i)
+        mu.push_back(centroids( arma::span::all,i));
 
-    for (int i = 0; i < nbStates; ++i)
+    for (int i = 0; i < nb_states; ++i)
     {
         idtmp = find(assignments==i);
         std::cout<<"\n IDTMP: \n "<<idtmp.n_elem<<std::endl;
-        priors(i) = idtmp.n_elem;
-        std::cout<<"\n KMEANS Priors: \n "<< priors(i)<<std::endl;
+        priors_tmp(i) = idtmp.n_elem;
+        std::cout<<"\n KMEANS priors: \n "<< priors_tmp(i)<<std::endl;
         std::cout<<"\n Data for specific Index: \n "<<data.cols(idtmp).t()<<std::endl;
 
-        mat sigma = cov(data.cols(idtmp).t());
-        std::cout<<"Covariances Matrices:\n"<<sigma<<std::endl;
+        arma::Mat<double> sigma_tmp = cov(data.cols(idtmp).t());
+        std::cout<<"Covariances Matrices:\n"<<sigma_tmp<<std::endl;
 
 /*
         try {
-
-            if(sigma.n_rows==nbVars && sigma.n_cols==nbVars)
+            if(sigma_tmp.n_rows==nb_vars && sigma_tmp.n_cols==nb_vars)
                 // Optional regularization term to avoid numerical instability
-                sigma = sigma + eye(nbVars, nbVars) * diag_reg_fact;
-
+                sigma_tmp = sigma_tmp + eye(nb_vars, nb_vars) * diag_reg_fact;
            else
-                throw "Something went wrong Sigma Error!!!!!!\n";
-
+                throw "Something went wrong sigma Error!!!!!!\n";
         }
-
         catch(char const * e) {
-            sigma = eye(nbVars, nbVars) * diag_reg_fact;
+            sigma_tmp = eye(nb_vars, nb_vars) * diag_reg_fact;
             cout << "Error message: " << e << endl;
         }
-
 */
 
-        if(sigma.n_rows==nbVars && sigma.n_cols==nbVars)
-                // Optional regularization term to avoid numerical instability
-                sigma = sigma + eye(nbVars, nbVars) * diag_reg_fact;
+        if(sigma_tmp.n_rows==nb_vars && sigma_tmp.n_cols==nb_vars)
+            // Optional regularization term to avoid numerical instability
+            sigma_tmp = sigma_tmp +  arma::eye(nb_vars, nb_vars) * diag_reg_fact;
 
 
         else {
-            std::cout << "\n Something went wrong Sigma Error!!!!!!\n" << std::endl;
-            sigma = eye(nbVars, nbVars) * diag_reg_fact;
+            std::cout << "\n Something went wrong sigma Error!!!!!!\n" << std::endl;
+            sigma_tmp =  arma::eye(nb_vars, nb_vars) * diag_reg_fact;
         }
 
-        Sigma.push_back(sigma);
+        sigma.push_back(sigma_tmp);
     }
 
-    Priors = priors / sum(priors);
-    // std::cout<<"Overall Priors:\n"<<priors<<std::endl;
-    //std::cout<<"Priors Sum:\n"<< sum(priors)<<std::endl;
+    priors = priors_tmp / sum(priors_tmp);
+    // std::cout<<"Overall priors:\n"<<priors_tmp<<std::endl;
+    //std::cout<<"priors Sum:\n"<< sum(priors_tmp)<<std::endl;
 
 }
 
 
-Col <double> EmInitilizationMlpack::getPriors()
+arma::Col <double> EmInitilizationMlpack::get_priors()
 {
-    return Priors;
+    return priors;
 
 }
 
-std::vector<vec> EmInitilizationMlpack::getMu()
+std::vector<arma::Col<double>> EmInitilizationMlpack::get_mu()
 {
-    return Mu;
+    return mu;
 
 }
 
-std::vector <mat> EmInitilizationMlpack::getSigma()
+std::vector < arma::Mat<double>> EmInitilizationMlpack::get_sigma()
 {
-    return Sigma;
+    return sigma;
 }
 
 
-void EmInitilizationMlpack::saveParamskmeans(const char filename [])
+void EmInitilizationMlpack::save_kmean_parm(const char filename [])
 {/*
     // save the current kmeans parameters, coefficents to a file, to be retrieved
     // by the loadParams method
     std::ofstream file(filename);
     file << dim << " ";
-    file << nbStates << std::endl;
-    for(int i=0;i<nbStates;i++) file << priors[i] << " ";
+    file << nb_states << std::endl;
+    for(int i=0;i<nb_states;i++) file << priors_tmp[i] << " ";
     file << std::endl;
-    for(int s=0;s<nbStates;s++) {
+    for(int s=0;s<nb_states;s++) {
         for(int i=0;i<dim;i++) {
             file << mu(s,i) << " ";
         }
         file << std::endl;
     }
-    for(int s=0;s<nbStates;s++) {
+    for(int s=0;s<nb_states;s++) {
         for(int j=0;j<dim;j++) {
             for(int i=0;i<dim;i++) {
-                file << sigma[s](i,j) << " ";
+                file << sigma_tmp[s](i,j) << " ";
             }
             file << std::endl;
         }

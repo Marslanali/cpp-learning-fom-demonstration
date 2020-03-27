@@ -38,7 +38,7 @@ int main()
     plt::legend();
 
     // save figure
-    const char* filename = "./basic.png";
-    std::cout << "Saving result to " << filename << std::endl;;
-    plt::save(filename);
+    const char* file_name = "./basic.png";
+    std::cout << "Saving result to " << file_name << std::endl;;
+    plt::save(file_name);
 }

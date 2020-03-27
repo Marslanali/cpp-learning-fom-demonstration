@@ -13,29 +13,29 @@
 #include <fstream>
 #include <vector>
 
-using namespace arma;
+
 
 class Datapoints
 {
 private:
-    uint nbVars;
-    uint nbPoints;
-    std::vector<std::string> varsNames;
-    mat data;
+    uint nb_vars;
+    uint nb_points;
+    std::vector<std::string> vars_names;
+    arma::Mat<double> data;
 
 public:
 
     Datapoints(){};
-    Datapoints( uint _nbVars , uint _nbPoints);
+    Datapoints( uint _nb_vars , uint _nb_points);
 
-    mat getDataPoints();
-    uint getNumPoints();
-    uint getNumVars();
-    std::vector <std::string> getVarNames();
+    arma::Mat<double> get_data_points();
+    uint get_num_points();
+    uint get_num_vars();
+    std::vector <std::string> get_var_names();
 
-    void setData(const mat& _data);
-    void loadFromFile(std::string path, bool is_transpose = false);
-    void saveInFile(std::string path);
+    void set_data(const  arma::Mat<double>& _data);
+    void load_from_file(std::string path, bool is_transpose = false);
+    void save_file(std::string path);
 };
 
 

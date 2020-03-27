@@ -1587,12 +1587,12 @@ inline void pause(Numeric interval)
     Py_DECREF(res);
 }
 
-inline void save(const std::string& filename)
+inline void save(const std::string& file_name)
 {
-    PyObject* pyfilename = PyString_FromString(filename.c_str());
+    PyObject* pyfile_name = PyString_FromString(file_name.c_str());
 
     PyObject* args = PyTuple_New(1);
-    PyTuple_SetItem(args, 0, pyfilename);
+    PyTuple_SetItem(args, 0, pyfile_name);
 
     PyObject* res = PyObject_CallObject(detail::_interpreter::get().s_python_function_save, args);
     if (!res) throw std::runtime_error("Call to save() failed.");

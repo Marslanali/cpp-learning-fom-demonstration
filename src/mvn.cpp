@@ -7,8 +7,8 @@
 
    Inputs -----------------------------------------------------------------
    o data:
-   o Mu:
-   o Sigma:
+   o mu:
+   o sigma:
 
   Outputs ----------------------------------------------------------------
    o prob:    N array representing the computed probability density function
@@ -18,19 +18,19 @@
 
 #include "../include/mvn.h"
 
-vec GaussianDistribution::gaussPDF(const mat& _data, const colvec& _Mu, const mat& _Sigma)
+arma::Col<double> GaussianDistribution::gausspdf_vec(const  arma::Mat<double>& _data, const arma::Col<double>& _mu, const  arma::Mat<double>& _sigma)
 {
 
     data = _data;
-    Mu = _Mu;
-    Sigma = _Sigma;
+    mu = _mu;
+    sigma = _sigma;
 
-    nbVars = data.n_rows;;
-    nbDataPoints = data.n_cols;
+    nb_vars = data.n_rows;;
+    nb_data_points = data.n_cols;
 
-    data = data.t() - repmat(Mu.t(), nbDataPoints,1);
-    vec prob = sum((data*inv(Sigma)) % data,1);
-    prob = exp(-0.5*prob) / sqrt(pow(2*datum::pi,nbVars) * det(Sigma) + DBL_MIN);
+    data = data.t() - repmat(mu.t(), nb_data_points,1);
+    arma::Col<double> prob = sum((data*inv(sigma)) % data,1);
+    prob = exp(-0.5*prob) / sqrt(pow(2* arma::datum::pi,nb_vars) * det(sigma) + DBL_MIN);
 
     return prob;
 

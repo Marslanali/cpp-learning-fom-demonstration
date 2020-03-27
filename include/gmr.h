@@ -9,31 +9,31 @@
 #include "../include/mvn.h"
 #include <armadillo>
 #include <vector>
-using namespace arma;
+
 
 class GMR
 {
 private:
-    uint nbVars;
-    uint nbStates;
-    uint nbDataPoints;
+    uint nb_vars;
+    uint nb_states;
+    uint nb_data_points;
 
 
-    colvec priors;
-    std::vector<vec> Mu;
-    std::vector<mat> Sigma;
-    mat x;  //clock signal as input
-    span in;
-    span out;
+    arma::Col<double> priors;
+    std::vector<arma::Col<double>> mu;
+    std::vector< arma::Mat<double> > sigma;
+    arma::Mat<double> x;  //clock signal as input
+    arma::span in;
+    arma::span out;
 
     GaussianDistribution pdf;
-    mat expectedMu;
+    arma::Mat<double> expected_mu;
 
 
 public:
 
-    void computeGmr ( const colvec& _priors, const std::vector<vec>& _Mu, const  std::vector<mat>& _Sigma, const mat& _x, span _in, span _out);
-    mat  returnExpectedMu();
+    void compute_gmr ( const arma::Col<double>& _priors, const std::vector<arma::Col<double>>& _Mu, const  std::vector< arma::Mat<double>>& _Sigma, const  arma::Mat<double>& _x, arma::span _in, arma::span _out);
+     arma::Mat<double>  return_expected_mu();
 
 
 

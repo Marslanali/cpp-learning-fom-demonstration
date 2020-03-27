@@ -8,28 +8,27 @@
 #include <armadillo>
 #include <vector>
 
-using namespace arma;
 
 class EmInitilization
 {
 private:
-    mat data;
-    uint nbStates;
+    arma::Mat<double> data;
+    uint nb_states;
 
-    uint nbVars;
-    uint nbDataPoints;
+    uint nb_vars;
+    uint nb_data_points;
 
-    std::vector<vec> Mu;
-    std::vector<mat> Sigma;
-    vec priors;
+    std::vector<arma::Col<double>> mu;
+    std::vector< arma::Mat<double>> sigma;
+    arma::Col<double> priors;
 
 public:
 
-    void learnKmeans(const mat& _data, uint _nbStates);
+    void learn_kmeans(const  arma::Mat<double>& _data, uint _nb_states);
 
-    vec getPriors();
-    std::vector<vec> getMu();
-    std::vector<mat> getSigma();
+    arma::Col<double> get_priors();
+    std::vector<arma::Col<double>> get_mu();
+    std::vector< arma::Mat<double>> get_sigma();
 
 };
 
