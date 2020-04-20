@@ -1,10 +1,8 @@
 # cpp_learning_from_demonstration
 
-This repositroy is C++ implementation of learning from demonstration/Imitation Learning.
+C++ implementation of multi degrees of freedom trajectory learning using gaussian mixture model and gaussian mixture regression.
 
 ### Prerequisite
-
-This project was buit using CLion with Cmake build system and tested on Ubuntu 16.04.
 
 The program requires:
 
@@ -95,4 +93,4 @@ https://ieeexplore.ieee.org/document/4126276/
 Author:
 _Arslan Ali_
 
-If you face any difficulty, feel free to drop an email at arslanali800@hotmail.com
+
