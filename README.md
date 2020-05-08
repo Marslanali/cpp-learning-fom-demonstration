@@ -1,4 +1,4 @@
-# cpp_learning_from_demonstration
+# 🚧 cpp_learning_from_demonstration 🚧
 
 C++ implementation of multi degrees of freedom trajectory learning using gaussian mixture model and gaussian mixture regression.
 
