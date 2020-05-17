@@ -1,3 +1,0 @@
-/home/arslanali/CLionProjects/cpp_learning_from_demonstration/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/arslanali/CLionProjects/cpp_learning_from_demonstration/cmake-build-debug/CMakeFiles/programming_by_demonstration.dir
-/home/arslanali/CLionProjects/cpp_learning_from_demonstration/cmake-build-debug/CMakeFiles/edit_cache.dir
