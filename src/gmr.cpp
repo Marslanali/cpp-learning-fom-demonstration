@@ -32,7 +32,9 @@
 #include <fstream>
 #include <iostream>
 
-void GMR::compute_gmr(const arma::Col<double>& _priors, const std::vector<arma::Col<double>>& _mu, const std::vector<arma::Mat<double>>& _sigma, const arma::Mat<double>& _x, arma::span _in, arma::span _out) {
+void GMR::compute_gmr(const arma::Col<double>& _priors, const std::vector<arma::Col<double>>& _mu,
+                      const std::vector<arma::Mat<double>>& _sigma, const arma::Mat<double>& _x, arma::span _in,
+                      arma::span _out) {
   nb_vars = _mu.size();
   nb_data_points = _x.n_cols;
   nb_states = _sigma.size();
@@ -66,7 +68,10 @@ void GMR::compute_gmr(const arma::Col<double>& _priors, const std::vector<arma::
     arma::Mat<double> sigma_tmp(1, 1);
     // std::cout<<"pdf_vec\n"<<pdf.gausspdf_vec(x, mu[i](in), sigma[i](in,in))<<std::endl;
     // pdf_vec = pdf.gausspdf_vec(x, mu[i](in), sigma[i](in,in));
-    pxi(arma::span::all, i) = priors(i) * pdf.gausspdf_vec(x, mu[i](in), sigma[i](in, in));  // Equation 1.1 ....Error element wise muliplication is not working
+    pxi(arma::span::all, i) =
+        priors(i) *
+        pdf.gausspdf_vec(x, mu[i](in),
+                         sigma[i](in, in));  // Equation 1.1 ....Error element wise muliplication is not working
   }
 
   // std::cout<<"Pxi\n"<<pxi<<std::endl;
@@ -79,7 +84,10 @@ void GMR::compute_gmr(const arma::Col<double>& _priors, const std::vector<arma::
   // Compute expected means y, given input x
   arma::Cube<double> y_tmp(nb_var_out, nb_data_points, nb_states);  // output, dataPoints, nb_states
 
-  for (int i = 0; i < nb_states; ++i) y_tmp.slice(i) = repmat(mu[i](out), 1, nb_data_points) + sigma[i](out, in) * inv(sigma[i](in, in)) * (x - repmat(mu[i](in), 1, nb_data_points));
+  for (int i = 0; i < nb_states; ++i) {
+    y_tmp.slice(i) = repmat(mu[i](out), 1, nb_data_points) +
+                     sigma[i](out, in) * inv(sigma[i](in, in)) * (x - repmat(mu[i](in), 1, nb_data_points));
+  }
 
   const arma::uword N = 1;
   const arma::uword num_rows = nb_data_points;

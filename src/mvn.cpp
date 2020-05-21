@@ -17,13 +17,14 @@
 
 #include "../include/mvn.h"
 
-arma::Col<double> GaussianDistribution::gausspdf_vec(const arma::Mat<double>& _data, const arma::Col<double>& _mu, const arma::Mat<double>& _sigma) {
+arma::Col<double> GaussianDistribution::gausspdf_vec(const arma::Mat<double>& _data, const arma::Col<double>& _mu,
+                                                     const arma::Mat<double>& _sigma) {
   data = _data;
   mu = _mu;
   sigma = _sigma;
 
   nb_vars = data.n_rows;
-  ;
+
   nb_data_points = data.n_cols;
 
   data = data.t() - repmat(mu.t(), nb_data_points, 1);

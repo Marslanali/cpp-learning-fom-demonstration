@@ -21,7 +21,8 @@ void EmInitilization::learn_kmeans(const arma::Mat<double>& _data, uint _nb_stat
   priors = arma::Col<double>(nb_states);
 
   for (unsigned int i = 0; i < nb_states; ++i) {
-    arma::Col<arma::uword> idtmp = find((data(0, arma::span::all) >= timing_sep(i)) && (data(0, arma::span::all) < timing_sep(i + 1)));
+    arma::Col<arma::uword> idtmp =
+        find((data(0, arma::span::all) >= timing_sep(i)) && (data(0, arma::span::all) < timing_sep(i + 1)));
 
     // std::cout<<"\ndata ids: \n"<< i<<std::endl;
 

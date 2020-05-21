@@ -20,7 +20,8 @@ class GaussianDistribution {
   arma::Mat<double> sigma;
 
  public:
-  arma::Col<double> gausspdf_vec(const arma::Mat<double>& _data, const arma::Col<double>& _mu, const arma::Mat<double>& _sigma);
+  arma::Col<double> gausspdf_vec(const arma::Mat<double>& _data, const arma::Col<double>& _mu,
+                                 const arma::Mat<double>& _sigma);
 };
 
 #endif  // PROGRAMMING_BY_DEMONSTRATION_MVN_H

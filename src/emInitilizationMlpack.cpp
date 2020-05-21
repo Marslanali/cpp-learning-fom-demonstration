@@ -50,7 +50,9 @@ void EmInitilizationMlpack::learn_kmean_mlpack(const arma::Mat<double>& _data, u
   arma::Col<arma::uword> idtmp;
   arma::Col<double> priors_tmp(nb_states);
 
-  for (int i = 0; i < nb_states; ++i) mu.push_back(centroids(arma::span::all, i));
+  for (int i = 0; i < nb_states; ++i) {
+    mu.push_back(centroids(arma::span::all, i));
+  }
 
   for (int i = 0; i < nb_states; ++i) {
     idtmp = find(assignments == i);
@@ -76,11 +78,10 @@ void EmInitilizationMlpack::learn_kmean_mlpack(const arma::Mat<double>& _data, u
     }
     */
 
-    if (sigma_tmp.n_rows == nb_vars && sigma_tmp.n_cols == nb_vars)
+    if (sigma_tmp.n_rows == nb_vars && sigma_tmp.n_cols == nb_vars) {
       // Optional regularization term to avoid numerical instability
       sigma_tmp = sigma_tmp + arma::eye(nb_vars, nb_vars) * diag_reg_fact;
-
-    else {
+    } else {
       std::cout << "\n Something went wrong sigma Error!!!!!!\n" << std::endl;
       sigma_tmp = arma::eye(nb_vars, nb_vars) * diag_reg_fact;
     }

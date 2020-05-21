@@ -28,7 +28,8 @@
 #include "../include/gmm.h"
 #include <iostream>
 
-void GMM::EM(const arma::Mat<double>& _data, const arma::Col<double>& _priors, const std::vector<arma::Col<double>>& _mu, const std::vector<arma::Mat<double>>& _sigma) {
+void GMM::EM(const arma::Mat<double>& _data, const arma::Col<double>& _priors,
+             const std::vector<arma::Col<double>>& _mu, const std::vector<arma::Mat<double>>& _sigma) {
   nb_vars = _data.n_rows;
   nb_data_points = _data.n_cols;
   nb_states = _sigma.size();
