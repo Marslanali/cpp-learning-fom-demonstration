@@ -57,7 +57,6 @@ void GMR::compute_gmr(const arma::Col<double>& _priors, const std::vector<arma::
   arma::Mat<double> mu_tmp = arma::zeros(nb_var_out, nb_states);
 
   // std::cout<<"input:\n"<<x<<std::endl;
-
   // compute the infulence of each GMM component, given input x
 
   // arma::Mat<double> pxi = zeros(nb_data_points, nb_states);

@@ -13,7 +13,6 @@
  * expected mean and expected covariance matrices.The learned generalized
  * trajectory is exectued on the robot using simple PD controller.The algorithm
  * is tested on 3-degree freedom phantom premium robot.
- *
  */
 
 #include <fstream>
@@ -29,8 +28,8 @@
 #include "include/matplotlibcpp.h"
 
 #define nb_states 100
-#define nbVar 4
-#define nbData 200
+#define nbVar     4
+#define nbData    200
 
 namespace plt = matplotlibcpp;
 using namespace mlpack::kmeans;
@@ -268,6 +267,5 @@ int main(int argc, char **argv) {
    delete em_init_kmean_mlpack;
    delete gmm, gmr;
   */
-
   return 0;
 }

@@ -25,14 +25,14 @@
  * define the ones we need here.
  */
 #if CV_MAJOR_VERSION > 3
-#define CV_BGR2RGB cv::COLOR_BGR2RGB
+#define CV_BGR2RGB   cv::COLOR_BGR2RGB
 #define CV_BGRA2RGBA cv::COLOR_BGRA2RGBA
 #endif
 #endif  // WITHOUT_NUMPY
 
 #if PY_MAJOR_VERSION >= 3
 #define PyString_FromString PyUnicode_FromString
-#define PyInt_FromLong PyLong_FromLong
+#define PyInt_FromLong      PyLong_FromLong
 #define PyString_FromString PyUnicode_FromString
 #endif
 
