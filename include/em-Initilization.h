@@ -22,7 +22,6 @@ class EmInitilization {
 
  public:
   void learn_kmeans(const arma::Mat<double>& _data, uint _nb_states);
-
   arma::Col<double> get_priors();
   std::vector<arma::Col<double>> get_mu();
   std::vector<arma::Mat<double>> get_sigma();

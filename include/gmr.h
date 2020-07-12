@@ -26,8 +26,8 @@ class GMR {
   arma::Mat<double> expected_mu;
 
  public:
-  void compute_gmr(const arma::Col<double>& _priors, const std::vector<arma::Col<double>>& _mu,
-                   const std::vector<arma::Mat<double>>& _sigma, const arma::Mat<double>& _x, arma::span _in,
+  void compute_gmr(const arma::Col<double> &_priors, const std::vector<arma::Col<double>> &_mu,
+                   const std::vector<arma::Mat<double>> &_sigma, const arma::Mat<double> &_x, arma::span _in,
                    arma::span _out);
   arma::Mat<double> return_expected_mu();
 };
