@@ -5,7 +5,6 @@ This repositroy C++ implementation of multi degrees of freedom trajectory learni
 * A python implementation can be seen <a href="https://github.com/Marslanali/python-random-forest-decision-tree">here</a>.
 
 ## Introduction
-This project addresses the the challenges of estimating the Quality of Experience (QoE) in encrypted traffic.Popular video providers such as YouTube, Netflix, Amazon Prime, and Vimeo have mostly encrypted videos traffic and this poses an additional challenges for network operator to perform essentials task as to inspect, compress or balance traffic.We used machine learning model to predict QoE from enctypted traffic. The decision tree & random forest classifier model is trained in python using scikit-learn library and then imported in C++ using python scikit-learn porter library. The proposed machine learning models in C++ were able to identify quality issues from unencrypted data with accuracy of 93.5% and from encrypted traffic with accuracy of 91.8%. 
 
 ## Data Representation
 Let X is the data sets containing n features with n data points. Each row corresponds to a data point while each column depicts the feature. Similarly, y represents the labels ![f1] to ![f2].
@@ -13,7 +12,7 @@ Let X is the data sets containing n features with n data points. Each row corres
 ## Training and Test Data	  
 Let ![f3] is the data sets containing n features with n data points used for the training. Each row corresponds to a data point while each column depicts the feature. Similarly, ![f4] represents the labels ![f5] to ![f6] used for the training. 
 
-Our goal is to train the model the ![f3] and ![f4] and then test it with ![f7] and ![f8] data. 
+Goal is to train the model the ![f3] and ![f4] and then test it with ![f7] and ![f8] data. 
 
 [f1]: http://chart.apis.google.com/chart?cht=tx&chl=y_0
 [f2]: http://chart.apis.google.com/chart?cht=tx&chl=y_n
