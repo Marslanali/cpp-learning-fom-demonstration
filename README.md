@@ -28,11 +28,7 @@ Our goal is to train the model the ![f3] and ![f4] and then test it with ![f7] a
 
 ```
 ├── [master]           git checkout master
-├── [develop-youtube]  git checkout master
-├── [develop-vimeo]    git checkout master
-├── [develop-netflix]  git checkout master
-├── [develop-prime]    git checkout master
-└── [develop-disney]   git checkout master
+└── [develop-gmr]   git checkout master
 ```
 
 ## Files
