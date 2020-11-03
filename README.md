@@ -24,15 +24,15 @@ This repositroy C++ implementation of multi degrees of freedom trajectory learni
 
 ## Dependencies
 
-* [CMake](https://www.mlpack.org/)   Version 3.4.1
+* [CMake](https://www.mlpack.org/)   
 
-* [LAPACK] (https://www.mlpack.org/) Linear Algebra Package  Version 3.4.1
+* [LAPACK](https://www.mlpack.org/) Linear Algebra Package  
 
-* [MLPACK (C++ Machine Learning Library)] (https://www.mlpack.org/)   Version 3.4.1
+* [MLPACK](https://www.mlpack.org/) C++ Machine Learning Library
 
-* [Armadillo (C++ library for linear algebra & scientific computing)] (https://www.mlpack.org/)   Version 3.4.1
+* [Armadillo](https://www.mlpack.org/)  C++ library for linear algebra & scientific computing
 
-* [Matplotlib-CPP (for plotting directly in c++)] (https://www.mlpack.org/)   Version 3.4.1
+* [Matplotlib-CPP](https://www.mlpack.org/)  for plotting directly in c++
 
 * Ubuntu 16.04/18.04, CMake/Make, GCC
 
