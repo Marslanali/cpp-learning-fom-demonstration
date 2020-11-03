@@ -24,15 +24,15 @@ This repositroy C++ implementation of multi degrees of freedom trajectory learni
 
 ## Dependencies
 
-* [CMake](https://www.mlpack.org/)   
+* [CMake](https://www.mlpack.org/) Cross-Platform Build System 
 
-* [LAPACK](https://www.mlpack.org/) Linear Algebra Package  
+* [LAPACK](https://www.mlpack.org/) C++ Linear Algebra Package  
 
 * [MLPACK](https://www.mlpack.org/) C++ Machine Learning Library
 
 * [Armadillo](https://www.mlpack.org/)  C++ library for linear algebra & scientific computing
 
-* [Matplotlib-CPP](https://www.mlpack.org/)  for plotting directly in c++
+* [Matplotlib-CPP](https://www.mlpack.org/) C++ plotting Library
 
 * Ubuntu 16.04/18.04, CMake/Make, GCC
 
@@ -50,7 +50,7 @@ make -j4 # where j is the number of core
 sudo make install
 ```
 
-* Install [OpenCV](https://www.mlpack.org/) Version 3.4.1 from source. 
+* Install [LAPACK](https://www.mlpack.org/) Version 3.4.1 from source. 
 
 ```bash
 sudo apt update && sudo apt install -y g++ unzip
@@ -92,7 +92,7 @@ make -j4 # where j is the number of core
 sudo make install
 ```
 
-* Install [LAPACK](https://www.mlpack.org/) Version 3.4.1 from source. 
+* Install [Matplotlib-CPP](https://www.mlpack.org/) Version 3.4.1 from source. 
 
 ```bash
 sudo apt-get install -y -q wget
@@ -168,7 +168,7 @@ Goal is to train the model the ![f3] and ![f4] and then test it with ![f7] and !
 
 ## To-Do List
 
-- :ballot_box_with_check: Refactor src/include with clang
+- :ballot_box_with_check: Refactor src/include with clang-format
 - :negative_squared_cross_mark: Add CMake Cross Platform Support
 - :negative_squared_cross_mark: Add Docker Image Support 
 
