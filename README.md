@@ -1,27 +1,8 @@
-# 🚧 cpp_learning_from_demonstration 🚧
+# 🚧 CPP Learning From Demonstration 🚧
 
 This repositroy C++ implementation of multi degrees of freedom trajectory learning using gaussian mixture model and gaussian mixture regression.
 
 * A python implementation can be seen <a href="https://github.com/Marslanali/python-random-forest-decision-tree">here</a>.
-
-## Introduction
-
-## Data Representation
-Let X is the data sets containing n features with n data points. Each row corresponds to a data point while each column depicts the feature. Similarly, y represents the labels ![f1] to ![f2].
-
-## Training and Test Data	  
-Let ![f3] is the data sets containing n features with n data points used for the training. Each row corresponds to a data point while each column depicts the feature. Similarly, ![f4] represents the labels ![f5] to ![f6] used for the training. 
-
-Goal is to train the model the ![f3] and ![f4] and then test it with ![f7] and ![f8] data. 
-
-[f1]: http://chart.apis.google.com/chart?cht=tx&chl=y_0
-[f2]: http://chart.apis.google.com/chart?cht=tx&chl=y_n
-[f3]: http://chart.apis.google.com/chart?cht=tx&chl=X_{train}
-[f4]: http://chart.apis.google.com/chart?cht=tx&chl=y_{train}
-[f5]: http://chart.apis.google.com/chart?cht=tx&chl=y_0
-[f6]: http://chart.apis.google.com/chart?cht=tx&chl=y_n
-[f7]: http://chart.apis.google.com/chart?cht=tx&chl=X_{test}
-[f8]: http://chart.apis.google.com/chart?cht=tx&chl=y_{test}
 
 ## Branches
 
@@ -40,31 +21,102 @@ Goal is to train the model the ![f3] and ![f4] and then test it with ![f7] and !
 ├── CMakeList.txt
 └── README.md
 ```
+
 ## Dependencies
 
-* LAPACK (Linear Algebra Package)
+* [CMake](https://www.mlpack.org/)   Version 3.4.1
 
-* MLPACK (C++ Machine Learning Library)
+* [LAPACK] (https://www.mlpack.org/) Linear Algebra Package  Version 3.4.1
 
-* Armadillo (C++ library for linear algebra & scientific computing)
+* [MLPACK (C++ Machine Learning Library)] (https://www.mlpack.org/)   Version 3.4.1
 
-* Matplotlib-CPP (for plotting directly in c++) 
+* [Armadillo (C++ library for linear algebra & scientific computing)] (https://www.mlpack.org/)   Version 3.4.1
+
+* [Matplotlib-CPP (for plotting directly in c++)] (https://www.mlpack.org/)   Version 3.4.1
 
 * Ubuntu 16.04/18.04, CMake/Make, GCC
+
+## Dependencies Installation
+
+* Install [CMake](https://www.mlpack.org/) Version 3.4.1 from source. 
+
+```bash
+sudo apt-get install -y -q wget
+wget https://cmake.org/files/v3.17/cmake-3.17.5.tar.gz 
+tar xzf cmake-3.17.5.tar.gz 
+cd cmake-3.17.5 
+./bootstrap -- -DCMAKE_BUILD_TYPE:STRING=Release 
+make -j4 # where j is the number of core
+sudo make install
+```
+
+* Install [OpenCV](https://www.mlpack.org/) Version 3.4.1 from source. 
+
+```bash
+sudo apt update && sudo apt install -y g++ unzip
+wget -O opencv.zip https://github.com/opencv/opencv/archive/master.zip
+wget -O opencv_contrib.zip https://github.com/opencv/opencv_contrib/archive/master.zip
+unzip opencv.zip
+unzip opencv_contrib.zip
+```
+
+Create build directory and switch into it, Configure, and Build.
+
+```bash
+mkdir -p build && cd build
+cmake -DOPENCV_EXTRA_MODULES_PATH=../opencv_contrib-master/modules ../opencv-master
+cmake --build .
+```
+
+* Install [MLPACK](https://www.mlpack.org/) Version 3.4.1 from source. 
+
+```bash
+sudo apt-get install -y -q wget
+wget https://cmake.org/files/v3.17/cmake-3.17.5.tar.gz 
+tar xzf cmake-3.17.5.tar.gz 
+cd cmake-3.17.5 
+./bootstrap -- -DCMAKE_BUILD_TYPE:STRING=Release 
+make -j4 # where j is the number of core
+sudo make install
+```
+
+* Install [Armadillo](https://www.mlpack.org/) Version 3.4.1 from source. 
+
+```bash
+sudo apt-get install -y -q wget
+wget https://cmake.org/files/v3.17/cmake-3.17.5.tar.gz 
+tar xzf cmake-3.17.5.tar.gz 
+cd cmake-3.17.5 
+./bootstrap -- -DCMAKE_BUILD_TYPE:STRING=Release 
+make -j4 # where j is the number of core
+sudo make install
+```
+
+* Install [LAPACK](https://www.mlpack.org/) Version 3.4.1 from source. 
+
+```bash
+sudo apt-get install -y -q wget
+wget https://cmake.org/files/v3.17/cmake-3.17.5.tar.gz 
+tar xzf cmake-3.17.5.tar.gz 
+cd cmake-3.17.5 
+./bootstrap -- -DCMAKE_BUILD_TYPE:STRING=Release 
+make -j4 # where j is the number of core
+sudo make install
+```
 
 ## Demo
 
 To build run the following command in terminal:
 
 ```bash
-$ mkdir build
-$ cd build
-$ cmake ..
-$ make 
+mkdir build
+cd build
+cmake ..
+make -j4 
 ```
 
 ```bash
-$ ./unit-testing --mean 1000 --sigma 500 --distance 200
+./kmean --mean 1000 --sigma 500 --distance 200
 ```
 
 <p align="left">
@@ -83,15 +135,23 @@ $ ./unit-testing --mean 1000 --sigma 500 --distance 200
 </p>
 
 
-## Miscellaneous
+## Data Representation
+Let X is the data sets containing n features with n data points. Each row corresponds to a data point while each column depicts the feature. Similarly, y represents the labels ![f1] to ![f2].
 
-[Armadillo Installation](http://arma.sourceforge.net/download.html)
+## Training and Test Data	  
+Let ![f3] is the data sets containing n features with n data points used for the training. Each row corresponds to a data point while each column depicts the feature. Similarly, ![f4] represents the labels ![f5] to ![f6] used for the training. 
 
-[Armadillo Installation](http://arma.sourceforge.net/download.html)
+Goal is to train the model the ![f3] and ![f4] and then test it with ![f7] and ![f8] data. 
 
-[Armadillo Installation](http://arma.sourceforge.net/download.html)
+[f1]: http://chart.apis.google.com/chart?cht=tx&chl=y_0
+[f2]: http://chart.apis.google.com/chart?cht=tx&chl=y_n
+[f3]: http://chart.apis.google.com/chart?cht=tx&chl=X_{train}
+[f4]: http://chart.apis.google.com/chart?cht=tx&chl=y_{train}
+[f5]: http://chart.apis.google.com/chart?cht=tx&chl=y_0
+[f6]: http://chart.apis.google.com/chart?cht=tx&chl=y_n
+[f7]: http://chart.apis.google.com/chart?cht=tx&chl=X_{test}
+[f8]: http://chart.apis.google.com/chart?cht=tx&chl=y_{test}
 
-[Armadillo Installation](http://arma.sourceforge.net/download.html)
 
 ## References
 
@@ -115,5 +175,3 @@ $ ./unit-testing --mean 1000 --sigma 500 --distance 200
 
 Author:
 _Arslan Ali_
-
-
