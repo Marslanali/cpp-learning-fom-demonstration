@@ -1,14 +1,15 @@
 # 🚧 CPP Learning From Demonstration 🚧
 
-This repositroy C++ implementation of multi degrees of freedom trajectory learning using gaussian mixture model and gaussian mixture regression.
+This repository is C++ implementation of multi degrees of freedom trajectory learning using gaussian mixture model and gaussian mixture regression.
 
 * A python implementation can be seen <a href="https://github.com/Marslanali/python-random-forest-decision-tree">here</a>.
 
 ## Branches
 
 ```
-├── [master]           git checkout master
+├── [master]        git checkout master
 └── [develop-gmr]   git checkout master
+└── [develop-gmm]   git checkout master
 ```
 
 ## Files
@@ -24,21 +25,23 @@ This repositroy C++ implementation of multi degrees of freedom trajectory learni
 
 ## Dependencies
 
-* [CMake](https://www.mlpack.org/) Cross-Platform Build System 
+* [CMake](https://www.mlpack.org/) Cross-Platform Build System.  [Version 3.17.5.]() 
 
-* [LAPACK](https://www.mlpack.org/) C++ Linear Algebra Package  
+* [Armadillo](http://arma.sourceforge.net/download.html) C++ library for linear algebra & scientific computing  [Version 10.1.1]()   
 
-* [MLPACK](https://www.mlpack.org/) C++ Machine Learning Library
+* [LAPACK](https://www.mlpack.org/) C++ Linear Algebra Package. [Version 9.8.1]()                                                          
 
-* [Armadillo](https://www.mlpack.org/)  C++ library for linear algebra & scientific computing
+* [MLPACK](https://www.mlpack.org/) C++ Machine Learning Library. [Version]()            
 
-* [Matplotlib-CPP](https://www.mlpack.org/) C++ plotting Library
+* [Matplotlib-CPP](https://www.mlpack.org/) C++ plotting Library. [Version]() 
 
 * Ubuntu 16.04/18.04, CMake/Make, GCC
 
 ## Dependencies Installation
 
-* Install [CMake](https://www.mlpack.org/) Version 3.4.1 from source. 
+* [CMake](https://www.mlpack.org/)   Version 3.17.5
+
+Install [CMake](https://www.mlpack.org/) from source. 
 
 ```bash
 sudo apt-get install -y -q wget
@@ -50,14 +53,40 @@ make -j4 # where j is the number of core
 sudo make install
 ```
 
-* Install [LAPACK](https://www.mlpack.org/) Version 3.4.1 from source. 
+* [Armadillo](http://arma.sourceforge.net/download.html)  Version 10.1.1 
+
+Install [Armadillo](https://www.mlpack.org/) from source. 
 
 ```bash
-sudo apt update && sudo apt install -y g++ unzip
+sudo apt-get install liblapack-dev
 wget -O opencv.zip https://github.com/opencv/opencv/archive/master.zip
-wget -O opencv_contrib.zip https://github.com/opencv/opencv_contrib/archive/master.zip
-unzip opencv.zip
-unzip opencv_contrib.zip
+cd armadillo
+cmake .  # NOTE: the full stop separated from "cmake" by a space is important.
+sudo make install
+```
+
+On Linux, to enable the detection of FlexiBLAS, use the additional ALLOW_FLEXIBLAS_LINUX option when running cmake:
+
+```
+cmake -DALLOW_FLEXIBLAS_LINUX=ON .
+```
+
+* [LAPACK](https://www.mlpack.org/) Version 3.4.1. 
+
+Install [LAPACK](https://www.mlpack.org/) from source. 
+
+```bash
+sudo apt-get install liblapack-dev
+wget -O opencv.zip https://github.com/opencv/opencv/archive/master.zip
+cd armadillo
+cmake .  # NOTE: the full stop separated from "cmake" by a space is important.
+sudo make install
+```
+
+On Linux, to enable the detection of FlexiBLAS, use the additional ALLOW_FLEXIBLAS_LINUX option when running cmake:
+
+```
+cmake -DALLOW_FLEXIBLAS_LINUX=ON .
 ```
 
 Create build directory and switch into it, Configure, and Build.
@@ -68,7 +97,9 @@ cmake -DOPENCV_EXTRA_MODULES_PATH=../opencv_contrib-master/modules ../opencv-mas
 cmake --build .
 ```
 
-* Install [MLPACK](https://www.mlpack.org/) Version 3.4.1 from source. 
+* [MLPACK](https://www.mlpack.org/) Version 3.4.1. 
+
+Install [MLPACK](https://www.mlpack.org/) from source. 
 
 ```bash
 sudo apt-get install -y -q wget
@@ -80,19 +111,9 @@ make -j4 # where j is the number of core
 sudo make install
 ```
 
-* Install [Armadillo](https://www.mlpack.org/) Version 3.4.1 from source. 
+* [Matplotlib-CPP](https://www.mlpack.org/) Version 3.4.1. 
 
-```bash
-sudo apt-get install -y -q wget
-wget https://cmake.org/files/v3.17/cmake-3.17.5.tar.gz 
-tar xzf cmake-3.17.5.tar.gz 
-cd cmake-3.17.5 
-./bootstrap -- -DCMAKE_BUILD_TYPE:STRING=Release 
-make -j4 # where j is the number of core
-sudo make install
-```
-
-* Install [Matplotlib-CPP](https://www.mlpack.org/) Version 3.4.1 from source. 
+Install [Matplotlib-CPP](https://www.mlpack.org/) from source. 
 
 ```bash
 sudo apt-get install -y -q wget
@@ -116,7 +137,7 @@ make -j4
 ```
 
 ```bash
-./kmean --mean 1000 --sigma 500 --distance 200
+./lfd --mean 1000 --sigma 500 --distance 200
 ```
 
 <p align="left">
@@ -163,12 +184,11 @@ Goal is to train the model the ![f3] and ![f4] and then test it with ![f7] and !
 
 [Decision Trees ](https://www.researchgate.net/publication/308020680_The_k-means_clustering_technique_General_considerations_and_implementation_in_Mathematica/link/584dd9be08aeb989252647ac/download)
 
-[Data for example code] The data folder contains the test data which constitutes of 4 demonstrations. The collected demonstratiosn consists of cartesian trajectories of 3 DOF robot.
-
+[Data for example code](). The data folder contains the test data which constitutes of 4 demonstrations. The collected demonstratiosn consists of cartesian trajectories of 3 DOF robot.
 
 ## To-Do List
 
-- :ballot_box_with_check: Refactor src/include with clang-format
+- :ballot_box_with_check: Refactor src/include
 - :negative_squared_cross_mark: Add CMake Cross Platform Support
 - :negative_squared_cross_mark: Add Docker Image Support 
 
