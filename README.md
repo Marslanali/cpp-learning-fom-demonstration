@@ -137,7 +137,7 @@ make -j4
 ```
 
 ```bash
-./lfd --mean 1000 --sigma 500 --distance 200
+./lfd 
 ```
 
 <p align="left">
@@ -156,33 +156,8 @@ make -j4
 </p>
 
 
-## Data Representation
-Let X is the data sets containing n features with n data points. Each row corresponds to a data point while each column depicts the feature. Similarly, y represents the labels ![f1] to ![f2].
-
-## Training and Test Data	  
-Let ![f3] is the data sets containing n features with n data points used for the training. Each row corresponds to a data point while each column depicts the feature. Similarly, ![f4] represents the labels ![f5] to ![f6] used for the training. 
-
-Goal is to train the model the ![f3] and ![f4] and then test it with ![f7] and ![f8] data. 
-
-[f1]: http://chart.apis.google.com/chart?cht=tx&chl=y_0
-[f2]: http://chart.apis.google.com/chart?cht=tx&chl=y_n
-[f3]: http://chart.apis.google.com/chart?cht=tx&chl=X_{train}
-[f4]: http://chart.apis.google.com/chart?cht=tx&chl=y_{train}
-[f5]: http://chart.apis.google.com/chart?cht=tx&chl=y_0
-[f6]: http://chart.apis.google.com/chart?cht=tx&chl=y_n
-[f7]: http://chart.apis.google.com/chart?cht=tx&chl=X_{test}
-[f8]: http://chart.apis.google.com/chart?cht=tx&chl=y_{test}
-
 
 ## References
-
-[Random Forest ](https://www.researchgate.net/publication/308020680_The_k-means_clustering_technique_General_considerations_and_implementation_in_Mathematica/link/584dd9be08aeb989252647ac/download)
-
-[Decision Trees ](https://www.researchgate.net/publication/308020680_The_k-means_clustering_technique_General_considerations_and_implementation_in_Mathematica/link/584dd9be08aeb989252647ac/download)
-
-[Decision Trees ](https://www.researchgate.net/publication/308020680_The_k-means_clustering_technique_General_considerations_and_implementation_in_Mathematica/link/584dd9be08aeb989252647ac/download)
-
-[Decision Trees ](https://www.researchgate.net/publication/308020680_The_k-means_clustering_technique_General_considerations_and_implementation_in_Mathematica/link/584dd9be08aeb989252647ac/download)
 
 [Data for example code](). The data folder contains the test data which constitutes of 4 demonstrations. The collected demonstratiosn consists of cartesian trajectories of 3 DOF robot.
 
